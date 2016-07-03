@@ -38,7 +38,7 @@ For more information refer to [‘Getting Started with Java SDK’](https://deve
 ### Running test Cases
 Please update LocationIntelligenceSDK-JavaScript Test cases with AccessToken to execute them. 
 
-### LocationIntelligenceSDK-JavaScript contains the following software
+### LocationIntelligenceSDK-Java contains the following software
 * javax.json, version number 1.0.4 which is licensed under CDDL and GPL licenses, version number 2.0, with the Glasspath Exception.  The license can be downloaded from https://jsonp.java.net/license.html.  The source code for this software is available from https://jsonp.java.net/.
 * jersey-client, version number 2.11 which is licensed under CDDL and GPL licenses, version number 2.0, with the Glasspath Exception.  The license can be downloaded from https://jersey.java.net/license.html.  The source code for this software is available from https://jersey.java.net/.
 * Json Assert, version number 1.2.3 which is licensed under Apache license, version number 2.0.  The license can be downloaded from http://www.apache.org/licenses/LICENSE-2.0.  The source code for this software is available from https://github.com/skyscreamer/JSONassert. 
