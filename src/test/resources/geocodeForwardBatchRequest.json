@@ -1,0 +1,12 @@
+{
+	"addresses": [{
+		"mainAddressLine": "39 SycamoreRd, Stafford 08050",
+		"postCode1": "08050",
+		"country": "USA"
+	},
+	{
+		"mainAddressLine": "Pitney Bowes, 1 Global View, Troy, NY 12180",
+		"postCode1": "12180",
+		"country": "USA"
+	}]
+}

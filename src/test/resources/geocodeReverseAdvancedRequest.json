@@ -1,0 +1,47 @@
+{
+	"preferences": {
+		"fallbackToGeographic": true,
+		"fallbackToPostal": true,
+		"maxReturnedCandidates": 5,
+		"distance": 100,
+		"streetOffset": 7,
+		"cornerOffset": 7,
+		"clientLocale": "en_US",
+		"clientCoordSysName": "epsg:4326",
+		"distanceUnits": "METER",
+		"streetOffsetUnits": "METER",
+		"cornerOffsetUnits": "METER",
+		"mustMatchFields": {
+			"matchOnAddressNumber": false,
+			"matchOnAllStreetFields": false
+		}
+	},
+	"points": [{
+		"country": "FRA",
+		"geometry": {
+			"type": "point",
+			"coordinates": [2.294449,
+			48.85838],
+			"crs": {
+				"type": "name",
+				"properties": {
+					"name": "EPSG:4326"
+				}
+			}
+		}
+	},
+	{
+		"country": "AUS",
+		"geometry": {
+			"type": "point",
+			"coordinates": [151.19603,
+			-33.879637],
+			"crs": {
+				"type": "name",
+				"properties": {
+					"name": "EPSG:4326"
+				}
+			}
+		}
+	}]
+}

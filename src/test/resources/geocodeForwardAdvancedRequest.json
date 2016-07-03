@@ -1,0 +1,30 @@
+{
+	"preferences": {
+		"returnAllCandidateInfo": false,
+		"fallbackToGeographic": true,
+		"fallbackToPostal": false,
+		"matchMode": "STANDARD",
+		"mustMatchFields": {
+			"matchOnAddressNumber": false,
+			"matchOnPostCode1": false,
+			"matchOnAreaName1": false,
+			"matchOnAreaName2": false,
+			"matchOnAreaName3": false,
+			"matchOnAreaName4": false,
+			"matchOnAllStreetFields": false
+		},
+		"customPreferences": {
+			"fallbackToGeographic": "false"
+		}
+	},
+	"addresses": [{
+		"mainAddressLine": "39 SycamoreRd, Stafford 08050",
+		"postCode1": "08050",
+		"country": "USA"
+	},
+	{
+		"mainAddressLine": "Pitney Bowes, 1 Global View, Troy, NY 12180",
+		"postCode1": "12180",
+		"country": "USA"
+	}]
+}
