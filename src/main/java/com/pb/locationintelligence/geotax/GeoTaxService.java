@@ -14,7 +14,7 @@ package com.pb.locationintelligence.geotax;
 
 import com.pb.locationintelligence.RequestObserver;
 import com.pb.locationintelligence.exception.SdkException;
-import com.pb.locationintelligence.geotax.model.TaxRateResponse;
+import com.pb.locationintelligence.geotax.model.*;
 
 /**
  * This service provides tax details w.r.t requested Address or
@@ -130,4 +130,77 @@ public interface GeoTaxService {
 	 *            Required - The callback implementation to get response or errors.
 	 */
 	public void getGeoTaxRateByAddress(String taxRateTypeId, String address, RequestObserver<TaxRateResponse> requestObserver);
+
+	/**
+	 *
+	 * @param taxRateTypeId
+	 * @param request
+	 * @return
+	 * @throws SdkException
+	 */
+	public TaxResponseList getGeoTaxRateBatchByLocation(String taxRateTypeId, TaxRateLocationRequest request) throws SdkException;
+
+	/**
+	 * Retrieves tax Rate  applicable to a specified addresses in batch Mode
+	 * @param taxRateTypeId
+	 * @param request
+	 * @return
+	 * @throws SdkException
+	 */
+
+	public TaxResponseList getGeoTaxRateByBatchAddress(String taxRateTypeId, TaxRateAddressRequest request) throws SdkException;
+
+	/**
+	 * Retrieves tax  applicable to a specified Locations in batch Mode
+	 * @param taxRateTypeId
+	 * @param request
+	 * @return
+	 * @throws SdkException
+	 */
+	public TaxResponseList getGeoTaxByBatchLocation(String taxRateTypeId, TaxLocationRequest request) throws SdkException;
+
+	/**
+	 * Retrieves tax  applicable to a specified Addresses in batch Mode
+	 * @param taxRateTypeId
+	 * @param request
+	 * @return
+	 * @throws SdkException
+	 */
+	public TaxResponseList getGeoTaxByBatchAddress(String taxRateTypeId,TaxAddressRequest request) throws SdkException;
+
+	/**
+	 * Retrieves tax Rate applicable to a specified Locations in batch and Async mode
+	 * @param taxRateTypeId
+	 * @param request
+	 * @param requestObserver
+	 * @throws SdkException
+	 */
+	public void getGeoTaxRateBatchByLocation(String taxRateTypeId, TaxRateLocationRequest request,RequestObserver<TaxResponseList> requestObserver) throws SdkException;
+
+	/**
+	 * Retrieves tax Rate  applicable to a specified Addresses in batch and Async mode
+	 * @param taxRateTypeId
+	 * @param request
+	 * @param requestObserver
+	 * @throws SdkException
+	 */
+	public void getGeoTaxRateByBatchAddress(String taxRateTypeId, TaxRateAddressRequest request,RequestObserver<TaxResponseList> requestObserver) throws SdkException;
+
+	/**
+	 * Retrieves tax  applicable to a specified Locations in batch and Async mode
+	 * @param taxRateTypeId
+	 * @param request
+	 * @param requestObserver
+	 * @throws SdkException
+	 */
+	public void getGeoTaxByBatchLocation(String taxRateTypeId, TaxLocationRequest request,RequestObserver<TaxResponseList> requestObserver) throws SdkException;
+
+	/**
+	 * Retrieves tax  applicable to a specified Addresses in batch and Async mode
+	 * @param taxRateTypeId
+	 * @param request
+	 * @param requestObserver
+	 * @throws SdkException
+	 */
+	public void getGeoTaxByBatchAddress(String taxRateTypeId,TaxAddressRequest request,RequestObserver<TaxResponseList> requestObserver) throws SdkException;
 }

@@ -16,20 +16,74 @@ import java.util.Map;
 
 public class Address {
 
+	 /**
+     * 
+     *Main address line of the address.
+     */
     private String mainAddressLine;
+	/**
+	 * addressLastLine: Last line part of the site address.
+	 */
     private String addressLastLine;
+    /**
+     * placeName: Name of the place of the site address.
+     */
     private String placeName;
+    /*
+     * areaName1: Name of the State/Province.
+     */
     private String areaName1;
+    /*
+     * areaName2: Name of the County/Region.
+     */
     private String areaName2;
+    /*
+     * areaName3: Name of the City/Town.
+     */
     private String areaName3;
+    /*
+     * areaName4: Name of the Suburb/Village.
+     */
     private String areaName4;
+    
+    /**
+     * Main postal code.
+     */
     private String postCode1;
+    
+    /**
+     * Secondary postal code, where one exists.
+     */
     private String postCode2;
+    
+    /**
+     * Country
+     */
     private String country;
+    
+    /**
+     * 	House or building number.
+     */
     private String addressNumber;
+    
+    /**
+     * Street name.
+     */
     private String streetName;
+    
+    /**
+     * 	The type of unit, such as Apt., Ste. and Bldg.
+     */
     private String unitType;
+    
+    /**
+     * 	The unit value/number, such as "3B".
+     */
     private String unitValue;
+    
+    /**
+     * The fields and corresponding values returned are country-specific.
+     */
     private Map customFields;
 
     public String getMainAddressLine() {

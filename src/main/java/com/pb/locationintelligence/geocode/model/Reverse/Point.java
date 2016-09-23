@@ -17,7 +17,14 @@ import com.pb.locationintelligence.geocode.model.GeoPos;
 
 public class Point {
 
+	/**
+	 * country name.
+	 */
     protected String country;
+    
+    /**
+     * Coordinates & Points.
+     */
     protected GeoPos geometry;
 
     /**

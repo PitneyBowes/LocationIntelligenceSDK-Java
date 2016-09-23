@@ -16,11 +16,34 @@ import java.util.List;
 
 public class GeocodeCapabilitiesResponse 
 {
+	/**
+	 * The name of a supported service.
+	 */
 	private String serviceName;
+	
+	/**
+	 * A description of the service.
+	 */
 	private String serviceDescription;
+	
+	/**
+	 * The core version of GeoCode API.
+	 */
 	private String coreVersion;
+	
+	/**
+	 * The countries supported by each installed country geocoder engine.
+	 */
     private List<String> supportedCountries;
+    
+    /**
+     * An array that defines the supported operations for the specified input country or for all countries.
+     */
     private List<Operation> supportedOperations;
+    
+    /**
+     * List of custom object
+     */
     private List<CustomObject> customObjects;
     
 	public String getServiceName() 

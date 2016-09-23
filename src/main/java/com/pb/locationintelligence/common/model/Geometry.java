@@ -20,7 +20,13 @@ import java.util.List;
 
 public class Geometry {
 
+	/**
+	 * Geometry Type which is “Point” in this case.
+	 */
     private String type;
+    /**
+     * Location Coordinates i.e. Longitude and Latitude of the Location 
+     */
     private List<Double> coordinates = new ArrayList<Double>();
   
 

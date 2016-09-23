@@ -15,6 +15,9 @@ package com.pb.locationintelligence.common.model;
 
 public class Location {
 
+	/**
+	 * Applicable to custom-specified datasets only
+	 */
     private String dataset;
     private Match match;
     private Address address;

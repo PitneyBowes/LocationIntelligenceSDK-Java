@@ -16,10 +16,22 @@ import com.pb.locationintelligence.common.model.Address;
 
 public class PsapResponse
 {
+	/**
+	 * FCC ID for the PSAP.
+	 */
 	private String fccId;
+	/**
+	 * Values: enhanced, basic, military, non-9-1-1.
+	 */
 	private String type;
     private Integer count;
+    /**
+     * PSAP name
+     */
     private String agency;
+    /**
+     * Emergency number that is answered 24x7
+     */
     private String phone;
     private County county;
     private Coverage coverage;

@@ -16,6 +16,17 @@ import java.util.Map;
 
 public class InputParameter 
 {
+	/**
+	 * optionalInputs	InputParameter	
+	 * Lists the optional input fields for the operation. Includes the following elements:
+		name (String)
+		description (String)
+		type (String)
+		defaultValue (String)
+		lowBoundary (String)
+		highBoundary (String)
+		allowedValuesWithDescriptions (Map)
+	 */
     private String name;
     private String description;
     private String type;

@@ -14,12 +14,63 @@ package com.pb.locationintelligence.geocode.model.forward;
 
 public class MatchFieldPreferences {
 	
+	/**
+	 * Indicates if the input address number matched the candidate's address number.
+		True:
+		The input address number matched the candidate's address number.
+		False:
+		The input address number did not match the candidate's address number.
+	 */
 	private boolean matchOnAddressNumber;
+	
+	/**
+	 * Indicates if the input postCode1 field matched the candidate's postCode1 field.
+	True:
+	The input postCode1 matched the candidate's postCode1.
+	False:
+	The input postCode1 did not match the candidate's postCode1.
+	 */
 	private boolean matchOnPostCode1;   
-	private boolean matchOnAreaName1;   
-	private boolean matchOnAreaName2;
-	private boolean matchOnAreaName3;
-	private boolean matchOnAreaName4;
+	
+	/**
+	 * Indicates if the input areaName1 field matched the candidate's areaName1 field.
+		True:
+		The input areaName1 matched the candidate's areaName1.
+		False:
+		The input areaName1 did not match the candidate's areaName1.
+	 */
+	protected boolean matchOnAreaName1;
+	
+	/**
+	 * Indicates if the input areaName2 field matched the candidate's areaName2 field.
+		True:
+		The input areaName2 matched the candidate's areaName2.
+		False:
+		The input areaName2 did not match the candidate's areaName2.
+	 */
+	protected boolean matchOnAreaName2;
+	
+	/**
+	 * Indicates if the input areaName3 field matched the candidate's areaName3 field.
+		True:
+		The input areaName3 matched the candidate's areaName3.
+		False:
+		The input areaName3 did not match the candidate's areaName3.
+	 */
+	protected boolean matchOnAreaName3;
+	
+	/**
+	 * Indicates if the input areaName4 field matched the candidate's areaName4 field.
+		True:
+		The input areaName4 matched the candidate's areaName4.
+		False:
+		The input areaName4 did not match the candidate's areaName4.
+	 */
+	protected boolean matchOnAreaName4;
+	
+	/**
+	 * 
+	 */
 	private boolean matchOnAllStreetFields;
 	
 	public boolean isMatchOnAddressNumber() {

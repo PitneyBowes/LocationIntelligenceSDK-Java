@@ -14,6 +14,12 @@ package com.pb.locationintelligence.geocode.model.capabilities;
 
 public class OutputParameter 
 {
+	/**
+	 * Lists the operation's output fields. Includes the following elements:
+		name (String)
+		description (String)
+		type (String)
+	 */
     private String name;
     private String description;
     private String type;

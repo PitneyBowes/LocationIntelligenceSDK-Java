@@ -14,6 +14,7 @@ package com.pb.locationintelligence.geo911;
 
 import com.pb.locationintelligence.RequestObserver;
 import com.pb.locationintelligence.exception.SdkException;
+import com.pb.locationintelligence.geo911.model.AHJPlusPSAPResponse;
 import com.pb.locationintelligence.geo911.model.PsapResponse;
 
 /**
@@ -72,5 +73,58 @@ public interface Geo911Service {
      *          Required - The callback implementation to get response or errors.
      */
     public void getPSAPByLocation(Double latitude, Double longitude, RequestObserver<PsapResponse> requestObserver);
-
+    
+    /**
+	 * Retrieves the authority having jurisdiction and public safety answering points at a location
+	 * Accepts the address as input and returns PSAP locations' details 
+	 * including agency name, phone number, county name, coverage, contact person's 
+	 * details, site details and mailing address.
+	 * @param address
+	 * 			Required - Free-form address text
+     * @return {@link PsapResponse}
+     */
+    public AHJPlusPSAPResponse getAHJPlusPSAPByAddress(String address) throws SdkException;
+    
+    
+    /**
+     * Retrieves the authority having jurisdiction and public safety answering points at a location.
+     * Accepts the address as input and returns PSAP locations' details
+     * including agency name, phone number, county name, coverage, contact person's
+     * details, site details and mailing address.
+     *
+     * @param address
+     * 			Required - Free-form address text
+     * @param requestObserver
+     *          Required - The callback implementation to get response or errors.
+     */
+    public void getAHJPlusPSAPByAddress(String address, RequestObserver<AHJPlusPSAPResponse> requestObserver);
+    
+    /**
+     * Retrieves the authority having jurisdiction and public safety answering points at a location.
+     * Accepts latitude and longitude co-ordinates as input and returns PSAP locations' details
+     * including agency name, phone number, county name, coverage,
+     * contact person's details, site details and mailing address.
+     * @param latitude
+     * 			Required - latitude of the location
+     * @param longitude
+     * 			Required - longitude of the location
+     * @return {@link PsapResponse}
+     */
+    public AHJPlusPSAPResponse getAHJPlusPSAPByLocation(Double latitude, Double longitude) throws SdkException;
+    
+    /**
+     * Retrieves the authority having jurisdiction and public safety answering points at a location.
+     * Accepts latitude and longitude co-ordinates as input and returns PSAP locations' details
+     * including agency name, phone number, county name, coverage,
+     * contact person's details, site details and mailing address.
+     *
+     * @param latitude
+     * 			Required - latitude of the location
+     * @param longitude
+     * 			Required - longitude of the location
+     * @param requestObserver
+     *          Required - The callback implementation to get response or errors.
+     */
+    public void getAHJPlusPSAPByLocation(Double latitude, Double longitude, RequestObserver<AHJPlusPSAPResponse> requestObserver);
+   
 }

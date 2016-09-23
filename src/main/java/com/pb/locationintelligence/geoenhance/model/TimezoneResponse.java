@@ -13,9 +13,25 @@
 package com.pb.locationintelligence.geoenhance.model;
 
 public class TimezoneResponse {
+	/**
+	 * Name and abbreviation of the timezone for the given location coordinates, such as, Central Europe Time (CET/CEST), 
+	 * Hawaiian Standard Time (HST) etc.timezoneName can contain blank values. 
+	 * The blank values generally get displayed for locations that do not fall under any country or for ocean/water regions.
+	 */
 	private String timezoneName;
+	/**
+	 * For a given location coordinates, the offset in milliseconds from the UTC time. 
+	 * This can be a 0 or a positive or negative number.
+	 */
 	private Long utcOffset;
+	/**
+	 * For a given location coordinates, the offset in milliseconds for daylight saving. 
+	 * This can be 0 or positive or negative number. For example, for the US timezone - Central Time (CST/CDT)
+	 */
 	private Long dstOffset;
+	/**
+	 * Input UTC time.
+	 */
 	private Long timestamp;
 	
 	public String getTimezoneName() {

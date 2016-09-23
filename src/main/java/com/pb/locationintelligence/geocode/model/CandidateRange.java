@@ -18,12 +18,36 @@ import java.util.Map;
 
 public class CandidateRange {
 
+	/**
+	 * If applicable, indicates the name of the candidate's place or building.
+	 */
 	protected String placeName;
+	
+	/**
+	 * Indicates the low house number in the candidate's street range.
+	 */
 	protected String lowHouse;
+	
+	/**
+	 * Indicates the high house number in the candidate's street range.
+	 */
 	protected String highHouse;
+	
+	/**
+	 * Provides information on the side of street that the candidate's range is located.
+	 */
 	protected StreetSideIndicator side;
+	
+	/**
+	 * Provides information on the house numbering of the candidate's range.
+	 * 
+	 */
 	protected OddEvenIndicator oddEvenIndicator;
 	protected List<CandidateRangeUnit> units;
+	
+	/**
+	 * A map of local values associated with the candidate's range.
+	 */
 	protected Map customValues;
 
 	public String getPlaceName() {

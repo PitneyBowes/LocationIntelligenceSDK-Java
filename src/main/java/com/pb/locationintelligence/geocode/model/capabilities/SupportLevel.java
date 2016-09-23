@@ -16,6 +16,43 @@ import java.util.List;
 
 public class SupportLevel 
 {
+	/**
+	 * Lists the support levels for the operation. Includes the following elements:
+		supportedDataLevel (Integer)
+		Data Postal Centroid=1
+		Postcode centroids are present in dictionaries (does not distinguish post code 2).
+		Data Geographic Centroid=2
+		Geographic centroids are present in dictionaries (does not distinguish the type of geographic centroid).
+		Data Street Segment=4
+		Street segment information present in dictionaries.
+		Data Address Point=8
+		Point level data present in dictionaries.
+		
+		                The data level will contain the sum of all available data keys.  For example,
+		                
+		                Value — Type of data                   
+		                   15      —  all (postal + geographic + segment + point)                   
+		                   14      —  all but postal
+		                   13      —  all but geographic                   
+		                   12      —  point + segment
+		                   11      —  point + geographic + postal                   
+		                   10      —  point + geographic                     
+		                    9       —  point + postal                     
+		                    8       —  point only                     
+		                    7       —  all but point                     
+		                    6       —  segment + geographic                     
+		                    5       —  segment + postal                     
+		                    4       —  segment only                     
+		                    3       —  postal + geographic                     
+		                    2       —  geographic only                     
+		                    1       —  postal only             
+		                
+		
+		countries — (String) Countries
+		updatedRequiredInputs — (InputParameter) Country-specific required input fields
+		updatedOptionalInputs — (InputParameter) Country-specific optional input fields
+		updatedOptionalOutputs — (OutputParameter) Country-specific output fields
+	 */
 	private int supportedDataLevel;
     private List<String> countries;
     private List<InputParameter> updatedRequiredInputs;

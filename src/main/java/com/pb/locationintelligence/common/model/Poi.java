@@ -15,48 +15,112 @@ package com.pb.locationintelligence.common.model;
 
 public class Poi {
 
+	/**
+	 * 	Language Code (valid for Street name & Location name).
+	 */
     private String langISOCode;
-
+    
+    /**
+     * Type of language. Possible values: primary/secondary/alternate.
+     */
     private String langType;
 
     private String displayName;
 
+    /**
+     * 	Official Name
+     */
     private String name;
 
+    /**
+     * Alias of Name
+     */
     private String alias;
-
+    
+    /**
+     * Brand Name
+     */
     private String brandName;
 
+    /**
+     * 	Category code of the POI.
+     */
      private Integer categoryCode;
 
+     /**
+      * Information about stores that are open 24 hours.
+      */
     private String open24Hours;
-
+    
+    /**
+     * contact details like phone, fax, email & url etc...
+     */
     private ContactDetails contactDetails;
 
+    /**
+     * Distance object that holds details of distance.
+     */
     private Distance distance;
 
+    /**
+     * value lof latutude.
+     */
     private String latitude;
 
+    /**
+     * value of longitude.
+     */
     private String longitude;
 
+    /**
+     * Customer Specific custom value 1 and will be available in customer data only. Applicable to custom-specified datasets only.
+     */
     private String customField1;
+    
 
+    /**
+     * Customer Specific custom value 2 and will be available in customer data only. Applicable to custom-specified datasets only.
+     */
     private String customField2;
 
+    /**
+     * Customer Specific custom value 3 and will be available in customer data only. Applicable to custom-specified datasets only.
+     */
     private String customField3;
 
+    /**
+     * Customer Specific custom value 4 and will be available in customer data only. Applicable to custom-specified datasets only.
+     */
     private String customField4;
 
+    /**
+     * Customer Specific custom value 5 and will be available in customer data only. Applicable to custom-specified datasets only.
+     */
     private String customField5;
 
+    /**
+     * Customer Specific custom value 6 and will be available in customer data only. Applicable to custom-specified datasets only.
+     */
     private String customField6;
 
+    /**
+     * Customer Specific custom value 7 and will be available in customer data only. Applicable to custom-specified datasets only.
+     */
     private String customField7;
 
+    /**
+     * Customer Specific custom value 8 and will be available in customer data only. Applicable to custom-specified datasets only.
+     */
     private String customField8;
 
+    /**
+     * Customer Specific custom value 9 and will be available in customer data only. Applicable to custom-specified datasets only.
+     */
     private String customField9;
 
+    /**
+     * Customer Specific custom value 10 and will be available in customer data only. Applicable to custom-specified datasets only.
+     */
     private String customField10;
 
     public String getCustomField1() {

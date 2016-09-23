@@ -33,8 +33,8 @@ import org.slf4j.LoggerFactory;
 import com.google.gson.Gson;
 import com.pb.locationintelligence.TestUtility;
 import com.pb.locationintelligence.exception.SdkException;
-import com.pb.locationintelligence.geolife.GeoLifeService;
-import com.pb.locationintelligence.geolife.model.GeoLifeResponse;
+import com.pb.locationintelligence.geolife.model.DemoGraphics.GeoLifeResponse;
+import com.pb.locationintelligence.geolife.model.Segmentation.Segmentation;
 import com.pb.locationintelligence.manager.LIServiceManager;
 import com.pb.locationintelligence.oauth.BasicAuthServiceImpl;
 
@@ -205,6 +205,139 @@ public class GeoLifeServiceTest {
         String jsonResponseFromSDK = gson.toJson(response);
    	    JSONAssert.assertEquals(jsonResponseFromAPI,jsonResponseFromSDK, JSONCompareMode.STRICT);
    	}
+   	
+   	@Test
+	public void getSegmentationByAddressTest() {
+		try {
+			Segmentation response = mGeoLifeService.getSegmentationByAddress("1 Global View, Troy, NY", "USA");
+            assertTrue(response != null);
+		} catch (SdkException e) {
+			TestUtility.verifyException(e);
+		}
+	}
+	
+	@Test
+	public void getSegmentationByAddressNegativeTest() {
+		try{
+			mGeoLifeService.getSegmentationByAddress(null, "USA");
+		}catch(SdkException e){
+            TestUtility.verifyException(e);
+		}
+	}
+	
+	@Test
+	public void getSegmentationByAddressBadRequestTest() {
+		try{
+			mGeoLifeService.getSegmentationByAddress("1 Global View, Troy, NY", "1234");
+		}catch(SdkException e){
+            TestUtility.verifyException(e);
+		}
+	}
+	
+	@Test
+	public void getSegmentationByAddressNoFilterTest() {
+		try{
+			Segmentation response = mGeoLifeService.getSegmentationByAddress("1 Global View, Troy, NY", "USA");
+			assertTrue(response != null);
+		}catch(Exception e){
+			fail("Unexpected Exception");
+		}
+	}
+	
+	@Test
+	public void getSegmentationByLocationTest() {
+		try{
+			Segmentation response = mGeoLifeService.getSegmentationByLocation(35.0118D, -81.9571D);
+			assertTrue(response != null);
+		}catch(Exception e){
+			fail("Unexpected Exception");
+		}
+	}
+	
+	@Test
+	public void getSegmentationByLocationNegativeTest() {
+		try{
+			mGeoLifeService.getSegmentationByLocation(null, -81.9571D);
+		}catch(SdkException e){
+            TestUtility.verifyException(e);
+		}
+	}
+	
+	@Test
+	public void getSegmentationByLocationBadRequestTest() {
+		try{
+			mGeoLifeService.getSegmentationByLocation(35.0118D, -81.9571D);
+		}catch(SdkException e){
+            TestUtility.verifyException(e);
+		}
+	}
+	
+	@Test
+	public void getSegmentationByLocationNoFilterTest() {
+		try{
+			Segmentation response = mGeoLifeService.getSegmentationByLocation(35.0118D, -81.9571D);
+			assertTrue(response != null);
+		}catch(Exception e){
+			fail("Unexpected Exception");
+		}
+	}
+
+    @Test
+    public void testGetSegmentationByAddressAsync() throws InterruptedException {
+        Segmentation[] segmentationResponses = new Segmentation[1];
+        mGeoLifeService.getSegmentationByAddress("1 Global View, Troy, NY", "USA", TestUtility.getCallBack(segmentationResponses, null));
+        Thread.sleep(3000);
+        assertTrue(segmentationResponses[0] != null);
+    }
+
+    @Test
+    public void testGetSegmentationByAddressWithInvalidParamsAsync() throws InterruptedException {
+        final SdkException[] sdkException = new SdkException[1];
+        mGeoLifeService.getSegmentationByAddress(null, "USA", TestUtility.getCallBack(new Segmentation[0], sdkException));
+        Thread.sleep(3000);
+        TestUtility.verifyException(sdkException[0]);
+    }
+
+    @Test
+    public void testGetSegmentationByLocationAsync() throws InterruptedException {
+        Segmentation[] segmentationResponses = new Segmentation[1];
+        mGeoLifeService.getSegmentationByLocation(35.0118D, -81.9571D, TestUtility.getCallBack(segmentationResponses, null));
+        Thread.sleep(3000);
+        assertTrue(segmentationResponses[0] != null);
+    }
+
+    @Test
+    public void testGetSegmentationByLocationWithInvalidParamsAsync() throws InterruptedException {
+        final SdkException[] sdkException = new SdkException[1];
+        mGeoLifeService.getSegmentationByLocation(355.0118D, -811.9571D, TestUtility.getCallBack(new Segmentation[0], sdkException));
+        Thread.sleep(3000);
+        TestUtility.verifyException(sdkException[0]);
+    }
+    
+    @Test
+   	public void testToCompareSDKAndAPIResponseOfSegmentationByAddress() throws SdkException, JSONException  {
+    	 Map<String,Object> keyValueMap = new HashMap<String, Object>();
+         keyValueMap.put("address","1 Global View, Troy, NY");
+         keyValueMap.put("country","USA");
+   		 String jsonResponseFromAPI = TestUtility.getJSONResponseFromAPI(keyValueMap,TEST_URL,"geoapis/services/geolife/v1/segmentation/byaddress");
+         Gson gson = new Gson();
+         Segmentation response = mGeoLifeService.getSegmentationByAddress("1 Global View, Troy, NY", "USA");
+         String jsonResponseFromSDK = gson.toJson(response);
+   	     JSONAssert.assertEquals(jsonResponseFromAPI,jsonResponseFromSDK, JSONCompareMode.STRICT);
+   	}
+
+   	@Test
+   	public void testToCompareSDKAndAPIResponseOfSegmentationByLocation() throws SdkException, JSONException  {
+   		Map<String,Object> keyValueMap = new HashMap<String, Object>();
+        keyValueMap.put("latitude",35.0118D);
+        keyValueMap.put("longitude",-81.9571D);
+   		String jsonResponseFromAPI = TestUtility.getJSONResponseFromAPI(keyValueMap,TEST_URL,"geoapis/services/geolife/v1/segmentation/bylocation");
+        Gson gson = new Gson();
+        Segmentation response = mGeoLifeService.getSegmentationByLocation(35.0118D, -81.9571D);
+        String jsonResponseFromSDK = gson.toJson(response);
+   	    JSONAssert.assertEquals(jsonResponseFromAPI,jsonResponseFromSDK, JSONCompareMode.STRICT);
+   	}
+
 
     @After
 	public void tearDown() throws Exception {

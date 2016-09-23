@@ -14,17 +14,104 @@ package com.pb.locationintelligence.geocode.model;
 
 public class FieldsMatching {
 
+	/**
+	 * Indicates if the input address number matched the candidate's address number.
+		True:
+		The input address number matched the candidate's address number.
+		False:
+		The input address number did not match the candidate's address number.
+	 */
 	protected boolean matchOnAddressNumber;
+	
+	/**
+	 * Indicates if the input postCode1 field matched the candidate's postCode1 field.
+	True:
+	The input postCode1 matched the candidate's postCode1.
+	False:
+	The input postCode1 did not match the candidate's postCode1.
+	 */
 	protected boolean matchOnPostCode1;
+	
+	/**
+	 * Indicates if the input postCode2 field (post code extension) matched the candidate's postCode2 field.
+		True:
+		The input postCode2 matched the candidate's postCode2.
+		False:
+		The input postCode2 did not match candidate's postCode2.
+	 */
 	protected boolean matchOnPostCode2;
+	
+	/**
+	 * ndicates if the input areaName1 field matched the candidate's areaName1 field.
+		True:
+		The input areaName1 matched the candidate's areaName1.
+		False:
+		The input areaName1 did not match the candidate's areaName1.
+	 */
 	protected boolean matchOnAreaName1;
+	
+	/**
+	 * ndicates if the input areaName2 field matched the candidate's areaName2 field.
+		True:
+		The input areaName2 matched the candidate's areaName2.
+		False:
+		The input areaName2 did not match the candidate's areaName2.
+	 */
 	protected boolean matchOnAreaName2;
+	
+	/**
+	 * ndicates if the input areaName3 field matched the candidate's areaName3 field.
+		True:
+		The input areaName3 matched the candidate's areaName3.
+		False:
+		The input areaName3 did not match the candidate's areaName3.
+	 */
 	protected boolean matchOnAreaName3;
+	
+	/**
+	 * ndicates if the input areaName4 field matched the candidate's areaName4 field.
+		True:
+		The input areaName4 matched the candidate's areaName4.
+		False:
+		The input areaName4 did not match the candidate's areaName4.
+	 */
 	protected boolean matchOnAreaName4;
 	protected boolean matchOnAllStreetFields;
+	
+	/**
+	 * Indicates if the input street name matched the candidate's street name.
+	True:
+	The input street name matched the candidate's street name.
+	False:
+	The input street name did not match the candidate's street name.
+	 */
 	protected boolean matchOnStreetName;
+	
+	/**
+	 * Indicates if the input street type matched the candidate's street type.
+	True:
+	The input street type matched the candidate's street type.
+	False:
+	The input street type did not match the candidate's street type.
+	 */
 	protected boolean matchOnStreetType;
+	
+	/**
+	 * ndicates if the input street directional matched the candidate's street directional.
+		True
+		The input street directional matched the candidate's street directional.
+		False
+		The input street directional did not match the candidate's street directional.
+	 */
 	protected boolean matchOnStreetDirectional;
+	
+	/**
+	 * Indicates if the input place name matched the candidate's place name.
+		True
+		The input place name matched the candidate's place name.
+		False
+		The input place name did not match the candidate's place name.
+	 */
 	protected boolean matchOnPlaceName;
 	protected boolean matchOnInputFields;
 

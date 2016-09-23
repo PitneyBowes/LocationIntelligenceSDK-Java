@@ -16,14 +16,50 @@ package com.pb.locationintelligence.geotax.model;
 import java.util.List;
 
 public class SalesTax {
+	
+	/**
+	 * The sum of the individual Municipal, County, State and SPD sales tax rates.
+	 */
 	private Double totalTaxRate;
+	
+	/**
+	 * The sum of the individual Municipal, County, State and SPD sales tax amounts.
+	 */
 	private Double totalTaxAmount;
+	
+	/**
+	 * State sales tax rate for the selected tax rate type.
+	 */
 	private Double stateTaxRate;
+	
+	/**
+	 * State sales tax amount for the selected tax rate type.
+	 */
 	private Double stateTaxAmount;
+	
+	/**
+	 * County sales tax rate for the selected tax rate type.
+	 */
 	private Double countyTaxRate;
+	
+	/**
+	 * County sales tax amount for the selected tax rate type.
+	 */
 	private Double countyTaxAmount;
+	
+	/**
+	 * Municipality sales tax rate for the selected tax rate type.
+	 */
 	private Double municipalTaxRate;
+	
+	/**
+	 * Municipality sales tax amount for the selected tax rate type.
+	 */
 	private Double municipalTaxAmount;
+	
+	/**
+	 * SPD w.r.t district number.
+	 */
 	private List<SpecialPurposeDistrictTax> spdsTax;
 
 	public Double getTotalTaxRate() {

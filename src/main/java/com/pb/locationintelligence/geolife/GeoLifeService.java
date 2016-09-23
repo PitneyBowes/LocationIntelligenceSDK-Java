@@ -12,9 +12,11 @@
  *******************************************************************************/
 package com.pb.locationintelligence.geolife;
 
+
 import com.pb.locationintelligence.RequestObserver;
 import com.pb.locationintelligence.exception.SdkException;
-import com.pb.locationintelligence.geolife.model.GeoLifeResponse;
+import com.pb.locationintelligence.geolife.model.DemoGraphics.GeoLifeResponse;
+import com.pb.locationintelligence.geolife.model.Segmentation.Segmentation;
 
 /**
  * This Service provides demographic data and lifestyle characteristics for a specific area.
@@ -108,5 +110,54 @@ public interface GeoLifeService {
      *          Required - The callback implementation to get response or errors
      */
     public void getDemographicsByLocation(Double latitude, Double longitude, String profile, String filter, RequestObserver<GeoLifeResponse> requestObserver);
+    
+
+
+	/**
+	 * Returns the lifestyle segmentation data for the specified address
+	 *
+     * @param address
+     * 			Required - address text
+     * @param country
+     * 			Optional - Country Code
+*          Acceptable list of country codes: USA,CAN,AUS,SWE,JPN,GBR
+     * @return {@link Segmentation}
+	 * @throws SdkException
+	 */
+    public Segmentation getSegmentationByAddress(String address, String country) throws SdkException;
+
+    /**
+     * Returns the lifestyle segmentation data for the specified location
+     *
+     * @param longitude
+     * 		Required - longitude of the location
+     * @param latitude
+     * 		Required - latitude of the location
+     * @return  {@link Segmentation}
+     * @throws SdkException
+     */
+    public Segmentation getSegmentationByLocation(Double latitude,Double longitude) throws SdkException;
+
+    /**
+     * Returns the lifestyle segmentation data for the specified address asynchronously
+     * @param address
+	 * 			Required - address text
+	 * @param country
+	 * 			Optional - Country Code
+     *          Acceptable list of country codes: USA,CAN,AUS,SWE,JPN,GBR
+     * @param requestObserver
+     */
+    public void getSegmentationByAddress(String address, String country, RequestObserver<Segmentation> requestObserver);
+
+    /**
+     * Returns the lifestyle segmentation data for the specified location asynchronously
+     * @param longitude
+     * 		Required - longitude of the location
+     * @param latitude
+     * 		Required - latitude of the location
+     * @param requestObserver
+     */
+    public void getSegmentationByLocation(Double latitude, Double longitude, RequestObserver<Segmentation> requestObserver);
+
 
 }

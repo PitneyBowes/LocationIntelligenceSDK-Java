@@ -22,7 +22,8 @@ import org.slf4j.LoggerFactory;
 
 import com.pb.locationintelligence.RequestObserver;
 import com.pb.locationintelligence.exception.SdkException;
-import com.pb.locationintelligence.geolife.model.GeoLifeResponse;
+import com.pb.locationintelligence.geolife.model.DemoGraphics.GeoLifeResponse;
+import com.pb.locationintelligence.geolife.model.Segmentation.Segmentation;
 import com.pb.locationintelligence.utils.UrlMaker;
 import com.pb.locationintelligence.utils.Utility;
 
@@ -35,6 +36,7 @@ public class GeoLifeServiceImpl implements GeoLifeService {
 	private static final Logger _LOG = LoggerFactory.getLogger(GeoLifeServiceImpl.class);
 
     private static final String geoLilfeUrl = "/geolife/v1/demographics/";
+    private static final String geoLifeSegmentationUrl = "/geolife/v1/segmentation/";
     private UrlMaker urlMaker;
     
     @Override
@@ -110,4 +112,83 @@ public class GeoLifeServiceImpl implements GeoLifeService {
         });
     }
 
+
+	@Override
+	public Segmentation getSegmentationByAddress(String address,
+                                                 String country) throws SdkException {
+		urlMaker = UrlMaker.getInstance();
+
+        StringBuilder urlBuilder = new StringBuilder(urlMaker.getAbsoluteUrl(geoLifeSegmentationUrl));
+        urlBuilder.append("byaddress");
+        Map<String,Object> keyValueMap = new HashMap<String, Object>();
+        keyValueMap.put("address",address);
+        keyValueMap.put("country",country);
+
+        Utility.appendIfNotNull(urlBuilder,keyValueMap);
+
+        _LOG.debug("API URL : " + urlBuilder);
+        return Utility.processAPIRequest(urlBuilder.toString(), Segmentation.class);
+	}
+
+	@Override
+	public Segmentation getSegmentationByLocation(Double latitude,
+                                                  Double longitude) throws SdkException {
+		urlMaker = UrlMaker.getInstance();
+
+        StringBuilder urlBuilder = new StringBuilder(urlMaker.getAbsoluteUrl(geoLifeSegmentationUrl));
+        urlBuilder.append("bylocation");
+        Map<String,Object> keyValueMap = new HashMap<String, Object>();
+        keyValueMap.put("longitude",longitude);
+        keyValueMap.put("latitude",latitude);
+
+        Utility.appendIfNotNull(urlBuilder,keyValueMap);
+
+        _LOG.debug("API URL : " + urlBuilder);
+        return Utility.processAPIRequest(urlBuilder.toString(), Segmentation.class);
+	}
+
+	@Override
+	public void getSegmentationByAddress(final String address, final String country,
+                                         final RequestObserver<Segmentation> requestObserver) {
+		final ExecutorService executorService = Executors.newFixedThreadPool(1);
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Segmentation segmentationResponse = getSegmentationByAddress(address, country);
+                    requestObserver.onSuccess(segmentationResponse);
+                } catch (SdkException e) {
+                    requestObserver.onFailure(e);
+                }finally{
+					executorService.shutdown();					
+				}
+            }
+        });
+		
+	}
+
+	@Override
+	public void getSegmentationByLocation(final Double latitude, final Double longitude,
+                                          final RequestObserver<Segmentation> requestObserver) {
+
+		final ExecutorService executorService = Executors.newFixedThreadPool(1);
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Segmentation segmentationResponse = getSegmentationByLocation(latitude, longitude);
+                    requestObserver.onSuccess(segmentationResponse);
+                } catch (SdkException e) {
+                    requestObserver.onFailure(e);
+                }finally{
+					executorService.shutdown();					
+				}
+            }
+        });
+		
+	
+		
+	}
+
+    
 }

@@ -10,12 +10,23 @@
  *  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  
  *  See the License for the specific language governing permissions and limitations under the License.
  *******************************************************************************/
+
 package com.pb.locationintelligence.common.model;
-
+/**
+ * 
+ * Distance of dwelling along the segment
+ *
+ */
 public class Distance {
-
+	/**
+	 * Unit in which the distance is measured (for e.g. Feet). 
+	 * Based on the unit sent in request, the response is returned, 
+	 * for example if 'Feet' is sent in request, value in 'Feet' is returned.
+	 */
 	private String unit;
-	
+	/**
+	 * Distance radius as per the unit selected (For example distance in 'Feet').
+	 */
 	private String value;
 	
 	public String getUnit() {

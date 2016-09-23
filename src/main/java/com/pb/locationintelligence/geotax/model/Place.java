@@ -14,12 +14,43 @@
 package com.pb.locationintelligence.geotax.model;
 
 public class Place {
+	/**
+	 * State name.
+	 */
 	private String name;
+	
+	/**
+	 * State code.
+	 */
 	private String code;
+	
+	/**	
+	 *	Place class code. Place class codes are used to determine the proper taxing jurisdictions. 
+	 */
 	private String classCode;
+	
+	/**
+	 * Indicates whether the address is located in an incorporated or unincorporated place. 
+	 * A "place" is a geographic area defined on the basis of population criteria that vary by state. 
+	 * Or, an area recognized as significant because it is located in an incorporated municipality.
+	 */
 	private String incorporatedFlag;
+	
+	/**
+	 * Last annexed date, in the format MM/YYYY, representing the month and 
+	 * year of the most recent boundary change or 
+	 * the most recent available boundary information.
+	 */
 	private String lastAnnexedDate;
+	
+	/**
+	 * Last updated date, in the format MM/YYYY, reflecting the month and year.
+	 */
 	private String lastUpdatedDate;
+	
+	/**
+	 * Last verified date, in the format MM/YYYY, representing the month and year.
+	 */
 	private String lastVerifiedDate;
 
 	public String getCode() {

@@ -17,10 +17,20 @@ import java.util.List;
 
 public class PlaceByLocationResponse {
 
+	/**
+	 * 	Actual level information. For e.g. if level is country then name field will contain the name of the country.
+	 */
     private List<NeighbourhoodName> name;
 
+    /**
+     * Level for which information is returned. 
+     * If no levelHint is passed then the most granular geography available is returned and level will be equal to default.
+     */
     private String level;
 
+    /**
+     * Level name in English, for e.g. country, state, city etc.
+     */
     private String levelName;
 
 

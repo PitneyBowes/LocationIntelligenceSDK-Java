@@ -11,26 +11,60 @@
  *  See the License for the specific language governing permissions and limitations under the License.
  *******************************************************************************/
 
-
 package com.pb.locationintelligence.common.model;
-
+/**
+ * 
+ * This POJO class provides Address information.
+ *  
+ */
 public class Address {
 
     private String displayName;
 
     private String streetSide;
+    /*
+     * Formatted Address is a combination of this is combination of mainAddressLine, placeName, 
+     *areaName4, areaName3, areaName2, areaName1, country, postCode, postCodeExt.
+     */
     private String formattedAddress;
+    /*
+     * 
+     *Main address line of the address.
+     */
     private String mainAddressLine;
 
 	private String businessName;
-	
+	/*
+	 * addressLastLine: Last line part of the site address.
+	 */
     private String addressLastLine;
+    /*
+     * placeName: Name of the place of the site address.
+     */
     private String placeName;
+    /*
+     * areaName1: Name of the State/Province.
+     */
     private String areaName1;
+    /*
+     * areaName2: Name of the County/Region.
+     */
     private String areaName2;
+    /*
+     * areaName3: Name of the City/Town.
+     */
     private String areaName3;
+    /*
+     * areaName4: Name of the Suburb/Village.
+     */
     private String areaName4;
+    /*
+     * 	postCode: Zip code of the address.
+     */
     private String postCode;
+    /*
+     *postCodeExt: Extended Zip code part of the address.
+     */
     private String postCodeExt;
 	private String addressLine1;
 
@@ -45,15 +79,34 @@ public class Address {
 	private String county;
 	
 	private String postalCode;
-	
+	/*
+	 * Country code of the mailing address.
+	 */
 	private String country;
-	
+	/*
+	 * addressNumber: Address number part of the mailing address.
+	 */
     private String addressNumber;
+    /*
+     * streetName: Street name part of the mailing address.
+     */
     private String streetName;
+    /*
+     * unitType: Type of address(Apartment/house) part of the address.
+     */
     private String unitType;
+    /*
+     * unitValue: Apartment/House number part of the address.
+     */
     private String unitValue;
+    /*
+     * Latitude of the location.
+     */
     private String latitude;
 	
+    /*
+     * longitude of the location.
+     */
 	private String longitude;
 
     private String status;
@@ -70,6 +123,7 @@ public class Address {
 	public String getAddressLine1() {
 		return addressLine1;
 	}
+
 
     /**
      * 

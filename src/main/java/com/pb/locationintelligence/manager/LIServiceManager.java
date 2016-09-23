@@ -15,6 +15,8 @@ package com.pb.locationintelligence.manager;
 import com.pb.locationintelligence.geo911.Geo911ServiceImpl;
 import com.pb.locationintelligence.geocode.GeocodeService;
 import com.pb.locationintelligence.geocode.GeocodeServiceImpl;
+import com.pb.locationintelligence.geocomm.GeocommService;
+import com.pb.locationintelligence.geocomm.GeocommServiceImpl;
 import com.pb.locationintelligence.geoenhance.GeoEnhanceServiceImpl;
 import com.pb.locationintelligence.geolife.GeoLifeService;
 import com.pb.locationintelligence.geolife.GeoLifeServiceImpl;
@@ -25,8 +27,6 @@ import com.pb.locationintelligence.oauth.BaseOAuthService;
 import com.pb.locationintelligence.oauth.BaseOAuthServiceImpl;
 import com.pb.locationintelligence.oauth.OAuthFactory;
 import com.pb.locationintelligence.oauth.OAuthService;
-import com.pb.locationintelligence.segmentation.SegmentationService;
-import com.pb.locationintelligence.segmentation.SegmentationServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -133,15 +133,11 @@ public class LIServiceManager {
     public GeoEnhanceServiceImpl getGeoEnhanceService() {
         return new GeoEnhanceServiceImpl();
     }
+
+	public GeocommService getGeoCommonService(){
+		return  new GeocommServiceImpl();
+	}
     
-    /**
-	 * GeoLife Segmentation Service Handler
-	 * 
-	 * @return {@link SegmentationService}
-	 */
-    public SegmentationService getSegmentationService() {
-        return new SegmentationServiceImpl();
-    }
 
 	/**
 	 * To invalidate the LI static reference

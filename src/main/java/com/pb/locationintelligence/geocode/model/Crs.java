@@ -17,7 +17,14 @@ import java.util.Properties;
 
 public class Crs {
 
+	/**
+	 * Geometry type. The return value is always Point.
+	 */
     protected String type;
+    
+    /**
+     * The coordinate reference system used for the candidate's geocode.
+     */
     protected Properties properties;
 
     /**

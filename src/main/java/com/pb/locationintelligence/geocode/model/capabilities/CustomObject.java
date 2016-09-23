@@ -16,8 +16,22 @@ import java.util.List;
 
 public class CustomObject 
 {
+	/**
+	 * The name(s)s of the custom object fields that were user-specified in Preferences.
+	 */
     private String name;
+    
+    /**
+     * The description of the user-specified custom object fields.
+     */
     private String description;
+    
+    /**
+     * Where CustomObjectMember contains the following elements:
+		name — (String) Indicates name of parameter.
+		input — (InputParameter) Indicates the property is an input parameter.
+		output —(OutputParameter) Indicates the property is an output parameter.
+     */
     private List<CustomObjectMember> properties;
     
 	public String getName() 

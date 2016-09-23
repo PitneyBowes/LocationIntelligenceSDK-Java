@@ -17,14 +17,18 @@ import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import com.google.gson.Gson;
+import com.pb.locationintelligence.geotax.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.pb.locationintelligence.RequestObserver;
 import com.pb.locationintelligence.exception.SdkException;
-import com.pb.locationintelligence.geotax.model.TaxRateResponse;
 import com.pb.locationintelligence.utils.UrlMaker;
 import com.pb.locationintelligence.utils.Utility;
+
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.core.MediaType;
 
 public class GeoTaxServiceImpl implements GeoTaxService {
 	private static final Logger _LOG = LoggerFactory.getLogger(GeoTaxServiceImpl.class);
@@ -173,5 +177,131 @@ public class GeoTaxServiceImpl implements GeoTaxService {
 			}
 		});
 	}
+
+
+	/************************************/
+
+	@Override
+	public TaxResponseList getGeoTaxRateBatchByLocation(String taxRateTypeId, TaxRateLocationRequest request) throws SdkException {
+		urlMaker = UrlMaker.getInstance();
+		StringBuilder urlBuilder = new StringBuilder(urlMaker.getAbsoluteUrl(geotaxUrl));
+		urlBuilder.append("taxrate/").append(taxRateTypeId).append("/bylocation");
+		Gson gson = new Gson();
+		Entity paramEntity = Entity.entity(gson.toJson(request), MediaType.APPLICATION_JSON_TYPE);
+		_LOG.debug("API URL : " + urlBuilder);
+		return Utility.processPOSTRequest(paramEntity, urlBuilder.toString(), TaxResponseList.class);
+	}
+
+	@Override
+	public TaxResponseList getGeoTaxRateByBatchAddress(String taxRateTypeId, TaxRateAddressRequest request) throws SdkException {
+
+		urlMaker = UrlMaker.getInstance();
+		StringBuilder urlBuilder = new StringBuilder(urlMaker.getAbsoluteUrl(geotaxUrl));
+		urlBuilder.append("taxrate/").append(taxRateTypeId).append("/byaddress");
+		Gson gson = new Gson();
+		Entity paramEntity = Entity.entity(gson.toJson(request), MediaType.APPLICATION_JSON_TYPE);
+		_LOG.debug("API URL : " + urlBuilder);
+		return Utility.processPOSTRequest(paramEntity, urlBuilder.toString(), TaxResponseList.class);
+
+	}
+
+	@Override
+	public TaxResponseList getGeoTaxByBatchLocation(String taxRateTypeId, TaxLocationRequest request) throws SdkException {
+		urlMaker = UrlMaker.getInstance();
+		StringBuilder urlBuilder = new StringBuilder(urlMaker.getAbsoluteUrl(geotaxUrl));
+		urlBuilder.append("tax/").append(taxRateTypeId).append("/bylocation");
+		Gson gson = new Gson();
+		Entity paramEntity = Entity.entity(gson.toJson(request), MediaType.APPLICATION_JSON_TYPE);
+		_LOG.debug("API URL : " + urlBuilder);
+		return Utility.processPOSTRequest(paramEntity, urlBuilder.toString(), TaxResponseList.class);
+	}
+
+
+	@Override
+	public TaxResponseList getGeoTaxByBatchAddress(String taxRateTypeId, TaxAddressRequest request) throws SdkException {
+		urlMaker = UrlMaker.getInstance();
+		StringBuilder urlBuilder = new StringBuilder(urlMaker.getAbsoluteUrl(geotaxUrl));
+		urlBuilder.append("tax/").append(taxRateTypeId).append("/byaddress");
+		Gson gson = new Gson();
+		Entity paramEntity = Entity.entity(gson.toJson(request), MediaType.APPLICATION_JSON_TYPE);
+		_LOG.debug("API URL : " + urlBuilder);
+		return Utility.processPOSTRequest(paramEntity, urlBuilder.toString(), TaxResponseList.class);
+	}
+
+
+
+	@Override
+	public void getGeoTaxRateBatchByLocation(final String taxRateTypeId, final TaxRateLocationRequest request, final RequestObserver<TaxResponseList> requestObserver) throws SdkException {
+		final ExecutorService executorService = Executors.newFixedThreadPool(1);
+		executorService.submit(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					TaxResponseList response =getGeoTaxRateBatchByLocation(taxRateTypeId, request);
+					requestObserver.onSuccess(response);
+				} catch (SdkException e) {
+					requestObserver.onFailure(e);
+				}finally{
+					executorService.shutdown();
+				}
+			}
+		});
+	}
+
+	@Override
+		public void getGeoTaxRateByBatchAddress(final String taxRateTypeId, final TaxRateAddressRequest request, final RequestObserver<TaxResponseList> requestObserver) throws SdkException {
+		final ExecutorService executorService = Executors.newFixedThreadPool(1);
+		executorService.submit(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					TaxResponseList response =getGeoTaxRateByBatchAddress(taxRateTypeId,request);
+					requestObserver.onSuccess(response);
+				} catch (SdkException e) {
+					requestObserver.onFailure(e);
+				}finally{
+					executorService.shutdown();
+				}
+			}
+		});
+	}
+
+	@Override
+	public void getGeoTaxByBatchLocation(final String taxRateTypeId, final TaxLocationRequest request, final  RequestObserver<TaxResponseList> requestObserver) throws SdkException {
+		final ExecutorService executorService = Executors.newFixedThreadPool(1);
+		executorService.submit(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					TaxResponseList response =getGeoTaxByBatchLocation(taxRateTypeId, request);
+					requestObserver.onSuccess(response);
+				} catch (SdkException e) {
+					requestObserver.onFailure(e);
+				}finally{
+					executorService.shutdown();
+				}
+			}
+		});
+	}
+
+	@Override
+	public void getGeoTaxByBatchAddress(final String taxRateTypeId,final TaxAddressRequest request, final RequestObserver<TaxResponseList> requestObserver) throws SdkException {
+		final ExecutorService executorService = Executors.newFixedThreadPool(1);
+		executorService.submit(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					TaxResponseList response =getGeoTaxByBatchAddress(taxRateTypeId, request);
+					requestObserver.onSuccess(response);
+				} catch (SdkException e) {
+					requestObserver.onFailure(e);
+				}finally{
+					executorService.shutdown();
+				}
+			}
+		});
+	}
+
+
 
 }

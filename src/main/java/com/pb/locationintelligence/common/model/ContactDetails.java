@@ -14,15 +14,26 @@
 package com.pb.locationintelligence.common.model;
 
 public class ContactDetails {
-	
+	/**
+	 * Address details.
+	 */
 	private Address address;
-	
+	/**
+	 * phone: Phone number of contact person.
+	 */
 	private String phone;
-	
+	/**
+	 * Fax number of contact person.
+	 */
 	private String fax;
-	
+	/**
+	 * Email address of contact person.
+	 */
 	private String email;
 	
+	/**
+	 * Internet Address.
+	 */
 	private String url;
 
 	public Address getAddress() {

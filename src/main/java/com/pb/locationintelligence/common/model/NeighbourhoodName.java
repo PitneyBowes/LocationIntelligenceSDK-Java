@@ -15,8 +15,14 @@ package com.pb.locationintelligence.common.model;
 
 public class NeighbourhoodName {
 
+	/**
+	 * Type of language. Possible values: primary/secondary/alternate.
+	 */
     private String langType;
 
+    /**
+     * ISO code for the language in which name is represented.
+     */
     private String  langISOCode;
 
     private String value;

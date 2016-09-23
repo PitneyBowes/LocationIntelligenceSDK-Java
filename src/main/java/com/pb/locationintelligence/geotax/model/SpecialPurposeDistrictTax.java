@@ -16,10 +16,19 @@ package com.pb.locationintelligence.geotax.model;
 
 public class SpecialPurposeDistrictTax {
 
+	/**
+	 * District Number of SPD for Tax
+	 */
 	private String districtNumber;
 
+	/**
+	 *tax rate for SPD w.r.t district number
+	 */
 	private Double taxRate;
 	
+	/**
+	 * tax Amount for SPD w.r.t district number
+	 */
 	private Double taxAmount;
 	
 	public String getDistrictNumber() {

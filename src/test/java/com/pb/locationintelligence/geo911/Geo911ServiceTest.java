@@ -33,6 +33,7 @@ import org.slf4j.LoggerFactory;
 import com.google.gson.Gson;
 import com.pb.locationintelligence.TestUtility;
 import com.pb.locationintelligence.exception.SdkException;
+import com.pb.locationintelligence.geo911.model.AHJPlusPSAPResponse;
 import com.pb.locationintelligence.geo911.model.PsapResponse;
 import com.pb.locationintelligence.manager.LIServiceManager;
 import com.pb.locationintelligence.oauth.BasicAuthServiceImpl;
@@ -161,6 +162,66 @@ public class Geo911ServiceTest {
         String jsonResponseFromSDK = gson.toJson(response);
 	    JSONAssert.assertEquals(jsonResponseFromAPI,jsonResponseFromSDK, JSONCompareMode.STRICT);
 	}
+	
+	@Test
+	public void testGeo911WithAHJByAddressWithInvalidParams() {
+		try {
+			geo911Service.getAHJPlusPSAPByAddress(null);
+		} catch (SdkException e) {
+			TestUtility.verifyException(e);
+		}
+	}
+
+	@Test
+	public void testGeo911WithAHJByAddressWithInvalidParamsAsync() throws InterruptedException {
+		final SdkException[] sdkException = new SdkException[1];
+		geo911Service.getAHJPlusPSAPByAddress(null, TestUtility.getCallBack(new AHJPlusPSAPResponse[1], sdkException));
+		Thread.sleep(3000);
+		TestUtility.verifyException(sdkException[0]);
+	}
+	
+	@Test
+	public void testGeo911WithAHJByLocationWithInvalidParams() {
+		try {
+			geo911Service.getAHJPlusPSAPByLocation(335.0118, -811.9571);
+		} catch (SdkException e) {
+			TestUtility.verifyException(e);
+		}
+	}
+
+	@Test
+	public void testGeo911WithAHJByLocationWithInvalidParamsAsync() throws InterruptedException {
+		final SdkException[] sdkException = new SdkException[1];
+		geo911Service.getAHJPlusPSAPByLocation(335.0118, -811.9571,
+				TestUtility.getCallBack(new AHJPlusPSAPResponse[1], sdkException));
+		Thread.sleep(3000);
+		TestUtility.verifyException(sdkException[0]);
+	}
+	
+	@Test
+	public void testToCompareSDKAndAPIResponseOfGeo911WithAHJByAddress() throws SdkException, JSONException{
+		 Map<String, Object> keyValueMap = new HashMap<String, Object>();
+		 keyValueMap.put("address", "4750 Walnut st, Boulder, CO");
+		 String jsonResponseFromAPI = TestUtility.getJSONResponseFromAPI(keyValueMap,TEST_URL,"geoapis/services/geo911/v1/ahj-psap/byaddress");
+		 
+         Gson gson = new Gson();
+         AHJPlusPSAPResponse response = geo911Service.getAHJPlusPSAPByAddress("4750 Walnut St, Boulder, CO");
+         String jsonResponseFromSDK = gson.toJson(response);
+	     JSONAssert.assertEquals(jsonResponseFromAPI,jsonResponseFromSDK, JSONCompareMode.STRICT);
+	}
+	
+	@Test
+	public void testToCompareSDKAndAPIResponseOfGeo911WithAHJByLocation() throws SdkException, JSONException{
+		Map<String, Object> keyValueMap = new HashMap<String, Object>();
+		keyValueMap.put("latitude", 32.032);
+		keyValueMap.put("longitude", -93.703);
+		String jsonResponseFromAPI = TestUtility.getJSONResponseFromAPI(keyValueMap,TEST_URL,"geoapis/services/geo911/v1/ahj-psap/bylocation");
+        Gson gson = new Gson();
+        AHJPlusPSAPResponse response = geo911Service.getAHJPlusPSAPByLocation(32.032,-93.703);
+        String jsonResponseFromSDK = gson.toJson(response);
+	    JSONAssert.assertEquals(jsonResponseFromAPI,jsonResponseFromSDK, JSONCompareMode.STRICT);
+	}
+	
 
     @After
     public void tearDown() throws Exception {
