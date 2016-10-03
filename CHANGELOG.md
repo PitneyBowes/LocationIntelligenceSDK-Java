@@ -1,4 +1,4 @@
-## 2.5.0 - 2016-09-23
+## 2.5.0 - 2016-10-03
 - Changes for GeoComm API.
 - Changes for AHJ Geo911.
 - Changes for GeoTaxBatch
