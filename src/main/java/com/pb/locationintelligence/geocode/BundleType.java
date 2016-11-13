@@ -17,9 +17,9 @@ public enum BundleType
 	BASIC,
 	PREMIUM;
 	
-	public String value() 
-	{
-        return name();
+   public String value() 
+    {
+      return name().toLowerCase();
     }
 
     public static BundleType fromValue(String v) 
