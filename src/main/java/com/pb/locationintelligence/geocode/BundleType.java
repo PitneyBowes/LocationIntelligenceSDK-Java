@@ -12,17 +12,17 @@
  *******************************************************************************/
 package com.pb.locationintelligence.geocode;
 
-public enum BundleType 
+public enum BundleType
 {
 	BASIC,
 	PREMIUM;
 	
 	public String value() 
 	{
-        return name();
+        return name().toLowerCase();
     }
 
-    public static BundleType fromValue(String v) 
+    public static BundleType fromValue(String v)
     {
         return valueOf(v);
     }
