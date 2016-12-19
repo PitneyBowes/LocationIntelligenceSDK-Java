@@ -32,8 +32,13 @@ public interface GeoSearchService {
      * @param originLongitude Mandatory - The longitude of the location
      * @return {@link com.pb.locationintelligence.common.model.Locations}
      */
-    public Locations geoSearch(String searchText,
+	public Locations geoSearch(String searchText,
+               Double originLatitude, Double originLongitude) throws SdkException;
+	   
+    public Locations geoSearch(String searchText,String country,
                                Double originLatitude, Double originLongitude) throws SdkException;
+    
+    public Locations geoSearch(String searchText,String country) throws SdkException;
 
     /**
      * Retrieves Geo Search results
@@ -52,9 +57,18 @@ public interface GeoSearchService {
      * @return {@link com.pb.locationintelligence.common.model.Locations}
      */
     public Locations geoSearch(String searchText,
+            Double originLatitude, Double originLongitude,
+            Float searchRadius, String searchRadiusUnit,
+            Integer maxCandidates) throws SdkException;
+    
+    public Locations geoSearch(String searchText,String country,
                                Double originLatitude, Double originLongitude,
                                Float searchRadius, String searchRadiusUnit,
                                Integer maxCandidates) throws SdkException;
+    
+    public Locations geoSearch(String searchText,String country,
+            Float searchRadius, String searchRadiusUnit,
+            Integer maxCandidates) throws SdkException;
 
 
     /**
@@ -66,6 +80,10 @@ public interface GeoSearchService {
      * @param requestObserver Required - The callback implementation to get response or errors.
      */
     public void geoSearch(String searchText, Double originLatitude, Double originLongitude, RequestObserver<Locations> requestObserver);
+    
+    public void geoSearch(String searchText, String country,Double originLatitude, Double originLongitude, RequestObserver<Locations> requestObserver);
+    
+    public void geoSearch(String searchText, String country, RequestObserver<Locations> requestObserver);
 
     /**
      * Retrieves Geo Search results
@@ -83,9 +101,19 @@ public interface GeoSearchService {
      * @param maxCandidates    Optional - Maximum number of results to return
      * @param requestObserver  Required - The callback implementation to get response or errors.
      */
-    public void geoSearch(String searchText,
+    
+    public void geoSearch(String searchText, 
+            Double originLatitude, Double originLongitude,
+            Float searchRadius, String searchRadiusUnit,
+            Integer maxCandidates, RequestObserver<Locations> requestObserver);
+    
+    public void geoSearch(String searchText, String country,
                           Double originLatitude, Double originLongitude,
                           Float searchRadius, String searchRadiusUnit,
                           Integer maxCandidates, RequestObserver<Locations> requestObserver);
+    
+    public void geoSearch(String searchText, String country,
+            Float searchRadius, String searchRadiusUnit,
+            Integer maxCandidates, RequestObserver<Locations> requestObserver);
 
 }

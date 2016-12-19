@@ -78,6 +78,25 @@ public class GeoSearchServiceTest {
             fail("Unexpected Exception");
         }
     }
+    
+    @Test
+    public void testGeoSearchWithCountry() {
+        try {
+            Locations response = geoSearchService.geoSearch("times sq", "USA", 40.761819, -73.997533);
+            assertTrue(response != null);
+        } catch (Exception e) {
+            fail("Unexpected Exception");
+        }
+    }
+    @Test
+    public void testGeoSearchOnlyCountry() {
+        try {
+            Locations response = geoSearchService.geoSearch("times sq", "USA");
+            assertTrue(response != null);
+        } catch (Exception e) {
+            fail("Unexpected Exception");
+        }
+    }
 
     @Test
     public void testGeoSearchWithInvalidParams() {
@@ -87,11 +106,39 @@ public class GeoSearchServiceTest {
             TestUtility.verifyException(e);
         }
     }
+    
+    @Test
+    public void testGeoSearchWithCountryInvalidParams() {
+        try {
+            geoSearchService.geoSearch("times sq","UA", 240.761819, -73.997533);
+        } catch (SdkException e) {
+            TestUtility.verifyException(e);
+        }
+    }
+    
+    @Test
+    public void testGeoSearchWithInvalidCountryParams() {
+        try {
+            geoSearchService.geoSearch("times sq","XMYAbshvdshhvduhj");
+        } catch (SdkException e) {
+            TestUtility.verifyException(e);
+        }
+    }
 
+    @Test
+    public void testGeoSearchWithAllParamsWithoutCountry() {
+        try {
+            Locations response = geoSearchService.geoSearch("times sq", 40.761819, -73.997533, 1.00f, "MILES", 5);
+            assertTrue(response != null);
+        } catch (Exception e) {
+            fail("Unexpected Exception");
+        }
+    }
+    
     @Test
     public void testGeoSearchWithAllParams() {
         try {
-            Locations response = geoSearchService.geoSearch("times sq", 40.761819, -73.997533, 1.00f, "MILES", 5);
+            Locations response = geoSearchService.geoSearch("times sq","USA", 40.761819, -73.997533, 1.00f, "MILES", 5);
             assertTrue(response != null);
         } catch (Exception e) {
             fail("Unexpected Exception");
@@ -106,11 +153,36 @@ public class GeoSearchServiceTest {
             TestUtility.verifyException(e);
         }
     }
+    
+    @Test
+    public void testGeoSearchWithInvalidCounryRequest() {
+        try {
+            geoSearchService.geoSearch("times sq", "abcDf2gd",40.761819, -73.997533, 1.00f, "MILES_AA", 59);
+        } catch (SdkException e) {
+            TestUtility.verifyException(e);
+        }
+    }
 
     @Test
     public void testGeoSearchAsync() throws InterruptedException {
         final Locations[] locations = new Locations[1];
         geoSearchService.geoSearch("times sq", 40.761819, -73.997533, TestUtility.getCallBack(locations, null));
+        Thread.sleep(3000);
+        assertTrue(locations[0] != null);
+    }
+    
+    @Test
+    public void testGeoSearchAsyncWithCountry() throws InterruptedException {
+        final Locations[] locations = new Locations[1];
+        geoSearchService.geoSearch("times sq","USA", 40.761819, -73.997533, TestUtility.getCallBack(locations, null));
+        Thread.sleep(3000);
+        assertTrue(locations[0] != null);
+    }
+    
+    @Test
+    public void testGeoSearchAsyncOnlyCountry() throws InterruptedException {
+        final Locations[] locations = new Locations[1];
+        geoSearchService.geoSearch("times sq","USA", TestUtility.getCallBack(locations, null));
         Thread.sleep(3000);
         assertTrue(locations[0] != null);
     }
@@ -122,11 +194,43 @@ public class GeoSearchServiceTest {
         Thread.sleep(3000);
         TestUtility.verifyException(sdkException[0]);
     }
+    
+    @Test
+    public void testGeoSearchWithInvalidCountryParamsAsync() throws InterruptedException {
+        final SdkException[] sdkException = new SdkException[1];
+        geoSearchService.geoSearch("times sq","HJSAJJ2323PKDApjewewv", 40.761819, -73.997533, TestUtility.getCallBack(new Locations[1], sdkException));
+        Thread.sleep(3000);
+        TestUtility.verifyException(sdkException[0]);
+    }
+    
+    @Test
+    public void testGeoSearchWithOnlyInvalidCountryParamsAsync() throws InterruptedException {
+        final SdkException[] sdkException = new SdkException[1];
+        geoSearchService.geoSearch("times sq","HJSAJJ2323PKDApjewewv", TestUtility.getCallBack(new Locations[1], sdkException));
+        Thread.sleep(3000);
+        TestUtility.verifyException(sdkException[0]);
+    }
 
     @Test
     public void testGeoSearchWithAllParamsAsync() throws InterruptedException {
         final Locations[] locations = new Locations[1];
         geoSearchService.geoSearch("times sq", 40.761819, -73.997533, 1.00f, "MILES", 5, TestUtility.getCallBack(locations, null));
+        Thread.sleep(3000);
+        assertTrue(locations[0] != null);
+    }
+    
+    @Test
+    public void testGeoSearchWithAllParamsAsyncCountry() throws InterruptedException {
+        final Locations[] locations = new Locations[1];
+        geoSearchService.geoSearch("times sq","USA", 40.761819, -73.997533, 1.00f, "MILES", 5, TestUtility.getCallBack(locations, null));
+        Thread.sleep(3000);
+        assertTrue(locations[0] != null);
+    }
+    
+    @Test
+    public void testGeoSearchWithOnlyCountryParamsAsync() throws InterruptedException {
+        final Locations[] locations = new Locations[1];
+        geoSearchService.geoSearch("times sq","USA", 1.00f, "MILES", 5, TestUtility.getCallBack(locations, null));
         Thread.sleep(3000);
         assertTrue(locations[0] != null);
     }
@@ -140,6 +244,22 @@ public class GeoSearchServiceTest {
     }
     
     @Test
+    public void testGeoSearchWithAllInvalidRequestAsync() throws InterruptedException {
+        final SdkException[] sdkException = new SdkException[1];
+        geoSearchService.geoSearch("times sq", "invalidCountry",440.761819, -743.997533, 1.00f, "MILES_AA", 59, TestUtility.getCallBack(new Locations[1], sdkException));
+        Thread.sleep(3000);
+        TestUtility.verifyException(sdkException[0]);
+    }
+    
+    @Test
+    public void testGeoSearchWithOnlyInvalidCountryRequestAsync() throws InterruptedException {
+        final SdkException[] sdkException = new SdkException[1];
+        geoSearchService.geoSearch("times sq", "invalidCountry", 1.00f, "MILES_AA", 59, TestUtility.getCallBack(new Locations[1], sdkException));
+        Thread.sleep(3000);
+        TestUtility.verifyException(sdkException[0]);
+    }
+    
+    @Test
   	public void testToCompareSDKAndAPIResponseOfGeoSearch() throws SdkException, JSONException  {
     	 Map<String, Object> keyValueMap = new HashMap<String, Object>();
          keyValueMap.put("searchText", "times sq");
@@ -148,6 +268,20 @@ public class GeoSearchServiceTest {
   		 String jsonResponseFromAPI = TestUtility.getJSONResponseFromAPI(keyValueMap,TEST_URL,"geosearch/services/geosearch/v1/locations");
          Gson gson = new Gson();
          Locations response = geoSearchService.geoSearch("times sq", 40.761819, -73.997533);
+         String jsonResponseFromSDK = gson.toJson(response);
+  	     JSONAssert.assertEquals(jsonResponseFromAPI,jsonResponseFromSDK, JSONCompareMode.STRICT);
+  	}
+    
+    @Test
+  	public void testToCompareSDKAndAPIResponseOfGeoSearchWithCountry() throws SdkException, JSONException  {
+    	 Map<String, Object> keyValueMap = new HashMap<String, Object>();
+         keyValueMap.put("searchText", "times sq");
+         keyValueMap.put("country", "USA");
+         keyValueMap.put("latitude", 40.761819);
+         keyValueMap.put("longitude", -73.997533);
+  		 String jsonResponseFromAPI = TestUtility.getJSONResponseFromAPI(keyValueMap,TEST_URL,"geosearch/services/geosearch/v1/locations");
+         Gson gson = new Gson();
+         Locations response = geoSearchService.geoSearch("times sq","USA", 40.761819, -73.997533);
          String jsonResponseFromSDK = gson.toJson(response);
   	     JSONAssert.assertEquals(jsonResponseFromAPI,jsonResponseFromSDK, JSONCompareMode.STRICT);
   	}

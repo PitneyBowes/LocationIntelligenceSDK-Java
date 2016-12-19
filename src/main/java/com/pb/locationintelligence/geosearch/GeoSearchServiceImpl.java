@@ -12,18 +12,20 @@
  *******************************************************************************/
 package com.pb.locationintelligence.geosearch;
 
-import com.pb.locationintelligence.RequestObserver;
-import com.pb.locationintelligence.common.model.Locations;
-import com.pb.locationintelligence.exception.SdkException;
-import com.pb.locationintelligence.utils.UrlMaker;
-import com.pb.locationintelligence.utils.Utility;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.pb.locationintelligence.RequestObserver;
+import com.pb.locationintelligence.common.model.Locations;
+import com.pb.locationintelligence.exception.SdkException;
+import com.pb.locationintelligence.geosearch.GeoSearchService;
+import com.pb.locationintelligence.utils.UrlMaker;
+import com.pb.locationintelligence.utils.Utility;
 
 /**
  * GeoSearchService Implementation Class
@@ -34,7 +36,7 @@ public class GeoSearchServiceImpl implements GeoSearchService {
     private static final Logger _LOG = LoggerFactory.getLogger(GeoSearchServiceImpl.class);
 
     private static final String geoSearchURL = "/geosearch/v1/locations";
-
+    
     @Override
     public Locations geoSearch(String searchText, Double originLatitude, Double originLongitude) throws SdkException {
 
@@ -53,6 +55,42 @@ public class GeoSearchServiceImpl implements GeoSearchService {
         return Utility.processAPIRequest(urlBuilder.toString(), Locations.class);
     }
 
+    @Override
+    public Locations geoSearch(String searchText, String country, Double originLatitude, Double originLongitude) throws SdkException {
+
+        UrlMaker urlMaker = UrlMaker.getInstance();
+
+        StringBuilder urlBuilder = new StringBuilder(urlMaker.getAbsoluteUrl(geoSearchURL));
+
+        Map<String, Object> keyValueMap = new HashMap<String, Object>();
+        keyValueMap.put("searchText", searchText);
+        keyValueMap.put("country", country);
+        keyValueMap.put("latitude", originLatitude);
+        keyValueMap.put("longitude", originLongitude);
+
+        Utility.appendIfNotNull(urlBuilder, keyValueMap);
+
+        _LOG.debug("API URL : " + urlBuilder);
+        return Utility.processAPIRequest(urlBuilder.toString(), Locations.class);
+    }
+    
+    @Override
+    public Locations geoSearch(String searchText, String country) throws SdkException {
+
+        UrlMaker urlMaker = UrlMaker.getInstance();
+
+        StringBuilder urlBuilder = new StringBuilder(urlMaker.getAbsoluteUrl(geoSearchURL));
+
+        Map<String, Object> keyValueMap = new HashMap<String, Object>();
+        keyValueMap.put("searchText", searchText);
+        keyValueMap.put("country", country);
+
+        Utility.appendIfNotNull(urlBuilder, keyValueMap);
+
+        _LOG.debug("API URL : " + urlBuilder);
+        return Utility.processAPIRequest(urlBuilder.toString(), Locations.class);
+    }
+    
     @Override
     public Locations geoSearch(String searchText, Double originLatitude, Double originLongitude, Float searchRadius, String searchRadiusUnit, Integer maxCandidates) throws SdkException {
         UrlMaker urlMaker = UrlMaker.getInstance();
@@ -74,6 +112,47 @@ public class GeoSearchServiceImpl implements GeoSearchService {
     }
 
     @Override
+    public Locations geoSearch(String searchText, String country,Double originLatitude, Double originLongitude, Float searchRadius, String searchRadiusUnit, Integer maxCandidates) throws SdkException {
+        UrlMaker urlMaker = UrlMaker.getInstance();
+
+        StringBuilder urlBuilder = new StringBuilder(urlMaker.getAbsoluteUrl(geoSearchURL));
+
+        Map<String, Object> keyValueMap = new HashMap<String, Object>();
+        keyValueMap.put("searchText", searchText);
+        keyValueMap.put("country", country);
+        keyValueMap.put("latitude", originLatitude);
+        keyValueMap.put("longitude", originLongitude);
+        keyValueMap.put("searchRadius", searchRadius);
+        keyValueMap.put("searchRadiusUnit", searchRadiusUnit);
+        keyValueMap.put("maxCandidates", maxCandidates);
+
+        Utility.appendIfNotNull(urlBuilder, keyValueMap);
+
+        _LOG.debug("API URL : " + urlBuilder);
+        return Utility.processAPIRequest(urlBuilder.toString(), Locations.class);
+    }
+    
+
+    @Override
+    public Locations geoSearch(String searchText, String country, Float searchRadius, String searchRadiusUnit, Integer maxCandidates) throws SdkException {
+        UrlMaker urlMaker = UrlMaker.getInstance();
+
+        StringBuilder urlBuilder = new StringBuilder(urlMaker.getAbsoluteUrl(geoSearchURL));
+
+        Map<String, Object> keyValueMap = new HashMap<String, Object>();
+        keyValueMap.put("searchText", searchText);
+        keyValueMap.put("country", country);
+        keyValueMap.put("searchRadius", searchRadius);
+        keyValueMap.put("searchRadiusUnit", searchRadiusUnit);
+        keyValueMap.put("maxCandidates", maxCandidates);
+
+        Utility.appendIfNotNull(urlBuilder, keyValueMap);
+
+        _LOG.debug("API URL : " + urlBuilder);
+        return Utility.processAPIRequest(urlBuilder.toString(), Locations.class);
+    }
+    
+    @Override
     public void geoSearch(final String searchText, final Double originLatitude, final Double originLongitude, final RequestObserver<Locations> requestObserver) {
         final ExecutorService executorService = Executors.newFixedThreadPool(1);
         executorService.submit(new Runnable() {
@@ -92,6 +171,42 @@ public class GeoSearchServiceImpl implements GeoSearchService {
     }
 
     @Override
+    public void geoSearch(final String searchText, final String country,final Double originLatitude, final Double originLongitude, final RequestObserver<Locations> requestObserver) {
+        final ExecutorService executorService = Executors.newFixedThreadPool(1);
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Locations locations = geoSearch(searchText,country, originLatitude, originLongitude);
+                    requestObserver.onSuccess(locations);
+                } catch (SdkException e) {
+                    requestObserver.onFailure(e);
+                }finally{
+					executorService.shutdown();					
+				}
+            }
+        });
+    }
+    
+    @Override
+    public void geoSearch(final String searchText, final String country, final RequestObserver<Locations> requestObserver) {
+        final ExecutorService executorService = Executors.newFixedThreadPool(1);
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Locations locations = geoSearch(searchText,country);
+                    requestObserver.onSuccess(locations);
+                } catch (SdkException e) {
+                    requestObserver.onFailure(e);
+                }finally{
+					executorService.shutdown();					
+				}
+            }
+        });
+    }
+
+    @Override
     public void geoSearch(final String searchText, final Double originLatitude, final Double originLongitude, final Float searchRadius, final String searchRadiusUnit, final Integer maxCandidates, final RequestObserver<Locations> requestObserver) {
         final ExecutorService executorService = Executors.newFixedThreadPool(1);
         executorService.submit(new Runnable() {
@@ -99,6 +214,43 @@ public class GeoSearchServiceImpl implements GeoSearchService {
             public void run() {
                 try {
                     Locations locations = geoSearch(searchText, originLatitude, originLongitude, searchRadius, searchRadiusUnit, maxCandidates);
+                    requestObserver.onSuccess(locations);
+                } catch (SdkException e) {
+                    requestObserver.onFailure(e);
+                }finally{
+					executorService.shutdown();					
+				}
+            }
+        });
+    }
+    
+    @Override
+    public void geoSearch(final String searchText, final String country,final Double originLatitude, final Double originLongitude, final Float searchRadius, final String searchRadiusUnit, final Integer maxCandidates, final RequestObserver<Locations> requestObserver) {
+        final ExecutorService executorService = Executors.newFixedThreadPool(1);
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Locations locations = geoSearch(searchText,country, originLatitude, originLongitude, searchRadius, searchRadiusUnit, maxCandidates);
+                    requestObserver.onSuccess(locations);
+                } catch (SdkException e) {
+                    requestObserver.onFailure(e);
+                }finally{
+					executorService.shutdown();					
+				}
+            }
+        });
+    }
+
+	@Override
+	public void geoSearch(final String searchText,final String country,final Float searchRadius,final String searchRadiusUnit,
+			final Integer maxCandidates, final RequestObserver<Locations> requestObserver) {
+        final ExecutorService executorService = Executors.newFixedThreadPool(1);
+        executorService.submit(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Locations locations = geoSearch(searchText,country, searchRadius, searchRadiusUnit, maxCandidates);
                     requestObserver.onSuccess(locations);
                 } catch (SdkException e) {
                     requestObserver.onFailure(e);
