@@ -46,9 +46,6 @@ Location Intelligence Java SDK facilitates you to build Java applications using 
 To get started with Java SDK, you must first register at [Location Intelligence API Home Page](http://developer.pitneybowes.com/en/location-intelligence.html) and obtain your API Key and Secret to get started with the Java SDK and call Location Intelligence APIs.
 For more information refer to [‘Getting Started with Java SDK’](https://locate.pitneybowes.com/docs/location-intelligence/v1/en/index.html#Java%20SDK/java_intro.html) section in documentation.
 
-### Running test Cases
-Please update LocationIntelligenceSDK-JavaScript Test cases with AccessToken to execute them. 
-
 ### LocationIntelligenceSDK-Java contains the following software
 * javax.json, version number 1.0.4 which is licensed under CDDL and GPL licenses, version number 2.0, with the Glasspath Exception.  The license can be downloaded from https://jsonp.java.net/license.html.  The source code for this software is available from https://jsonp.java.net/.
 * jersey-client, version number 2.11 which is licensed under CDDL and GPL licenses, version number 2.0, with the Glasspath Exception.  The license can be downloaded from https://jersey.java.net/license.html.  The source code for this software is available from https://jersey.java.net/.
