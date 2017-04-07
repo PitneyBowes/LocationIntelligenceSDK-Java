@@ -1,134 +1,160 @@
-<!--
-    Copyright 2016 Pitney Bowes Inc.
-   
-    Licensed under the Apache License, Version 2.0 (the "License"); you may notmock use this file except in compliance with the License.
-      You may obtain a copy of the License at
-   
-        http://www.apache.org/licenses/LICENSE-2.0
-   
-    Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an
-     "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  
-     See the License for the specific language governing permissions and limitations under the License.
- -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.pb.locationintelligence</groupId>
-	<artifactId>LocationIntelligenceJavaSDK</artifactId>
-	<version>2.0.0</version>
-	<name>LocationIntelligenceJavaSDK</name>
-	<packaging>jar</packaging>
-	
-	<properties>
-		<slf4j.version>1.7.5</slf4j.version>
-		<log4j.version>1.2.17</log4j.version>
-		<slf4j.log4j.binding.version>1.7.5</slf4j.log4j.binding.version>
-		<junit.version>4.11</junit.version>
-		<powermock.version>1.6.4</powermock.version>
-	</properties>
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>io.swagger</groupId>
+  <artifactId>LocationIntelligenceJavaSDK</artifactId>
+  <packaging>jar</packaging>
+  <name>LocationIntelligenceJavaSDK</name>
+  <version>3.0.0</version>
+  <scm>
+    <connection>scm:git:git@github.com:swagger-api/swagger-mustache.git</connection>
+    <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>
+    <url>https://github.com/swagger-api/swagger-codegen</url>
+  </scm>
+  <prerequisites>
+    <maven>2.2.0</maven>
+  </prerequisites>
 
-	<dependencies>
-		<dependency>
-			<groupId>javax.ws.rs</groupId>
-			<artifactId>javax.ws.rs-api</artifactId>
-			<version>2.0.1</version>
-		</dependency>
-		<dependency>
-	<groupId>org.skyscreamer</groupId>
-	<artifactId>jsonassert</artifactId>
-	<version>1.2.3</version>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.12</version>
+        <configuration>
+          <systemProperties>
+            <property>
+              <name>loggerPath</name>
+              <value>conf/log4j.properties</value>
+            </property>
+          </systemProperties>
+          <argLine>-Xms512m -Xmx1500m</argLine>
+          <parallel>methods</parallel>
+          <forkMode>pertest</forkMode>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>${project.build.directory}/lib</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- attach test jar -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.2</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>jar</goal>
+              <goal>test-jar</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>build-helper-maven-plugin</artifactId>
+        <version>1.10</version>
+        <executions>
+          <execution>
+            <id>add_sources</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>add-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>src/main/java</source>
+              </sources>
+            </configuration>
+          </execution>
+          <execution>
+            <id>add_test_sources</id>
+            <phase>generate-test-sources</phase>
+            <goals>
+              <goal>add-test-source</goal>
+            </goals>
+            <configuration>
+              <sources>
+                <source>src/test/java</source>
+              </sources>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <groupId>io.swagger</groupId>
+      <artifactId>swagger-annotations</artifactId>
+      <version>${swagger-core-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.squareup.okhttp</groupId>
+      <artifactId>okhttp</artifactId>
+      <version>${okhttp-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.squareup.okhttp</groupId>
+      <artifactId>logging-interceptor</artifactId>
+      <version>${okhttp-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>${gson-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>joda-time</groupId>
+      <artifactId>joda-time</artifactId>
+      <version>${jodatime-version}</version>
+    </dependency>
+
+    <!-- test dependencies -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit-version}</version>
+      <scope>test</scope>
+    </dependency>
+	 <dependency>
+                                                <groupId>javax.ws.rs</groupId>
+                                                <artifactId>javax.ws.rs-api</artifactId>
+                                                <version>2.0.1</version>
+                                </dependency>
+                                <dependency>
+                <groupId>org.skyscreamer</groupId>
+                <artifactId>jsonassert</artifactId>
+                <version>1.2.3</version>
 </dependency>
-		
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.2.4</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish.jersey.core</groupId>
-			<artifactId>jersey-client</artifactId>
-			<version>2.11</version>
-		</dependency>
-		<dependency>
-			<groupId>org.glassfish</groupId>
-			<artifactId>javax.json</artifactId>
-			<version>1.0.4</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j.log4j.binding.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.powermock</groupId>
-			<artifactId>powermock-module-junit4</artifactId>
-			<version>${powermock.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.powermock</groupId>
-			<artifactId>powermock-api-mockito</artifactId>
-			<version>${powermock.version}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-	<reporting>
-	    <plugins>
-	      	<plugin>
-		        <groupId>org.apache.maven.plugins</groupId>
-		        <artifactId>maven-javadoc-plugin</artifactId>
-		        <version>2.10.3</version>
-	        </plugin>
-        </plugins>
-    </reporting>
-	<build>
-	<plugins>
-		<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>2.4.1</version>
-				<configuration>
-					<!-- get all project dependencies -->
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-					<!-- MainClass in mainfest make a executable jar -->
-					<archive>
-					  <manifest>
-						<!--<mainClass>com.mkyong.core.utils.App</mainClass>-->
-					  </manifest>
-					</archive>
+  </dependencies>
+ 
 
-				</configuration>
-				<executions>
-				  <execution>
-					<id>make-assembly</id>
-                                        <!-- bind to the packaging phase -->
-					<phase>package</phase> 
-					<goals>
-						<goal>single</goal>
-					</goals>
-				  </execution>
-				</executions>
-			</plugin>
-</plugins>
-	
-	</build>
+  <properties>
+    <java.version>1.7</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+    <swagger-core-version>1.5.9</swagger-core-version>
+    <okhttp-version>2.7.5</okhttp-version>
+    <gson-version>2.6.2</gson-version>
+    <jodatime-version>2.9.3</jodatime-version>
+    <maven-plugin-version>1.0.0</maven-plugin-version>
+    <junit-version>4.12</junit-version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
 </project>
