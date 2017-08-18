@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**getBatchTaxByLocation**](LIAPIGeoTaxServiceApi.md#getBatchTaxByLocation) | **POST** /geotax/v1/tax/{taxRateTypeId}/bylocation | Post Tax By Location
 [**getBatchTaxRateByAddress**](LIAPIGeoTaxServiceApi.md#getBatchTaxRateByAddress) | **POST** /geotax/v1/taxrate/{taxRateTypeId}/byaddress | Post Taxrate By Address
 [**getBatchTaxRateByLocation**](LIAPIGeoTaxServiceApi.md#getBatchTaxRateByLocation) | **POST** /geotax/v1/taxrate/{taxRateTypeId}/bylocation | Post Taxrate By Location
+[**getIPDTaxByAddress**](LIAPIGeoTaxServiceApi.md#getIPDTaxByAddress) | **GET** /geotax/v1/taxdistrict/ipd/byaddress | Get IPD Tax by Address
+[**getIPDTaxByAddressBatch**](LIAPIGeoTaxServiceApi.md#getIPDTaxByAddressBatch) | **POST** /geotax/v1/taxdistrict/ipd/byaddress | Get IPD Tax for batch requests
 [**getSpecificTaxByAddress**](LIAPIGeoTaxServiceApi.md#getSpecificTaxByAddress) | **GET** /geotax/v1/tax/{taxRateTypeId}/byaddress | Get Tax By Address
 [**getSpecificTaxByLocation**](LIAPIGeoTaxServiceApi.md#getSpecificTaxByLocation) | **GET** /geotax/v1/tax/{taxRateTypeId}/bylocation | Get Tax By Location
 [**getSpecificTaxRateByAddress**](LIAPIGeoTaxServiceApi.md#getSpecificTaxRateByAddress) | **GET** /geotax/v1/taxrate/{taxRateTypeId}/byaddress | Get Taxrate By Address
@@ -237,6 +239,114 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/xml, application/json
  - **Accept**: application/xml, application/json
+
+<a name="getIPDTaxByAddress"></a>
+# **getIPDTaxByAddress**
+> TaxDistrictResponse getIPDTaxByAddress(address)
+
+Get IPD Tax by Address
+
+This will accept &#39;address&#39; as a parameter and will return one or many IPDs details for that region in which address will fall.
+
+### Example
+```java
+// Import classes:
+//import pb.ApiClient;
+//import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
+//import pb.locationintelligence.LIAPIGeoTaxServiceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
+
+LIAPIGeoTaxServiceApi apiInstance = new LIAPIGeoTaxServiceApi();
+String address = "address_example"; // String | The address to be searched.
+try {
+    TaxDistrictResponse result = apiInstance.getIPDTaxByAddress(address);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling LIAPIGeoTaxServiceApi#getIPDTaxByAddress");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **address** | **String**| The address to be searched. |
+
+### Return type
+
+[**TaxDistrictResponse**](TaxDistrictResponse.md)
+
+### Authorization
+
+[oAuth2Password](../README.md#oAuth2Password)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+<a name="getIPDTaxByAddressBatch"></a>
+# **getIPDTaxByAddressBatch**
+> TaxDistrictResponseList getIPDTaxByAddressBatch(body)
+
+Get IPD Tax for batch requests
+
+Get IPD Tax for batch requests
+
+### Example
+```java
+// Import classes:
+//import pb.ApiClient;
+//import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
+//import pb.locationintelligence.LIAPIGeoTaxServiceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
+
+LIAPIGeoTaxServiceApi apiInstance = new LIAPIGeoTaxServiceApi();
+IPDTaxByAddressBatchRequest body = new IPDTaxByAddressBatchRequest(); // IPDTaxByAddressBatchRequest | IPDTaxByAddressBatchRequest Class Object having IPD tax request
+try {
+    TaxDistrictResponseList result = apiInstance.getIPDTaxByAddressBatch(body);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling LIAPIGeoTaxServiceApi#getIPDTaxByAddressBatch");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**IPDTaxByAddressBatchRequest**](IPDTaxByAddressBatchRequest.md)| IPDTaxByAddressBatchRequest Class Object having IPD tax request |
+
+### Return type
+
+[**TaxDistrictResponseList**](TaxDistrictResponseList.md)
+
+### Authorization
+
+[oAuth2Password](../README.md#oAuth2Password)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
 
 <a name="getSpecificTaxByAddress"></a>
 # **getSpecificTaxByAddress**

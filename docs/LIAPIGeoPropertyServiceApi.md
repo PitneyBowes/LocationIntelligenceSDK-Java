@@ -4,15 +4,15 @@ All URIs are relative to *https://api.pitneybowes.com/location-intelligence*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getGeoPropertyByAddress**](LIAPIGeoPropertyServiceApi.md#getGeoPropertyByAddress) | **GET** /geoproperty/v1/{category}/attributes/byaddress | Gets GeoPropertyResponse
-[**getGeoPropertyByAddressBatch**](LIAPIGeoPropertyServiceApi.md#getGeoPropertyByAddressBatch) | **POST** /geoproperty/v1/{category}/attributes/byaddress | Gets GeoPropertyResponses
-[**getGeoPropertyByPBKey**](LIAPIGeoPropertyServiceApi.md#getGeoPropertyByPBKey) | **GET** /geoproperty/v1/{category}/attributes/bypbkey | Gets GeoPropertyResponse
-[**getGeoPropertyByPBKeyBatch**](LIAPIGeoPropertyServiceApi.md#getGeoPropertyByPBKeyBatch) | **POST** /geoproperty/v1/{category}/attributes/bypbkey | Gets GeoPropertyResponses
+[**getGeoPropertyByAddress**](LIAPIGeoPropertyServiceApi.md#getGeoPropertyByAddress) | **GET** /geoproperty/v1/all/attributes/byaddress | Gets GeoPropertyResponse
+[**getGeoPropertyByAddressBatch**](LIAPIGeoPropertyServiceApi.md#getGeoPropertyByAddressBatch) | **POST** /geoproperty/v1/all/attributes/byaddress | Gets GeoPropertyResponses
+[**getGeoPropertyByPBKey**](LIAPIGeoPropertyServiceApi.md#getGeoPropertyByPBKey) | **GET** /geoproperty/v1/all/attributes/bypbkey | Gets GeoPropertyResponse
+[**getGeoPropertyByPBKeyBatch**](LIAPIGeoPropertyServiceApi.md#getGeoPropertyByPBKeyBatch) | **POST** /geoproperty/v1/all/attributes/bypbkey | Gets GeoPropertyResponses
 
 
 <a name="getGeoPropertyByAddress"></a>
 # **getGeoPropertyByAddress**
-> GeoPropertyResponse getGeoPropertyByAddress(address, category)
+> GeoPropertyResponse getGeoPropertyByAddress(address)
 
 Gets GeoPropertyResponse
 
@@ -21,15 +21,23 @@ Gets GeoPropertyResponse
 ### Example
 ```java
 // Import classes:
+//import pb.ApiClient;
 //import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
 //import pb.locationintelligence.LIAPIGeoPropertyServiceApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
 
 LIAPIGeoPropertyServiceApi apiInstance = new LIAPIGeoPropertyServiceApi();
 String address = "address_example"; // String | free form address text
-String category = "category_example"; // String | all, insuranceBasic, insuranceExtended, owner, financialServices, retail, realEstate
 try {
-    GeoPropertyResponse result = apiInstance.getGeoPropertyByAddress(address, category);
+    GeoPropertyResponse result = apiInstance.getGeoPropertyByAddress(address);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoPropertyServiceApi#getGeoPropertyByAddress");
@@ -42,7 +50,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **address** | **String**| free form address text |
- **category** | **String**| all, insuranceBasic, insuranceExtended, owner, financialServices, retail, realEstate |
 
 ### Return type
 
@@ -50,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2Password](../README.md#oAuth2Password)
 
 ### HTTP request headers
 
@@ -59,7 +66,7 @@ No authorization required
 
 <a name="getGeoPropertyByAddressBatch"></a>
 # **getGeoPropertyByAddressBatch**
-> GeoPropertyResponses getGeoPropertyByAddressBatch(category, body)
+> GeoPropertyResponses getGeoPropertyByAddressBatch(body)
 
 Gets GeoPropertyResponses
 
@@ -68,15 +75,23 @@ Gets GeoPropertyResponses
 ### Example
 ```java
 // Import classes:
+//import pb.ApiClient;
 //import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
 //import pb.locationintelligence.LIAPIGeoPropertyServiceApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
 
 LIAPIGeoPropertyServiceApi apiInstance = new LIAPIGeoPropertyServiceApi();
-String category = "category_example"; // String | all, insuranceBasic, insuranceExtended, owner, financialServices, retail, realEstate
 GeoPropertyAddressRequest body = new GeoPropertyAddressRequest(); // GeoPropertyAddressRequest | 
 try {
-    GeoPropertyResponses result = apiInstance.getGeoPropertyByAddressBatch(category, body);
+    GeoPropertyResponses result = apiInstance.getGeoPropertyByAddressBatch(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoPropertyServiceApi#getGeoPropertyByAddressBatch");
@@ -88,7 +103,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **category** | **String**| all, insuranceBasic, insuranceExtended, owner, financialServices, retail, realEstate |
  **body** | [**GeoPropertyAddressRequest**](GeoPropertyAddressRequest.md)|  | [optional]
 
 ### Return type
@@ -97,7 +111,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2Password](../README.md#oAuth2Password)
 
 ### HTTP request headers
 
@@ -106,7 +120,7 @@ No authorization required
 
 <a name="getGeoPropertyByPBKey"></a>
 # **getGeoPropertyByPBKey**
-> GeoPropertyResponse getGeoPropertyByPBKey(pbKey, category)
+> GeoPropertyResponse getGeoPropertyByPBKey(pbKey)
 
 Gets GeoPropertyResponse
 
@@ -115,15 +129,23 @@ Gets GeoPropertyResponse
 ### Example
 ```java
 // Import classes:
+//import pb.ApiClient;
 //import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
 //import pb.locationintelligence.LIAPIGeoPropertyServiceApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
 
 LIAPIGeoPropertyServiceApi apiInstance = new LIAPIGeoPropertyServiceApi();
 String pbKey = "pbKey_example"; // String | free form text
-String category = "category_example"; // String | all, insuranceBasic, insuranceExtended, owner, financialServices, retail, realEstate
 try {
-    GeoPropertyResponse result = apiInstance.getGeoPropertyByPBKey(pbKey, category);
+    GeoPropertyResponse result = apiInstance.getGeoPropertyByPBKey(pbKey);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoPropertyServiceApi#getGeoPropertyByPBKey");
@@ -136,7 +158,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pbKey** | **String**| free form text |
- **category** | **String**| all, insuranceBasic, insuranceExtended, owner, financialServices, retail, realEstate |
 
 ### Return type
 
@@ -144,7 +165,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2Password](../README.md#oAuth2Password)
 
 ### HTTP request headers
 
@@ -153,7 +174,7 @@ No authorization required
 
 <a name="getGeoPropertyByPBKeyBatch"></a>
 # **getGeoPropertyByPBKeyBatch**
-> GeoPropertyResponses getGeoPropertyByPBKeyBatch(category, body)
+> GeoPropertyResponses getGeoPropertyByPBKeyBatch(body)
 
 Gets GeoPropertyResponses
 
@@ -162,15 +183,23 @@ Gets GeoPropertyResponses
 ### Example
 ```java
 // Import classes:
+//import pb.ApiClient;
 //import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
 //import pb.locationintelligence.LIAPIGeoPropertyServiceApi;
 
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
 
 LIAPIGeoPropertyServiceApi apiInstance = new LIAPIGeoPropertyServiceApi();
-String category = "category_example"; // String | all, insuranceBasic, insuranceExtended, owner, financialServices, retail, realEstate
 GeoPropertyPBKeyRequest body = new GeoPropertyPBKeyRequest(); // GeoPropertyPBKeyRequest | 
 try {
-    GeoPropertyResponses result = apiInstance.getGeoPropertyByPBKeyBatch(category, body);
+    GeoPropertyResponses result = apiInstance.getGeoPropertyByPBKeyBatch(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoPropertyServiceApi#getGeoPropertyByPBKeyBatch");
@@ -182,7 +211,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **category** | **String**| all, insuranceBasic, insuranceExtended, owner, financialServices, retail, realEstate |
  **body** | [**GeoPropertyPBKeyRequest**](GeoPropertyPBKeyRequest.md)|  | [optional]
 
 ### Return type
@@ -191,7 +219,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-No authorization required
+[oAuth2Password](../README.md#oAuth2Password)
 
 ### HTTP request headers
 

@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **utcOffset** | **Long** |  |  [optional]
 **dstOffset** | **Long** |  |  [optional]
 **timestamp** | **Long** |  |  [optional]
+**matchedAddress** | [**Address**](Address.md) |  |  [optional]
 
 
 

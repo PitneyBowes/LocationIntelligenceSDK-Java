@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="geoSearch"></a>
 # **geoSearch**
-> Locations geoSearch(searchText, latitude, longitude, searchRadius, searchRadiusUnit, maxCandidates, country, matchOnAddressNumber, autoDetectLocation, ipAddress)
+> Locations geoSearch(searchText, latitude, longitude, searchRadius, searchRadiusUnit, maxCandidates, country, matchOnAddressNumber, autoDetectLocation, ipAddress, areaName1, areaName3, postCode)
 
 Gets LocationList
 
@@ -42,8 +42,11 @@ String country = "country_example"; // String | Country ISO code. We need to mak
 String matchOnAddressNumber = "matchOnAddressNumber_example"; // String | Option so that we force api to match on address number
 String autoDetectLocation = "true"; // String | Option to allow API to detect origin of API request automatically
 String ipAddress = "ipAddress_example"; // String | 
+String areaName1 = "areaName1_example"; // String | State province of the input to be searched
+String areaName3 = "areaName3_example"; // String | City of the input to be searched
+String postCode = "postCode_example"; // String | Postal Code of the input to be searched
 try {
-    Locations result = apiInstance.geoSearch(searchText, latitude, longitude, searchRadius, searchRadiusUnit, maxCandidates, country, matchOnAddressNumber, autoDetectLocation, ipAddress);
+    Locations result = apiInstance.geoSearch(searchText, latitude, longitude, searchRadius, searchRadiusUnit, maxCandidates, country, matchOnAddressNumber, autoDetectLocation, ipAddress, areaName1, areaName3, postCode);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoSearchServiceApi#geoSearch");
@@ -65,6 +68,9 @@ Name | Type | Description  | Notes
  **matchOnAddressNumber** | **String**| Option so that we force api to match on address number | [optional]
  **autoDetectLocation** | **String**| Option to allow API to detect origin of API request automatically | [optional] [default to true]
  **ipAddress** | **String**|  | [optional]
+ **areaName1** | **String**| State province of the input to be searched | [optional]
+ **areaName3** | **String**| City of the input to be searched | [optional]
+ **postCode** | **String**| Postal Code of the input to be searched | [optional]
 
 ### Return type
 

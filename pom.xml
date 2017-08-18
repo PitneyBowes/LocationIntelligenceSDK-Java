@@ -5,7 +5,7 @@
   <artifactId>LocationIntelligenceJavaSDK</artifactId>
   <packaging>jar</packaging>
   <name>LocationIntelligenceJavaSDK</name>
-  <version>3.5.0</version>
+  <version>3.6.0</version>
   <scm>
     <connection>scm:git:git@github.com:swagger-api/swagger-mustache.git</connection>
     <developerConnection>scm:git:git@github.com:swagger-api/swagger-codegen.git</developerConnection>
@@ -96,6 +96,24 @@
           </execution>
         </executions>
       </plugin>
+	   <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.3</version>
+                <executions>
+                    <!-- Run shade goal on package phase -->
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+
+                        <configuration>
+                            <finalName>LocationIntelligenceJavaSDK-3.6.0</finalName>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
     </plugins>
   </build>
   <dependencies>
@@ -142,6 +160,8 @@
                 <artifactId>jsonassert</artifactId>
                 <version>1.2.3</version>
 </dependency>
+
+
   </dependencies>
  
 
