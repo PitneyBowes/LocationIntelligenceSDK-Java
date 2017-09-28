@@ -33,6 +33,8 @@
 
 * [GeoTime](https://locate.pitneybowes.com/geotime): Local time. The GeoTime API returns timezones and UTC offsets with the input of a location coordinate or address. Useful for do-not-call, logistics, and customer engagement applications, business processes and workflows.
 
+* [GeoLcoation](http://locate.pitneybowes.com/geolocation): Device Location. The GeoLocation API returns location coordinates based on the input of an IP Address, WiFi Access point MAC address, Fixed line phone number and/or Wireless phone number. Useful for a variety of applications, business processes and workflows in eCommerce, Fraud Detection, Physical-Digital interactions, Field Service and more.
+
 The following platforms are supported by Location Intelligence SDKs:
 *	[Android](https://locate.pitneybowes.com/docs/location-intelligence/v1/en/index.html#Android%20SDK/android_intro.html)
 *	[JavaScript](https://locate.pitneybowes.com/docs/location-intelligence/v1/en/index.html#Java%20Script%20SDK/js_intro.html) 
@@ -81,7 +83,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.swagger</groupId>
     <artifactId>LocationIntelligenceJavaSDK</artifactId>
-    <version>3.6.0</version>
+    <version>3.7.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -102,7 +104,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/LocationIntelligenceJavaSDK-3.6.0.jar
+* target/LocationIntelligenceJavaSDK-3.7.0.jar
 * target/lib/*.jar
 
 ## Getting Started
@@ -162,6 +164,9 @@ Class | Method | HTTP request | Description
 *LIAPIGeoLifeServiceApi* | [**getDemographicsByLocation**](docs/LIAPIGeoLifeServiceApi.md#getDemographicsByLocation) | **GET** /geolife/v1/demographics/bylocation | Demographics By Location.
 *LIAPIGeoLifeServiceApi* | [**getSegmentationByAddress**](docs/LIAPIGeoLifeServiceApi.md#getSegmentationByAddress) | **GET** /geolife/v1/segmentation/byaddress | Segmentation By Address.
 *LIAPIGeoLifeServiceApi* | [**getSegmentationByLocation**](docs/LIAPIGeoLifeServiceApi.md#getSegmentationByLocation) | **GET** /geolife/v1/segmentation/bylocation | Segmentation By Location.
+*LIAPIGeoLocationServiceApi* | [**getLocationByFixedLine**](docs/LIAPIGeoLocationServiceApi.md#getLocationByFixedLine) | **GET** /geolocation/v1/location/byfixedline | Location By Fixed Line Network.
+*LIAPIGeoLocationServiceApi* | [**getLocationByIPAddress**](docs/LIAPIGeoLocationServiceApi.md#getLocationByIPAddress) | **GET** /geolocation/v1/location/byipaddress | Location By IP Address.
+*LIAPIGeoLocationServiceApi* | [**getLocationByWiFiAccessPoint**](docs/LIAPIGeoLocationServiceApi.md#getLocationByWiFiAccessPoint) | **GET** /geolocation/v1/location/byaccesspoint | Location by WiFi Access Point.
 *LIAPIGeoPropertyServiceApi* | [**getGeoPropertyByAddress**](docs/LIAPIGeoPropertyServiceApi.md#getGeoPropertyByAddress) | **GET** /geoproperty/v1/all/attributes/byaddress | Gets GeoPropertyResponse
 *LIAPIGeoPropertyServiceApi* | [**getGeoPropertyByAddressBatch**](docs/LIAPIGeoPropertyServiceApi.md#getGeoPropertyByAddressBatch) | **POST** /geoproperty/v1/all/attributes/byaddress | Gets GeoPropertyResponses
 *LIAPIGeoPropertyServiceApi* | [**getGeoPropertyByPBKey**](docs/LIAPIGeoPropertyServiceApi.md#getGeoPropertyByPBKey) | **GET** /geoproperty/v1/all/attributes/bypbkey | Gets GeoPropertyResponse
@@ -218,6 +223,7 @@ Class | Method | HTTP request | Description
  - [AHJ](docs/AHJ.md)
  - [AHJList](docs/AHJList.md)
  - [AHJPlusPSAPResponse](docs/AHJPlusPSAPResponse.md)
+ - [Accuracy](docs/Accuracy.md)
  - [Address](docs/Address.md)
  - [AdjacentBody](docs/AdjacentBody.md)
  - [AgeTheme](docs/AgeTheme.md)
@@ -233,9 +239,11 @@ Class | Method | HTTP request | Description
  - [Candidate](docs/Candidate.md)
  - [CandidateRange](docs/CandidateRange.md)
  - [CandidateRangeUnit](docs/CandidateRangeUnit.md)
+ - [Carrier](docs/Carrier.md)
  - [Cbsa](docs/Cbsa.md)
  - [Census](docs/Census.md)
  - [ChannelPreferencesTheme](docs/ChannelPreferencesTheme.md)
+ - [City](docs/City.md)
  - [Community](docs/Community.md)
  - [CommuterPatternsTheme](docs/CommuterPatternsTheme.md)
  - [ConfiguredDictionaryResponse](docs/ConfiguredDictionaryResponse.md)
@@ -290,6 +298,10 @@ Class | Method | HTTP request | Description
  - [FloodRiskResponseList](docs/FloodRiskResponseList.md)
  - [FloodZone](docs/FloodZone.md)
  - [GenderTheme](docs/GenderTheme.md)
+ - [GeoLocation](docs/GeoLocation.md)
+ - [GeoLocationCountry](docs/GeoLocationCountry.md)
+ - [GeoLocationPlace](docs/GeoLocationPlace.md)
+ - [GeoLocationState](docs/GeoLocationState.md)
  - [GeoPos](docs/GeoPos.md)
  - [GeoPropertyAddressRequest](docs/GeoPropertyAddressRequest.md)
  - [GeoPropertyPBKeyRequest](docs/GeoPropertyPBKeyRequest.md)
@@ -315,6 +327,7 @@ Class | Method | HTTP request | Description
  - [IndexVariable](docs/IndexVariable.md)
  - [IndividualValueVariable](docs/IndividualValueVariable.md)
  - [InputParameter](docs/InputParameter.md)
+ - [IpInfo](docs/IpInfo.md)
  - [Ipd](docs/Ipd.md)
  - [LatLongFields](docs/LatLongFields.md)
  - [LifeStyleTheme](docs/LifeStyleTheme.md)
@@ -325,7 +338,9 @@ Class | Method | HTTP request | Description
  - [Match](docs/Match.md)
  - [Mcd](docs/Mcd.md)
  - [Name](docs/Name.md)
+ - [Network](docs/Network.md)
  - [Operation](docs/Operation.md)
+ - [OrganizationType](docs/OrganizationType.md)
  - [OutputParameter](docs/OutputParameter.md)
  - [PBKeyAddressRequest](docs/PBKeyAddressRequest.md)
  - [PBKeyResponse](docs/PBKeyResponse.md)
@@ -344,6 +359,7 @@ Class | Method | HTTP request | Description
  - [Preferences](docs/Preferences.md)
  - [PrimaryZone](docs/PrimaryZone.md)
  - [Properties](docs/Properties.md)
+ - [Proxy](docs/Proxy.md)
  - [PurchasingBehaviorTheme](docs/PurchasingBehaviorTheme.md)
  - [RaceTheme](docs/RaceTheme.md)
  - [RangeVariable](docs/RangeVariable.md)
@@ -392,17 +408,6 @@ Class | Method | HTTP request | Description
  - [UseTax](docs/UseTax.md)
  - [WaterBody](docs/WaterBody.md)
  - [WaterBodyResponse](docs/WaterBodyResponse.md)
-
-
-## Documentation for Authorization
-
-Authentication schemes defined for the API:
-### oAuth2Password
-
-- **Type**: OAuth
-- **Flow**: password
-- **Authorizatoin URL**: 
-- **Scopes**: N/A
 
 
 ## Recommendation
