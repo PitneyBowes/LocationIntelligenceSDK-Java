@@ -5,12 +5,18 @@ All URIs are relative to *https://api.pitneybowes.com/location-intelligence*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getCrimeRiskByAddress**](LIAPIGeoRiskServiceApi.md#getCrimeRiskByAddress) | **GET** /georisk/v1/crime/byaddress | Gets CrimeRiskResponse
+[**getCrimeRiskByAddressBatch**](LIAPIGeoRiskServiceApi.md#getCrimeRiskByAddressBatch) | **POST** /georisk/v1/crime/byaddress | Batch method for getting crime risk by address
 [**getCrimeRiskByLocation**](LIAPIGeoRiskServiceApi.md#getCrimeRiskByLocation) | **GET** /georisk/v1/crime/bylocation | Gets CrimeRiskResponse
-[**getDistanceToCoastByAddress**](LIAPIGeoRiskServiceApi.md#getDistanceToCoastByAddress) | **GET** /georisk/v1/shoreline/distancetocoast/byaddress | Gets WaterBodyResponse
-[**getDistanceToCoastByLocation**](LIAPIGeoRiskServiceApi.md#getDistanceToCoastByLocation) | **GET** /georisk/v1/shoreline/distancetocoast/bylocation | Gets WaterBodyResponse
+[**getCrimeRiskByLocationBatch**](LIAPIGeoRiskServiceApi.md#getCrimeRiskByLocationBatch) | **POST** /georisk/v1/crime/bylocation | Batch method for getting crime risk by location
+[**getDistanceToFloodHazardByAddress**](LIAPIGeoRiskServiceApi.md#getDistanceToFloodHazardByAddress) | **GET** /georisk/v1/shoreline/distancetofloodhazard/byaddress | Gets WaterBodyResponse
+[**getDistanceToFloodHazardByAddressBatch**](LIAPIGeoRiskServiceApi.md#getDistanceToFloodHazardByAddressBatch) | **POST** /georisk/v1/shoreline/distancetofloodhazard/byaddress | Batch method for getting Water Bodies by address
+[**getDistanceToFloodHazardByLocation**](LIAPIGeoRiskServiceApi.md#getDistanceToFloodHazardByLocation) | **GET** /georisk/v1/shoreline/distancetofloodhazard/bylocation | Gets WaterBodyResponse
+[**getDistanceToFloodHazardByLocationBatch**](LIAPIGeoRiskServiceApi.md#getDistanceToFloodHazardByLocationBatch) | **POST** /georisk/v1/shoreline/distancetofloodhazard/bylocation | Batch method for getting Water Bodies by location
 [**getEarthquakeHistory**](LIAPIGeoRiskServiceApi.md#getEarthquakeHistory) | **GET** /georisk/v1/earthquakehistory | Gets EarthquakeHistory
 [**getEarthquakeRiskByAddress**](LIAPIGeoRiskServiceApi.md#getEarthquakeRiskByAddress) | **GET** /georisk/v1/earthquake/byaddress | Gets EarthquakeRiskResponse
+[**getEarthquakeRiskByAddressBatch**](LIAPIGeoRiskServiceApi.md#getEarthquakeRiskByAddressBatch) | **POST** /georisk/v1/earthquake/byaddress | Batch method for getting earthquake risk by address
 [**getEarthquakeRiskByLocation**](LIAPIGeoRiskServiceApi.md#getEarthquakeRiskByLocation) | **GET** /georisk/v1/earthquake/bylocation | Gets EarthquakeRiskResponse
+[**getEarthquakeRiskByLocationBatch**](LIAPIGeoRiskServiceApi.md#getEarthquakeRiskByLocationBatch) | **POST** /georisk/v1/earthquake/bylocation | Batch method for getting earthquake risk by location
 [**getFireHistory**](LIAPIGeoRiskServiceApi.md#getFireHistory) | **GET** /georisk/v1/firehistory | Gets FireHistory
 [**getFireRiskByAddress**](LIAPIGeoRiskServiceApi.md#getFireRiskByAddress) | **GET** /georisk/v1/fire/byaddress | Gets FireRiskResponse
 [**getFireRiskByAddressBatch**](LIAPIGeoRiskServiceApi.md#getFireRiskByAddressBatch) | **POST** /georisk/v1/fire/byaddress | Batch method for getting fire risk by address
@@ -82,9 +88,63 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, application/xml
  - **Accept**: application/xml, application/json
 
+<a name="getCrimeRiskByAddressBatch"></a>
+# **getCrimeRiskByAddressBatch**
+> CrimeRiskResponseList getCrimeRiskByAddressBatch(body)
+
+Batch method for getting crime risk by address
+
+Batch method for getting crime risk by address
+
+### Example
+```java
+// Import classes:
+//import pb.ApiClient;
+//import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
+//import pb.locationintelligence.LIAPIGeoRiskServiceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
+
+LIAPIGeoRiskServiceApi apiInstance = new LIAPIGeoRiskServiceApi();
+CrimeRiskByAddressRequest body = new CrimeRiskByAddressRequest(); // CrimeRiskByAddressRequest | 
+try {
+    CrimeRiskResponseList result = apiInstance.getCrimeRiskByAddressBatch(body);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling LIAPIGeoRiskServiceApi#getCrimeRiskByAddressBatch");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CrimeRiskByAddressRequest**](CrimeRiskByAddressRequest.md)|  | [optional]
+
+### Return type
+
+[**CrimeRiskResponseList**](CrimeRiskResponseList.md)
+
+### Authorization
+
+[oAuth2Password](../README.md#oAuth2Password)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/xml, application/json
+
 <a name="getCrimeRiskByLocation"></a>
 # **getCrimeRiskByLocation**
-> CrimeRiskResponse getCrimeRiskByLocation(longitude, latitude, type, includeGeometry)
+> CrimeRiskLocationResponse getCrimeRiskByLocation(longitude, latitude, type, includeGeometry)
 
 Gets CrimeRiskResponse
 
@@ -112,7 +172,7 @@ String latitude = "latitude_example"; // String | The latitude of the location
 String type = "type_example"; // String | Refers to crime type. Valid values are following 11 crime types with 'all' as default (more than one can also be given as comma separated types)
 String includeGeometry = "includeGeometry_example"; // String | Y or N (default is N) - if it is Y, then geometry will be part of response
 try {
-    CrimeRiskResponse result = apiInstance.getCrimeRiskByLocation(longitude, latitude, type, includeGeometry);
+    CrimeRiskLocationResponse result = apiInstance.getCrimeRiskByLocation(longitude, latitude, type, includeGeometry);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoRiskServiceApi#getCrimeRiskByLocation");
@@ -131,7 +191,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CrimeRiskResponse**](CrimeRiskResponse.md)
+[**CrimeRiskLocationResponse**](CrimeRiskLocationResponse.md)
 
 ### Authorization
 
@@ -142,9 +202,63 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, application/xml
  - **Accept**: application/xml, application/json
 
-<a name="getDistanceToCoastByAddress"></a>
-# **getDistanceToCoastByAddress**
-> WaterBodyResponse getDistanceToCoastByAddress(address, maxCandidates, waterBodyType, searchDistance, searchDistanceUnit)
+<a name="getCrimeRiskByLocationBatch"></a>
+# **getCrimeRiskByLocationBatch**
+> CrimeRiskLocationResponseList getCrimeRiskByLocationBatch(body)
+
+Batch method for getting crime risk by location
+
+Batch method for getting crime risk by location
+
+### Example
+```java
+// Import classes:
+//import pb.ApiClient;
+//import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
+//import pb.locationintelligence.LIAPIGeoRiskServiceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
+
+LIAPIGeoRiskServiceApi apiInstance = new LIAPIGeoRiskServiceApi();
+CrimeRiskByLocationRequest body = new CrimeRiskByLocationRequest(); // CrimeRiskByLocationRequest | 
+try {
+    CrimeRiskLocationResponseList result = apiInstance.getCrimeRiskByLocationBatch(body);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling LIAPIGeoRiskServiceApi#getCrimeRiskByLocationBatch");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**CrimeRiskByLocationRequest**](CrimeRiskByLocationRequest.md)|  | [optional]
+
+### Return type
+
+[**CrimeRiskLocationResponseList**](CrimeRiskLocationResponseList.md)
+
+### Authorization
+
+[oAuth2Password](../README.md#oAuth2Password)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/xml, application/json
+
+<a name="getDistanceToFloodHazardByAddress"></a>
+# **getDistanceToFloodHazardByAddress**
+> WaterBodyResponse getDistanceToFloodHazardByAddress(address, maxCandidates, waterBodyType, searchDistance, searchDistanceUnit)
 
 Gets WaterBodyResponse
 
@@ -168,15 +282,15 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 LIAPIGeoRiskServiceApi apiInstance = new LIAPIGeoRiskServiceApi();
 String address = "address_example"; // String | The address of the location
-String maxCandidates = "maxCandidates_example"; // String | 1 (default value), Maximum value is 3
+String maxCandidates = "maxCandidates_example"; // String | This specifies the value of maxCandidates
 String waterBodyType = "waterBodyType_example"; // String | all (default value), oceanandsea,lake,others,unknown,intermittent
-String searchDistance = "searchDistance_example"; // String | 5000 miles (default value), minimum should be 0
+String searchDistance = "searchDistance_example"; // String | This specifies the search distance
 String searchDistanceUnit = "searchDistanceUnit_example"; // String | miles (default value),feet, kilometers, meters
 try {
-    WaterBodyResponse result = apiInstance.getDistanceToCoastByAddress(address, maxCandidates, waterBodyType, searchDistance, searchDistanceUnit);
+    WaterBodyResponse result = apiInstance.getDistanceToFloodHazardByAddress(address, maxCandidates, waterBodyType, searchDistance, searchDistanceUnit);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling LIAPIGeoRiskServiceApi#getDistanceToCoastByAddress");
+    System.err.println("Exception when calling LIAPIGeoRiskServiceApi#getDistanceToFloodHazardByAddress");
     e.printStackTrace();
 }
 ```
@@ -186,9 +300,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **address** | **String**| The address of the location |
- **maxCandidates** | **String**| 1 (default value), Maximum value is 3 | [optional]
+ **maxCandidates** | **String**| This specifies the value of maxCandidates | [optional]
  **waterBodyType** | **String**| all (default value), oceanandsea,lake,others,unknown,intermittent | [optional]
- **searchDistance** | **String**| 5000 miles (default value), minimum should be 0 | [optional]
+ **searchDistance** | **String**| This specifies the search distance | [optional]
  **searchDistanceUnit** | **String**| miles (default value),feet, kilometers, meters | [optional]
 
 ### Return type
@@ -204,9 +318,63 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, application/xml
  - **Accept**: application/xml, application/json
 
-<a name="getDistanceToCoastByLocation"></a>
-# **getDistanceToCoastByLocation**
-> WaterBodyResponse getDistanceToCoastByLocation(longitude, latitude, maxCandidates, waterBodyType, searchDistance, searchDistanceUnit)
+<a name="getDistanceToFloodHazardByAddressBatch"></a>
+# **getDistanceToFloodHazardByAddressBatch**
+> DistanceToFloodHazardResponse getDistanceToFloodHazardByAddressBatch(body)
+
+Batch method for getting Water Bodies by address
+
+Batch method for getting Water Bodies by address
+
+### Example
+```java
+// Import classes:
+//import pb.ApiClient;
+//import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
+//import pb.locationintelligence.LIAPIGeoRiskServiceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
+
+LIAPIGeoRiskServiceApi apiInstance = new LIAPIGeoRiskServiceApi();
+DistanceToFloodHazardAddressRequest body = new DistanceToFloodHazardAddressRequest(); // DistanceToFloodHazardAddressRequest | 
+try {
+    DistanceToFloodHazardResponse result = apiInstance.getDistanceToFloodHazardByAddressBatch(body);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling LIAPIGeoRiskServiceApi#getDistanceToFloodHazardByAddressBatch");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DistanceToFloodHazardAddressRequest**](DistanceToFloodHazardAddressRequest.md)|  | [optional]
+
+### Return type
+
+[**DistanceToFloodHazardResponse**](DistanceToFloodHazardResponse.md)
+
+### Authorization
+
+[oAuth2Password](../README.md#oAuth2Password)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/xml, application/json
+
+<a name="getDistanceToFloodHazardByLocation"></a>
+# **getDistanceToFloodHazardByLocation**
+> WaterBodyLocationResponse getDistanceToFloodHazardByLocation(longitude, latitude, maxCandidates, waterBodyType, searchDistance, searchDistanceUnit)
 
 Gets WaterBodyResponse
 
@@ -231,15 +399,15 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 LIAPIGeoRiskServiceApi apiInstance = new LIAPIGeoRiskServiceApi();
 String longitude = "longitude_example"; // String | The longitude of the location
 String latitude = "latitude_example"; // String | The latitude of the location
-String maxCandidates = "maxCandidates_example"; // String | 1 (default value), Maximum value is 3
+String maxCandidates = "maxCandidates_example"; // String | This specifies the value of maxCandidates
 String waterBodyType = "waterBodyType_example"; // String | all (default value), oceanandsea,lake,others,unknown,intermittent
 String searchDistance = "searchDistance_example"; // String | This specifies the search distance
 String searchDistanceUnit = "searchDistanceUnit_example"; // String | miles (default value),feet, kilometers, meters
 try {
-    WaterBodyResponse result = apiInstance.getDistanceToCoastByLocation(longitude, latitude, maxCandidates, waterBodyType, searchDistance, searchDistanceUnit);
+    WaterBodyLocationResponse result = apiInstance.getDistanceToFloodHazardByLocation(longitude, latitude, maxCandidates, waterBodyType, searchDistance, searchDistanceUnit);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling LIAPIGeoRiskServiceApi#getDistanceToCoastByLocation");
+    System.err.println("Exception when calling LIAPIGeoRiskServiceApi#getDistanceToFloodHazardByLocation");
     e.printStackTrace();
 }
 ```
@@ -250,14 +418,68 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **longitude** | **String**| The longitude of the location |
  **latitude** | **String**| The latitude of the location |
- **maxCandidates** | **String**| 1 (default value), Maximum value is 3 | [optional]
+ **maxCandidates** | **String**| This specifies the value of maxCandidates | [optional]
  **waterBodyType** | **String**| all (default value), oceanandsea,lake,others,unknown,intermittent | [optional]
  **searchDistance** | **String**| This specifies the search distance | [optional]
  **searchDistanceUnit** | **String**| miles (default value),feet, kilometers, meters | [optional]
 
 ### Return type
 
-[**WaterBodyResponse**](WaterBodyResponse.md)
+[**WaterBodyLocationResponse**](WaterBodyLocationResponse.md)
+
+### Authorization
+
+[oAuth2Password](../README.md#oAuth2Password)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/xml, application/json
+
+<a name="getDistanceToFloodHazardByLocationBatch"></a>
+# **getDistanceToFloodHazardByLocationBatch**
+> DistanceToFloodHazardLocationResponse getDistanceToFloodHazardByLocationBatch(body)
+
+Batch method for getting Water Bodies by location
+
+Batch method for getting Water Bodies by location
+
+### Example
+```java
+// Import classes:
+//import pb.ApiClient;
+//import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
+//import pb.locationintelligence.LIAPIGeoRiskServiceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
+
+LIAPIGeoRiskServiceApi apiInstance = new LIAPIGeoRiskServiceApi();
+DistanceToFloodHazardLocationRequest body = new DistanceToFloodHazardLocationRequest(); // DistanceToFloodHazardLocationRequest | 
+try {
+    DistanceToFloodHazardLocationResponse result = apiInstance.getDistanceToFloodHazardByLocationBatch(body);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling LIAPIGeoRiskServiceApi#getDistanceToFloodHazardByLocationBatch");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DistanceToFloodHazardLocationRequest**](DistanceToFloodHazardLocationRequest.md)|  | [optional]
+
+### Return type
+
+[**DistanceToFloodHazardLocationResponse**](DistanceToFloodHazardLocationResponse.md)
 
 ### Authorization
 
@@ -390,9 +612,63 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json, application/xml
  - **Accept**: application/xml, application/json
 
+<a name="getEarthquakeRiskByAddressBatch"></a>
+# **getEarthquakeRiskByAddressBatch**
+> EarthquakeRiskResponseList getEarthquakeRiskByAddressBatch(body)
+
+Batch method for getting earthquake risk by address
+
+Batch method for getting earthquake risk by address
+
+### Example
+```java
+// Import classes:
+//import pb.ApiClient;
+//import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
+//import pb.locationintelligence.LIAPIGeoRiskServiceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
+
+LIAPIGeoRiskServiceApi apiInstance = new LIAPIGeoRiskServiceApi();
+EarthquakeRiskByAddressRequest body = new EarthquakeRiskByAddressRequest(); // EarthquakeRiskByAddressRequest | 
+try {
+    EarthquakeRiskResponseList result = apiInstance.getEarthquakeRiskByAddressBatch(body);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling LIAPIGeoRiskServiceApi#getEarthquakeRiskByAddressBatch");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EarthquakeRiskByAddressRequest**](EarthquakeRiskByAddressRequest.md)|  | [optional]
+
+### Return type
+
+[**EarthquakeRiskResponseList**](EarthquakeRiskResponseList.md)
+
+### Authorization
+
+[oAuth2Password](../README.md#oAuth2Password)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/xml, application/json
+
 <a name="getEarthquakeRiskByLocation"></a>
 # **getEarthquakeRiskByLocation**
-> EarthquakeRiskResponse getEarthquakeRiskByLocation(longitude, latitude, richterValue, includeGeometry)
+> EarthquakeRiskLocationResponse getEarthquakeRiskByLocation(longitude, latitude, richterValue, includeGeometry)
 
 Gets EarthquakeRiskResponse
 
@@ -420,7 +696,7 @@ String latitude = "latitude_example"; // String | The latitude of the location
 String richterValue = "richterValue_example"; // String | Richter values like R5 (count of richter scale 5 events), R7 (count of richter scale 7 events), R6_GE (count of events >= richter scale 6), etc., multiple richter scales could be requested as comma separated values with 'all' as default. Valid values: All (default value), R0, R1, R2, R3, R4, R5, R6, R7, R0_GE, R1_GE, R2_GE, R3_GE, R4_GE, R5_GE, R6_GE, R7_GE
 String includeGeometry = "includeGeometry_example"; // String | Y or N (default is N) - if it is Y, then geometry will be part of response
 try {
-    EarthquakeRiskResponse result = apiInstance.getEarthquakeRiskByLocation(longitude, latitude, richterValue, includeGeometry);
+    EarthquakeRiskLocationResponse result = apiInstance.getEarthquakeRiskByLocation(longitude, latitude, richterValue, includeGeometry);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoRiskServiceApi#getEarthquakeRiskByLocation");
@@ -439,7 +715,61 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**EarthquakeRiskResponse**](EarthquakeRiskResponse.md)
+[**EarthquakeRiskLocationResponse**](EarthquakeRiskLocationResponse.md)
+
+### Authorization
+
+[oAuth2Password](../README.md#oAuth2Password)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/xml, application/json
+
+<a name="getEarthquakeRiskByLocationBatch"></a>
+# **getEarthquakeRiskByLocationBatch**
+> EarthquakeRiskLocationResponseList getEarthquakeRiskByLocationBatch(body)
+
+Batch method for getting earthquake risk by location
+
+Batch method for getting earthquake risk by location
+
+### Example
+```java
+// Import classes:
+//import pb.ApiClient;
+//import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
+//import pb.locationintelligence.LIAPIGeoRiskServiceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
+
+LIAPIGeoRiskServiceApi apiInstance = new LIAPIGeoRiskServiceApi();
+EarthquakeRiskByLocationRequest body = new EarthquakeRiskByLocationRequest(); // EarthquakeRiskByLocationRequest | 
+try {
+    EarthquakeRiskLocationResponseList result = apiInstance.getEarthquakeRiskByLocationBatch(body);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling LIAPIGeoRiskServiceApi#getEarthquakeRiskByLocationBatch");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**EarthquakeRiskByLocationRequest**](EarthquakeRiskByLocationRequest.md)|  | [optional]
+
+### Return type
+
+[**EarthquakeRiskLocationResponseList**](EarthquakeRiskLocationResponseList.md)
 
 ### Authorization
 
@@ -620,7 +950,7 @@ Name | Type | Description  | Notes
 
 <a name="getFireRiskByLocation"></a>
 # **getFireRiskByLocation**
-> FireRiskResponse getFireRiskByLocation(longitude, latitude)
+> FireRiskLocationResponse getFireRiskByLocation(longitude, latitude)
 
 Gets FireRiskResponse
 
@@ -646,7 +976,7 @@ LIAPIGeoRiskServiceApi apiInstance = new LIAPIGeoRiskServiceApi();
 String longitude = "longitude_example"; // String | Longitude of Location
 String latitude = "latitude_example"; // String | Latitude of Location
 try {
-    FireRiskResponse result = apiInstance.getFireRiskByLocation(longitude, latitude);
+    FireRiskLocationResponse result = apiInstance.getFireRiskByLocation(longitude, latitude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoRiskServiceApi#getFireRiskByLocation");
@@ -663,7 +993,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FireRiskResponse**](FireRiskResponse.md)
+[**FireRiskLocationResponse**](FireRiskLocationResponse.md)
 
 ### Authorization
 
@@ -676,7 +1006,7 @@ Name | Type | Description  | Notes
 
 <a name="getFireRiskByLocationBatch"></a>
 # **getFireRiskByLocationBatch**
-> FireRiskResponseList getFireRiskByLocationBatch(body)
+> FireRiskLocationResponseList getFireRiskByLocationBatch(body)
 
 Batch method for getting fire risk by location
 
@@ -701,7 +1031,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 LIAPIGeoRiskServiceApi apiInstance = new LIAPIGeoRiskServiceApi();
 FireRiskByLocationRequest body = new FireRiskByLocationRequest(); // FireRiskByLocationRequest | 
 try {
-    FireRiskResponseList result = apiInstance.getFireRiskByLocationBatch(body);
+    FireRiskLocationResponseList result = apiInstance.getFireRiskByLocationBatch(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoRiskServiceApi#getFireRiskByLocationBatch");
@@ -717,7 +1047,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FireRiskResponseList**](FireRiskResponseList.md)
+[**FireRiskLocationResponseList**](FireRiskLocationResponseList.md)
 
 ### Authorization
 
@@ -730,7 +1060,7 @@ Name | Type | Description  | Notes
 
 <a name="getFireStationByAddress"></a>
 # **getFireStationByAddress**
-> FireStations getFireStationByAddress(address, maxCandidates, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, sortBy)
+> FireStations getFireStationByAddress(address, maxCandidates, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, sortBy, historicTrafficTimeBucket)
 
 Gets FireStationResponse
 
@@ -760,8 +1090,9 @@ String travelTimeUnit = "travelTimeUnit_example"; // String | Travel time unit s
 String travelDistance = "travelDistance_example"; // String | Maximum travel distance from input location to fire station. Maximum allowed is 50 miles
 String travelDistanceUnit = "travelDistanceUnit_example"; // String | Travel distance unit such as Feet (default), Kilometers, Miles or Meters.
 String sortBy = "sortBy_example"; // String | Sort the fire stations results by either travel time or travel distance (nearest first). Default sorting is by travel time.
+String historicTrafficTimeBucket = "historicTrafficTimeBucket_example"; // String | Historic traffic time slab
 try {
-    FireStations result = apiInstance.getFireStationByAddress(address, maxCandidates, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, sortBy);
+    FireStations result = apiInstance.getFireStationByAddress(address, maxCandidates, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, sortBy, historicTrafficTimeBucket);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoRiskServiceApi#getFireStationByAddress");
@@ -780,6 +1111,7 @@ Name | Type | Description  | Notes
  **travelDistance** | **String**| Maximum travel distance from input location to fire station. Maximum allowed is 50 miles | [optional]
  **travelDistanceUnit** | **String**| Travel distance unit such as Feet (default), Kilometers, Miles or Meters. | [optional] [enum: Feet, Kilometers, Miles, Meters]
  **sortBy** | **String**| Sort the fire stations results by either travel time or travel distance (nearest first). Default sorting is by travel time. | [optional] [enum: time, distance]
+ **historicTrafficTimeBucket** | **String**| Historic traffic time slab | [optional] [enum: None, AMPeak, PMPeak, OffPeak, Night]
 
 ### Return type
 
@@ -796,7 +1128,7 @@ Name | Type | Description  | Notes
 
 <a name="getFireStationByLocation"></a>
 # **getFireStationByLocation**
-> FireStations getFireStationByLocation(longitude, latitude, maxCandidates, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, sortBy)
+> FireStationsLocation getFireStationByLocation(longitude, latitude, maxCandidates, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, sortBy, historicTrafficTimeBucket)
 
 Gets FireStationResponse
 
@@ -827,8 +1159,9 @@ String travelTimeUnit = "travelTimeUnit_example"; // String | Travel time unit s
 String travelDistance = "travelDistance_example"; // String | Maximum travel distance from input location to fire station. Maximum allowed is 50 miles
 String travelDistanceUnit = "travelDistanceUnit_example"; // String | Travel distance unit such as Feet (default), Kilometers, Miles or Meters.
 String sortBy = "sortBy_example"; // String | Sorting of fire stations in result by travel time/distance (nearest first from input location).
+String historicTrafficTimeBucket = "historicTrafficTimeBucket_example"; // String | Historic traffic time slab
 try {
-    FireStations result = apiInstance.getFireStationByLocation(longitude, latitude, maxCandidates, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, sortBy);
+    FireStationsLocation result = apiInstance.getFireStationByLocation(longitude, latitude, maxCandidates, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, sortBy, historicTrafficTimeBucket);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoRiskServiceApi#getFireStationByLocation");
@@ -848,10 +1181,11 @@ Name | Type | Description  | Notes
  **travelDistance** | **String**| Maximum travel distance from input location to fire station. Maximum allowed is 50 miles | [optional]
  **travelDistanceUnit** | **String**| Travel distance unit such as Feet (default), Kilometers, Miles or Meters. | [optional] [enum: Feet, Kilometers, Miles, Meters]
  **sortBy** | **String**| Sorting of fire stations in result by travel time/distance (nearest first from input location). | [optional] [enum: time, distance]
+ **historicTrafficTimeBucket** | **String**| Historic traffic time slab | [optional] [enum: None, AMPeak, PMPeak, OffPeak, Night]
 
 ### Return type
 
-[**FireStations**](FireStations.md)
+[**FireStationsLocation**](FireStationsLocation.md)
 
 ### Authorization
 
@@ -976,7 +1310,7 @@ Name | Type | Description  | Notes
 
 <a name="getFloodRiskByLocation"></a>
 # **getFloodRiskByLocation**
-> FloodRiskResponse getFloodRiskByLocation(longitude, latitude, includeZoneDesc, includeGeometry)
+> FloodRiskLocationResponse getFloodRiskByLocation(longitude, latitude, includeZoneDesc, includeGeometry)
 
 Gets FloodRiskResponse
 
@@ -1004,7 +1338,7 @@ String latitude = "latitude_example"; // String | Latitude of Location
 String includeZoneDesc = "includeZoneDesc_example"; // String | Specifies primary zone description. Valid Values: 'Y' or 'N'. Default: 'Y'
 String includeGeometry = "includeGeometry_example"; // String | Y or N (default is N) - if it is Y, then geometry will be part of response
 try {
-    FloodRiskResponse result = apiInstance.getFloodRiskByLocation(longitude, latitude, includeZoneDesc, includeGeometry);
+    FloodRiskLocationResponse result = apiInstance.getFloodRiskByLocation(longitude, latitude, includeZoneDesc, includeGeometry);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoRiskServiceApi#getFloodRiskByLocation");
@@ -1023,7 +1357,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FloodRiskResponse**](FloodRiskResponse.md)
+[**FloodRiskLocationResponse**](FloodRiskLocationResponse.md)
 
 ### Authorization
 
@@ -1036,7 +1370,7 @@ Name | Type | Description  | Notes
 
 <a name="getFloodRiskByLocationBatch"></a>
 # **getFloodRiskByLocationBatch**
-> FloodRiskResponseList getFloodRiskByLocationBatch(body)
+> FloodRiskLocationResponseList getFloodRiskByLocationBatch(body)
 
 Batch method for getting flood risk by location
 
@@ -1061,7 +1395,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 LIAPIGeoRiskServiceApi apiInstance = new LIAPIGeoRiskServiceApi();
 FloodRiskByLocationRequest body = new FloodRiskByLocationRequest(); // FloodRiskByLocationRequest | 
 try {
-    FloodRiskResponseList result = apiInstance.getFloodRiskByLocationBatch(body);
+    FloodRiskLocationResponseList result = apiInstance.getFloodRiskByLocationBatch(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoRiskServiceApi#getFloodRiskByLocationBatch");
@@ -1077,7 +1411,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FloodRiskResponseList**](FloodRiskResponseList.md)
+[**FloodRiskLocationResponseList**](FloodRiskLocationResponseList.md)
 
 ### Authorization
 

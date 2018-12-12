@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pbkey** | [**List&lt;Pbkey&gt;**](Pbkey.md) |  |  [optional]
+**pbkey** | [**List&lt;PbKey&gt;**](PbKey.md) |  |  [optional]
 
 
 

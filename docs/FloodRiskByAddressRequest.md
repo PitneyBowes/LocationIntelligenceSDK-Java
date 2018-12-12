@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **addresses** | [**List&lt;RiskAddress&gt;**](RiskAddress.md) |  | 
-**preferences** | [**RiskPreferences**](RiskPreferences.md) |  |  [optional]
+**preferences** | [**FloodRiskPreferences**](FloodRiskPreferences.md) |  |  [optional]
 
 
 

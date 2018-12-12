@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 <a name="getEntityByLocation"></a>
 # **getEntityByLocation**
-> Locations getEntityByLocation(longitude, latitude, brandName, category, maxCandidates, searchRadius, searchRadiusUnit, searchDataset, searchPriority, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, mode)
+> PoiByLocation getEntityByLocation(longitude, latitude, brandName, category, maxCandidates, searchRadius, searchRadiusUnit, searchDataset, searchPriority, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, mode)
 
 Points Of Interest By Location.
 
@@ -109,7 +109,7 @@ String travelDistance = "travelDistance_example"; // String | Specifies the sear
 String travelDistanceUnit = "travelDistanceUnit_example"; // String | Specifies acceptable time units.Allowed values Feet,Kilometers,Miles and Meters
 String mode = "mode_example"; // String | Specifies the available mode of commute. This is required when u r trying to do search by travel distance or travel time.Allowed values driving and walking
 try {
-    Locations result = apiInstance.getEntityByLocation(longitude, latitude, brandName, category, maxCandidates, searchRadius, searchRadiusUnit, searchDataset, searchPriority, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, mode);
+    PoiByLocation result = apiInstance.getEntityByLocation(longitude, latitude, brandName, category, maxCandidates, searchRadius, searchRadiusUnit, searchDataset, searchPriority, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, mode);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoEnrichServiceApi#getEntityByLocation");
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Locations**](Locations.md)
+[**PoiByLocation**](PoiByLocation.md)
 
 ### Authorization
 

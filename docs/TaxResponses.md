@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**taxResponses** | [**List&lt;TaxResponse&gt;**](TaxResponse.md) |  |  [optional]
+**taxResponses** | [**List&lt;TaxBatchResponse&gt;**](TaxBatchResponse.md) |  |  [optional]
 
 
 

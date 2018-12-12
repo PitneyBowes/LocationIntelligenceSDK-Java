@@ -5,10 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **objectId** | **String** |  |  [optional]
-**count** | **Integer** |  |  [optional]
-**state** | [**State**](State.md) |  |  [optional]
+**state** | [**CommonState**](CommonState.md) |  |  [optional]
 **fireShed** | [**FireShed**](FireShed.md) |  |  [optional]
-**matchedAddress** | [**Address**](Address.md) |  |  [optional]
+**matchedAddress** | [**MatchedAddress**](MatchedAddress.md) |  |  [optional]
 
 
 

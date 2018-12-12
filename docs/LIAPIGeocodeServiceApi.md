@@ -44,7 +44,7 @@ String country = "USA"; // String | Country name or ISO code.
 String placeName = "placeName_example"; // String | Building name, place name, Point of Interest (POI), company or firm name associated with the input address.
 String mainAddress = "4750 Walnut St., Boulder CO, 80301"; // String | Single line input, treated as collection of field elements.
 String lastLine = "lastLine_example"; // String | The last line of the address.
-String areaName1 = "areaName1_example"; // String | Specifies the largest geographic area, typically a state or province.
+String areaName1 = "areaName1_example"; // String | Specifies the largest geographical area, typically a state or province.
 String areaName2 = "areaName2_example"; // String | Specifies the secondary geographic area, typically a county or district.
 String areaName3 = "areaName3_example"; // String | Specifies a city or town name.
 String areaName4 = "areaName4_example"; // String | Specifies a city subdivision or locality.
@@ -52,7 +52,7 @@ Integer postalCode = 56; // Integer | The postal code in the appropriate format 
 String matchMode = "Standard"; // String | Match modes determine the leniency used to make a match between the input address and the reference data.
 Boolean fallbackGeo = true; // Boolean | Specifies whether to attempt to determine a geographic region centroid when an address-level geocode cannot be determined.
 Boolean fallbackPostal = true; // Boolean | Specifies whether to attempt to determine a post code centroid when an address-level geocode cannot be determined.
-Integer maxCands = 1; // Integer | The maximum number of candidates to return. Must be an integer value.
+Integer maxCands = 1; // Integer | The maximum number of candidates to return.
 Integer streetOffset = 7; // Integer | Indicates the offset distance from the street segments to use in street-level geocoding.
 String streetOffsetUnits = "METERS"; // String | Specifies the unit of measurement for the street offset.
 Integer cornerOffset = 7; // Integer | Specifies the distance to offset the street end points in street-level matching.
@@ -70,12 +70,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **datapackBundle** | **String**| value of datapackBundle | [enum: basic, premium]
+ **datapackBundle** | **String**| value of datapackBundle | [enum: basic, premium, advanced]
  **country** | **String**| Country name or ISO code. | [optional] [default to USA]
  **placeName** | **String**| Building name, place name, Point of Interest (POI), company or firm name associated with the input address. | [optional]
  **mainAddress** | **String**| Single line input, treated as collection of field elements. | [optional] [default to 4750 Walnut St., Boulder CO, 80301]
  **lastLine** | **String**| The last line of the address. | [optional]
- **areaName1** | **String**| Specifies the largest geographic area, typically a state or province. | [optional]
+ **areaName1** | **String**| Specifies the largest geographical area, typically a state or province. | [optional]
  **areaName2** | **String**| Specifies the secondary geographic area, typically a county or district. | [optional]
  **areaName3** | **String**| Specifies a city or town name. | [optional]
  **areaName4** | **String**| Specifies a city subdivision or locality. | [optional]
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
  **matchMode** | **String**| Match modes determine the leniency used to make a match between the input address and the reference data. | [optional] [default to Standard] [enum: Exact, Standard, Relaxed, Custom, Interactive, CASS]
  **fallbackGeo** | **Boolean**| Specifies whether to attempt to determine a geographic region centroid when an address-level geocode cannot be determined. | [optional] [default to true]
  **fallbackPostal** | **Boolean**| Specifies whether to attempt to determine a post code centroid when an address-level geocode cannot be determined. | [optional] [default to true]
- **maxCands** | **Integer**| The maximum number of candidates to return. Must be an integer value. | [optional] [default to 1]
+ **maxCands** | **Integer**| The maximum number of candidates to return. | [optional] [default to 1]
  **streetOffset** | **Integer**| Indicates the offset distance from the street segments to use in street-level geocoding. | [optional] [default to 7]
  **streetOffsetUnits** | **String**| Specifies the unit of measurement for the street offset. | [optional] [default to METERS] [enum: METERS, FEET]
  **cornerOffset** | **Integer**| Specifies the distance to offset the street end points in street-level matching. | [optional] [default to 7]
@@ -104,7 +104,7 @@ Name | Type | Description  | Notes
 
 <a name="geocodeBatch"></a>
 # **geocodeBatch**
-> GeocodeServiceResponseList geocodeBatch(datapackBundle, body)
+> GeocodeServiceResponseList geocodeBatch(body, datapackBundle)
 
 Gets Geocode
 
@@ -127,10 +127,10 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
  defaultClient.setoAuthSecret("<YOUR SECRET>");
 
 LIAPIGeocodeServiceApi apiInstance = new LIAPIGeocodeServiceApi();
-String datapackBundle = "datapackBundle_example"; // String | value of datapackBundle
 GeocodeRequest body = new GeocodeRequest(); // GeocodeRequest | Geocode Request Object
+String datapackBundle = "datapackBundle_example"; // String | value of datapackBundle
 try {
-    GeocodeServiceResponseList result = apiInstance.geocodeBatch(datapackBundle, body);
+    GeocodeServiceResponseList result = apiInstance.geocodeBatch(body, datapackBundle);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeocodeServiceApi#geocodeBatch");
@@ -142,8 +142,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **datapackBundle** | **String**| value of datapackBundle | [enum: basic, premium]
- **body** | [**GeocodeRequest**](GeocodeRequest.md)| Geocode Request Object | [optional]
+ **body** | [**GeocodeRequest**](GeocodeRequest.md)| Geocode Request Object |
+ **datapackBundle** | **String**| value of datapackBundle | [enum: basic, premium, advanced]
 
 ### Return type
 
@@ -199,7 +199,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **datapackBundle** | **String**| value of datapackBundle | [enum: basic, premium]
+ **datapackBundle** | **String**| value of datapackBundle | [enum: basic, premium, advanced]
  **operation** | **String**| Geocode or ReverseGeocode Operation. | [optional] [default to geocode] [enum: geocode, reverseGeocode]
  **country** | **String**| Country name or ISO code. | [optional] [default to USA]
 
@@ -256,7 +256,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **datapackBundle** | **String**| value of datapackBundle | [enum: basic, premium]
+ **datapackBundle** | **String**| value of datapackBundle | [enum: basic, premium, advanced]
  **country** | **String**| Three Letter ISO Country code | [optional] [default to USA]
 
 ### Return type
@@ -365,7 +365,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**PBKeyAddressRequest**](PBKeyAddressRequest.md)|  | [optional]
+ **body** | [**PBKeyAddressRequest**](PBKeyAddressRequest.md)|  |
 
 ### Return type
 
@@ -406,7 +406,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 LIAPIGeocodeServiceApi apiInstance = new LIAPIGeocodeServiceApi();
 String datapackBundle = "datapackBundle_example"; // String | value of datapackBundle
-ReverseGeocodeRequest body = new ReverseGeocodeRequest(); // ReverseGeocodeRequest | Reverse Geocode Request object
+ReverseGeocodeRequest body = new ReverseGeocodeRequest(); // ReverseGeocodeRequest | Request for Reverse Geocode
 try {
     GeocodeServiceResponseList result = apiInstance.reverseGeocodBatch(datapackBundle, body);
     System.out.println(result);
@@ -420,8 +420,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **datapackBundle** | **String**| value of datapackBundle | [enum: basic, premium]
- **body** | [**ReverseGeocodeRequest**](ReverseGeocodeRequest.md)| Reverse Geocode Request object | [optional]
+ **datapackBundle** | **String**| value of datapackBundle | [enum: basic, premium, advanced]
+ **body** | [**ReverseGeocodeRequest**](ReverseGeocodeRequest.md)| Request for Reverse Geocode | [optional]
 
 ### Return type
 
@@ -465,9 +465,9 @@ String datapackBundle = "datapackBundle_example"; // String | value of datapackB
 BigDecimal x = new BigDecimal(); // BigDecimal | Longitude of the location.
 BigDecimal y = new BigDecimal(); // BigDecimal | Latitude of the location.
 String country = "country_example"; // String | Country name or ISO code.
-String coordSysName = "EPSG:4326"; // String | Coordinate system to convert geometry in format codespace:code.
+String coordSysName = "EPSG:4326"; // String | Coordinate system to convert geometry to in format codespace:code.
 Integer distance = 150; // Integer | Radius in which search is performed.
-String distanceUnits = "METERS"; // String | Unit of measurement for the search distance.
+String distanceUnits = "METERS"; // String | Unit of measurement.
 try {
     GeocodeServiceResponse result = apiInstance.reverseGeocode(datapackBundle, x, y, country, coordSysName, distance, distanceUnits);
     System.out.println(result);
@@ -481,13 +481,13 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **datapackBundle** | **String**| value of datapackBundle | [enum: basic, premium]
+ **datapackBundle** | **String**| value of datapackBundle | [enum: basic, premium, advanced]
  **x** | **BigDecimal**| Longitude of the location. | [default to -105.240976]
  **y** | **BigDecimal**| Latitude of the location. | [default to 40.018301]
  **country** | **String**| Country name or ISO code. | [optional]
- **coordSysName** | **String**| Coordinate system to convert geometry in format codespace:code. | [optional] [default to EPSG:4326]
+ **coordSysName** | **String**| Coordinate system to convert geometry to in format codespace:code. | [optional] [default to EPSG:4326]
  **distance** | **Integer**| Radius in which search is performed. | [optional] [default to 150]
- **distanceUnits** | **String**| Unit of measurement for the search distance. | [optional] [default to METERS] [enum: METERS, FEET]
+ **distanceUnits** | **String**| Unit of measurement. | [optional] [default to METERS] [enum: METERS, FEET]
 
 ### Return type
 

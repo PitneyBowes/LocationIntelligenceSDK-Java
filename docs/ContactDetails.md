@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**address** | [**Address**](Address.md) |  |  [optional]
+**address** | [**MatchedAddress**](MatchedAddress.md) |  |  [optional]
 **phone** | **String** |  |  [optional]
 **fax** | **String** |  |  [optional]
 **email** | **String** |  |  [optional]

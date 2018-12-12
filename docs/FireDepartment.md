@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **type** | **String** |  |  [optional]
 **numberOfStations** | **Integer** |  |  [optional]
 **administrativeOfficeOnly** | **Boolean** |  |  [optional]
-**contactDetails** | [**ContactDetails**](ContactDetails.md) |  |  [optional]
+**contactDetails** | [**FireDepartmentContactDetails**](FireDepartmentContactDetails.md) |  |  [optional]
 
 
 

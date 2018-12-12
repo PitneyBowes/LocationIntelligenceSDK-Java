@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**addresses** | [**List&lt;Address&gt;**](Address.md) |  | 
+**addresses** | [**List&lt;CommonAddress&gt;**](CommonAddress.md) |  | 
 
 
 

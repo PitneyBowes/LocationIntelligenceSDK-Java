@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **comments** | **String** |  |  [optional]
 **coverage** | [**Coverage**](Coverage.md) |  |  [optional]
 **contactPerson** | [**ContactPerson**](ContactPerson.md) |  |  [optional]
-**mailingAddress** | [**Address**](Address.md) |  |  [optional]
+**mailingAddress** | [**AHJmailingAddress**](AHJmailingAddress.md) |  |  [optional]
 
 
 

@@ -4,12 +4,12 @@ All URIs are relative to *https://api.pitneybowes.com/location-intelligence*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**geoSearch**](LIAPIGeoSearchServiceApi.md#geoSearch) | **GET** /geosearch/v1/locations | Gets LocationList
+[**geoSearch**](LIAPIGeoSearchServiceApi.md#geoSearch) | **GET** /geosearch/v2/locations | Gets LocationList
 
 
 <a name="geoSearch"></a>
 # **geoSearch**
-> Locations geoSearch(searchText, latitude, longitude, searchRadius, searchRadiusUnit, maxCandidates, country, matchOnAddressNumber, autoDetectLocation, ipAddress, areaName1, areaName3, postCode)
+> GeosearchLocations geoSearch(searchText, latitude, longitude, searchRadius, searchRadiusUnit, maxCandidates, country, matchOnAddressNumber, autoDetectLocation, ipAddress, areaName1, areaName3, postCode, returnAdminAreasOnly, includeRangesDetails, searchType)
 
 Gets LocationList
 
@@ -45,8 +45,11 @@ String ipAddress = "ipAddress_example"; // String |
 String areaName1 = "areaName1_example"; // String | State province of the input to be searched
 String areaName3 = "areaName3_example"; // String | City of the input to be searched
 String postCode = "postCode_example"; // String | Postal Code of the input to be searched
+String returnAdminAreasOnly = "N"; // String | if value set 'Y' then it will only do a matching on postcode or areaName1, areaName2, areaName3 and areaName4 fields in the data
+String includeRangesDetails = "Y"; // String | if value set 'Y' then display all unit info of ranges, if value set 'N' then don't show ranges
+String searchType = "ADDRESS"; // String | Preference to control search type of interactive requests.
 try {
-    Locations result = apiInstance.geoSearch(searchText, latitude, longitude, searchRadius, searchRadiusUnit, maxCandidates, country, matchOnAddressNumber, autoDetectLocation, ipAddress, areaName1, areaName3, postCode);
+    GeosearchLocations result = apiInstance.geoSearch(searchText, latitude, longitude, searchRadius, searchRadiusUnit, maxCandidates, country, matchOnAddressNumber, autoDetectLocation, ipAddress, areaName1, areaName3, postCode, returnAdminAreasOnly, includeRangesDetails, searchType);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoSearchServiceApi#geoSearch");
@@ -71,10 +74,13 @@ Name | Type | Description  | Notes
  **areaName1** | **String**| State province of the input to be searched | [optional]
  **areaName3** | **String**| City of the input to be searched | [optional]
  **postCode** | **String**| Postal Code of the input to be searched | [optional]
+ **returnAdminAreasOnly** | **String**| if value set &#39;Y&#39; then it will only do a matching on postcode or areaName1, areaName2, areaName3 and areaName4 fields in the data | [optional] [default to N] [enum: Y, N]
+ **includeRangesDetails** | **String**| if value set &#39;Y&#39; then display all unit info of ranges, if value set &#39;N&#39; then don&#39;t show ranges | [optional] [default to Y] [enum: Y, N]
+ **searchType** | **String**| Preference to control search type of interactive requests. | [optional] [default to ADDRESS] [enum: ADDRESS, POSTAL, CITY, STREET, GEOGRAPHY, STATE, ALL]
 
 ### Return type
 
-[**Locations**](Locations.md)
+[**GeosearchLocations**](GeosearchLocations.md)
 
 ### Authorization
 

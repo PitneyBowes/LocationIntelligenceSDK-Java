@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **geometry** | [**GeoPos**](GeoPos.md) |  |  [optional]
 **address** | [**GeocodeAddress**](GeocodeAddress.md) |  |  [optional]
 **ranges** | [**List&lt;CandidateRange&gt;**](CandidateRange.md) |  |  [optional]
-**worldGeocoded** | **Boolean** |  |  [optional]
 
 
 

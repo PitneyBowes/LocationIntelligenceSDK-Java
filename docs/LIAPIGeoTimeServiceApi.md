@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 <a name="getTimezoneByAddress"></a>
 # **getTimezoneByAddress**
-> Timezone getTimezoneByAddress(timestamp, address)
+> Timezone getTimezoneByAddress(timestamp, address, matchMode, country)
 
 Timezone By Address.
 
@@ -35,8 +35,10 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 LIAPIGeoTimeServiceApi apiInstance = new LIAPIGeoTimeServiceApi();
 String timestamp = "timestamp_example"; // String | Timestamp in miliseconds.
 String address = "address_example"; // String | The address to be searched.
+String matchMode = "Relaxed"; // String | Match modes determine the leniency used to make a match between the input address and the reference data.
+String country = "USA"; // String | Country ISO code.
 try {
-    Timezone result = apiInstance.getTimezoneByAddress(timestamp, address);
+    Timezone result = apiInstance.getTimezoneByAddress(timestamp, address, matchMode, country);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoTimeServiceApi#getTimezoneByAddress");
@@ -50,6 +52,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **timestamp** | **String**| Timestamp in miliseconds. |
  **address** | **String**| The address to be searched. |
+ **matchMode** | **String**| Match modes determine the leniency used to make a match between the input address and the reference data. | [optional] [default to Relaxed] [enum: Exact, Standard, Relaxed, Custom, Interactive, CASS]
+ **country** | **String**| Country ISO code. | [optional] [default to USA]
 
 ### Return type
 
@@ -66,7 +70,7 @@ Name | Type | Description  | Notes
 
 <a name="getTimezoneByLocation"></a>
 # **getTimezoneByLocation**
-> Timezone getTimezoneByLocation(timestamp, longitude, latitude)
+> TimezoneLocation getTimezoneByLocation(timestamp, longitude, latitude)
 
 Timezone By Location.
 
@@ -93,7 +97,7 @@ String timestamp = "timestamp_example"; // String | Timestamp in miliseconds.
 String longitude = "longitude_example"; // String | Longitude of the location.
 String latitude = "latitude_example"; // String | Latitude of the location.
 try {
-    Timezone result = apiInstance.getTimezoneByLocation(timestamp, longitude, latitude);
+    TimezoneLocation result = apiInstance.getTimezoneByLocation(timestamp, longitude, latitude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoTimeServiceApi#getTimezoneByLocation");
@@ -111,7 +115,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Timezone**](Timezone.md)
+[**TimezoneLocation**](TimezoneLocation.md)
 
 ### Authorization
 

@@ -120,7 +120,7 @@ Name | Type | Description  | Notes
 
 <a name="getGeoPropertyByPBKey"></a>
 # **getGeoPropertyByPBKey**
-> GeoPropertyResponse getGeoPropertyByPBKey(pbKey)
+> GeoPropertyPBKeyResponse getGeoPropertyByPBKey(pbKey)
 
 Gets GeoPropertyResponse
 
@@ -145,7 +145,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 LIAPIGeoPropertyServiceApi apiInstance = new LIAPIGeoPropertyServiceApi();
 String pbKey = "pbKey_example"; // String | free form text
 try {
-    GeoPropertyResponse result = apiInstance.getGeoPropertyByPBKey(pbKey);
+    GeoPropertyPBKeyResponse result = apiInstance.getGeoPropertyByPBKey(pbKey);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoPropertyServiceApi#getGeoPropertyByPBKey");
@@ -161,7 +161,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GeoPropertyResponse**](GeoPropertyResponse.md)
+[**GeoPropertyPBKeyResponse**](GeoPropertyPBKeyResponse.md)
 
 ### Authorization
 
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 
 <a name="getGeoPropertyByPBKeyBatch"></a>
 # **getGeoPropertyByPBKeyBatch**
-> GeoPropertyResponses getGeoPropertyByPBKeyBatch(body)
+> GeoPropertyPBKeyResponses getGeoPropertyByPBKeyBatch(body)
 
 Gets GeoPropertyResponses
 
@@ -199,7 +199,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 LIAPIGeoPropertyServiceApi apiInstance = new LIAPIGeoPropertyServiceApi();
 GeoPropertyPBKeyRequest body = new GeoPropertyPBKeyRequest(); // GeoPropertyPBKeyRequest | 
 try {
-    GeoPropertyResponses result = apiInstance.getGeoPropertyByPBKeyBatch(body);
+    GeoPropertyPBKeyResponses result = apiInstance.getGeoPropertyByPBKeyBatch(body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoPropertyServiceApi#getGeoPropertyByPBKeyBatch");
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GeoPropertyResponses**](GeoPropertyResponses.md)
+[**GeoPropertyPBKeyResponses**](GeoPropertyPBKeyResponses.md)
 
 ### Authorization
 

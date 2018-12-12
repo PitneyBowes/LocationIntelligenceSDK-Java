@@ -4,13 +4,145 @@ All URIs are relative to *https://api.pitneybowes.com/location-intelligence*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getBasicBoundaryByAddress**](LIAPIGeoZoneServiceApi.md#getBasicBoundaryByAddress) | **GET** /geozone/v1/basicboundary/byaddress | Gets Basic Boundary by Address
+[**getBasicBoundaryByLocation**](LIAPIGeoZoneServiceApi.md#getBasicBoundaryByLocation) | **GET** /geozone/v1/basicboundary/bylocation | Gets Basic Boundary by Location
 [**getTravelBoundaryByDistance**](LIAPIGeoZoneServiceApi.md#getTravelBoundaryByDistance) | **GET** /geozone/v1/travelboundary/bydistance | Gets travel Boundary by Distance
 [**getTravelBoundaryByTime**](LIAPIGeoZoneServiceApi.md#getTravelBoundaryByTime) | **GET** /geozone/v1/travelboundary/bytime | Gets travel Boundary by Time
 
 
+<a name="getBasicBoundaryByAddress"></a>
+# **getBasicBoundaryByAddress**
+> BasicBoundaryAddress getBasicBoundaryByAddress(address, distance, country, distanceUnit, resolution, responseSrs)
+
+Gets Basic Boundary by Address
+
+Gets Basic Boundary by Address
+
+### Example
+```java
+// Import classes:
+//import pb.ApiClient;
+//import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
+//import pb.locationintelligence.LIAPIGeoZoneServiceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
+
+LIAPIGeoZoneServiceApi apiInstance = new LIAPIGeoZoneServiceApi();
+String address = "address_example"; // String | Address around which Basic Boundary is requested
+String distance = "distance_example"; // String | This is width of the buffer (in a complete circular buffer, it would be radius of the buffer). This has to be a positive number.
+String country = "USA"; // String | Three digit ISO country code
+String distanceUnit = "feet"; // String | Longitude around which Basic Boundary is requested
+String resolution = "resolution_example"; // String | This is resolution of the buffer. Curves generated in buffer are approximated by line segments and it is measured in segments per circle. The higher the resolution, the smoother the curves of the buffer but more points would be required in the boundary geometry. Number greater than 0 and in multiple of 4. If not in 4, then it is approximated to nearest multiple of 4.
+String responseSrs = "epsg:4326"; // String | The spatial reference system to express the response in. By default, it would be epsg:4326
+try {
+    BasicBoundaryAddress result = apiInstance.getBasicBoundaryByAddress(address, distance, country, distanceUnit, resolution, responseSrs);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling LIAPIGeoZoneServiceApi#getBasicBoundaryByAddress");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **address** | **String**| Address around which Basic Boundary is requested |
+ **distance** | **String**| This is width of the buffer (in a complete circular buffer, it would be radius of the buffer). This has to be a positive number. |
+ **country** | **String**| Three digit ISO country code | [optional] [default to USA]
+ **distanceUnit** | **String**| Longitude around which Basic Boundary is requested | [optional] [default to feet] [enum: feet, kilometers, meters, miles]
+ **resolution** | **String**| This is resolution of the buffer. Curves generated in buffer are approximated by line segments and it is measured in segments per circle. The higher the resolution, the smoother the curves of the buffer but more points would be required in the boundary geometry. Number greater than 0 and in multiple of 4. If not in 4, then it is approximated to nearest multiple of 4. | [optional]
+ **responseSrs** | **String**| The spatial reference system to express the response in. By default, it would be epsg:4326 | [optional] [default to epsg:4326]
+
+### Return type
+
+[**BasicBoundaryAddress**](BasicBoundaryAddress.md)
+
+### Authorization
+
+[oAuth2Password](../README.md#oAuth2Password)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/xml
+
+<a name="getBasicBoundaryByLocation"></a>
+# **getBasicBoundaryByLocation**
+> BasicBoundary getBasicBoundaryByLocation(latitude, longitude, distance, distanceUnit, resolution, responseSrs, srsName)
+
+Gets Basic Boundary by Location
+
+Gets Basic Boundary by Location
+
+### Example
+```java
+// Import classes:
+//import pb.ApiClient;
+//import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
+//import pb.locationintelligence.LIAPIGeoZoneServiceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
+
+LIAPIGeoZoneServiceApi apiInstance = new LIAPIGeoZoneServiceApi();
+String latitude = "latitude_example"; // String | Latitude around which Basic Boundary is requested
+String longitude = "longitude_example"; // String | Longitude around which Basic Boundary is requested
+String distance = "distance_example"; // String | This is width of the buffer (in a complete circular buffer, it would be radius of the buffer). This has to be a positive number.
+String distanceUnit = "feet"; // String | Longitude around which Basic Boundary is requested
+String resolution = "resolution_example"; // String | This is resolution of the buffer. Curves generated in buffer are approximated by line segments and it is measured in segments per circle. The higher the resolution, the smoother the curves of the buffer but more points would be required in the boundary geometry. Number greater than 0 and in multiple of 4. If not in 4, then it is approximated to nearest multiple of 4.
+String responseSrs = "epsg:4326"; // String | The spatial reference system to express the response in. By default, it would be epsg:4326
+String srsName = "epsg:4326"; // String | The spatial reference system for input. By default, it would be epsg:4326
+try {
+    BasicBoundary result = apiInstance.getBasicBoundaryByLocation(latitude, longitude, distance, distanceUnit, resolution, responseSrs, srsName);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling LIAPIGeoZoneServiceApi#getBasicBoundaryByLocation");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **latitude** | **String**| Latitude around which Basic Boundary is requested |
+ **longitude** | **String**| Longitude around which Basic Boundary is requested |
+ **distance** | **String**| This is width of the buffer (in a complete circular buffer, it would be radius of the buffer). This has to be a positive number. |
+ **distanceUnit** | **String**| Longitude around which Basic Boundary is requested | [optional] [default to feet] [enum: feet, kilometers, meters, miles]
+ **resolution** | **String**| This is resolution of the buffer. Curves generated in buffer are approximated by line segments and it is measured in segments per circle. The higher the resolution, the smoother the curves of the buffer but more points would be required in the boundary geometry. Number greater than 0 and in multiple of 4. If not in 4, then it is approximated to nearest multiple of 4. | [optional]
+ **responseSrs** | **String**| The spatial reference system to express the response in. By default, it would be epsg:4326 | [optional] [default to epsg:4326]
+ **srsName** | **String**| The spatial reference system for input. By default, it would be epsg:4326 | [optional] [default to epsg:4326]
+
+### Return type
+
+[**BasicBoundary**](BasicBoundary.md)
+
+### Authorization
+
+[oAuth2Password](../README.md#oAuth2Password)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json, application/xml
+
 <a name="getTravelBoundaryByDistance"></a>
 # **getTravelBoundaryByDistance**
-> TravelBoundaries getTravelBoundaryByDistance(costs, point, address, costUnit, db, country, maxOffroadDistance, maxOffroadDistanceUnit, destinationSrs, majorRoads, returnHoles, returnIslands, simplificationFactor, bandingStyle, historicTrafficTimeBucket)
+> TravelBoundaries getTravelBoundaryByDistance(costs, point, address, costUnit, db, country, maxOffroadDistance, maxOffroadDistanceUnit, destinationSrs, majorRoads, returnHoles, returnIslands, simplificationFactor, bandingStyle, historicTrafficTimeBucket, defaultAmbientSpeed, ambientSpeedUnit)
 
 Gets travel Boundary by Distance
 
@@ -48,8 +180,10 @@ String returnIslands = "false"; // String | Whether to return islands, which are
 String simplificationFactor = "0.5"; // String | Number between 0.0 and 1.0 where 0.0 is very simple and 1.0 means the most complex.
 String bandingStyle = "Donut"; // String | Style of banding to be used in the result.
 String historicTrafficTimeBucket = "None"; // String | Whether routing calculation uses the historic traffic speeds.
+String defaultAmbientSpeed = "defaultAmbientSpeed_example"; // String | The speed to travel when going off a network road to find the travel boundary (for all road types).
+String ambientSpeedUnit = "MPH"; // String | The unit of measure to use to calculate the ambient speed.
 try {
-    TravelBoundaries result = apiInstance.getTravelBoundaryByDistance(costs, point, address, costUnit, db, country, maxOffroadDistance, maxOffroadDistanceUnit, destinationSrs, majorRoads, returnHoles, returnIslands, simplificationFactor, bandingStyle, historicTrafficTimeBucket);
+    TravelBoundaries result = apiInstance.getTravelBoundaryByDistance(costs, point, address, costUnit, db, country, maxOffroadDistance, maxOffroadDistanceUnit, destinationSrs, majorRoads, returnHoles, returnIslands, simplificationFactor, bandingStyle, historicTrafficTimeBucket, defaultAmbientSpeed, ambientSpeedUnit);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoZoneServiceApi#getTravelBoundaryByDistance");
@@ -76,6 +210,8 @@ Name | Type | Description  | Notes
  **simplificationFactor** | **String**| Number between 0.0 and 1.0 where 0.0 is very simple and 1.0 means the most complex. | [optional] [default to 0.5]
  **bandingStyle** | **String**| Style of banding to be used in the result. | [optional] [default to Donut] [enum: Donut, Encompassing]
  **historicTrafficTimeBucket** | **String**| Whether routing calculation uses the historic traffic speeds. | [optional] [default to None] [enum: None, AMPeak, PMPeak, OffPeak, Night]
+ **defaultAmbientSpeed** | **String**| The speed to travel when going off a network road to find the travel boundary (for all road types). | [optional]
+ **ambientSpeedUnit** | **String**| The unit of measure to use to calculate the ambient speed. | [optional] [default to MPH] [enum: MPH, KPH, MTPS, MTPM]
 
 ### Return type
 
@@ -92,7 +228,7 @@ Name | Type | Description  | Notes
 
 <a name="getTravelBoundaryByTime"></a>
 # **getTravelBoundaryByTime**
-> TravelBoundaries getTravelBoundaryByTime(costs, point, address, costUnit, db, country, maxOffroadDistance, maxOffroadDistanceUnit, destinationSrs, majorRoads, returnHoles, returnIslands, simplificationFactor, bandingStyle, historicTrafficTimeBucket)
+> TravelBoundaries getTravelBoundaryByTime(costs, point, address, costUnit, db, country, maxOffroadDistance, maxOffroadDistanceUnit, destinationSrs, majorRoads, returnHoles, returnIslands, simplificationFactor, bandingStyle, historicTrafficTimeBucket, defaultAmbientSpeed, ambientSpeedUnit)
 
 Gets travel Boundary by Time
 
@@ -130,8 +266,10 @@ String returnIslands = "false"; // String | Whether to return islands, which are
 String simplificationFactor = "0.5"; // String | Number between 0.0 and 1.0 where 0.0 is very simple and 1.0 means the most complex.
 String bandingStyle = "Donut"; // String | Style of banding to be used in the result.
 String historicTrafficTimeBucket = "None"; // String | Whether routing calculation uses the historic traffic speeds.
+String defaultAmbientSpeed = "defaultAmbientSpeed_example"; // String | The speed to travel when going off a network road to find the travel boundary (for all road types).
+String ambientSpeedUnit = "MPH"; // String | The unit of measure to use to calculate the ambient speed.
 try {
-    TravelBoundaries result = apiInstance.getTravelBoundaryByTime(costs, point, address, costUnit, db, country, maxOffroadDistance, maxOffroadDistanceUnit, destinationSrs, majorRoads, returnHoles, returnIslands, simplificationFactor, bandingStyle, historicTrafficTimeBucket);
+    TravelBoundaries result = apiInstance.getTravelBoundaryByTime(costs, point, address, costUnit, db, country, maxOffroadDistance, maxOffroadDistanceUnit, destinationSrs, majorRoads, returnHoles, returnIslands, simplificationFactor, bandingStyle, historicTrafficTimeBucket, defaultAmbientSpeed, ambientSpeedUnit);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoZoneServiceApi#getTravelBoundaryByTime");
@@ -158,6 +296,8 @@ Name | Type | Description  | Notes
  **simplificationFactor** | **String**| Number between 0.0 and 1.0 where 0.0 is very simple and 1.0 means the most complex. | [optional] [default to 0.5]
  **bandingStyle** | **String**| Style of banding to be used in the result. | [optional] [default to Donut] [enum: Donut, Encompassing]
  **historicTrafficTimeBucket** | **String**| Whether routing calculation uses the historic traffic speeds. | [optional] [default to None] [enum: None, AMPeak, PMPeak, OffPeak, Night]
+ **defaultAmbientSpeed** | **String**| The speed to travel when going off a network road to find the travel boundary (for all road types). | [optional]
+ **ambientSpeedUnit** | **String**| The unit of measure to use to calculate the ambient speed. | [optional] [default to MPH] [enum: MPH, KPH, MTPS, MTPM]
 
 ### Return type
 

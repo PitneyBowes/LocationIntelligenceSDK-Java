@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 
 <a name="getBatchTaxByLocation"></a>
 # **getBatchTaxByLocation**
-> TaxResponses getBatchTaxByLocation(taxRateTypeId, body)
+> TaxLocationResponses getBatchTaxByLocation(taxRateTypeId, body)
 
 Post Tax By Location
 
@@ -100,7 +100,7 @@ LIAPIGeoTaxServiceApi apiInstance = new LIAPIGeoTaxServiceApi();
 String taxRateTypeId = "taxRateTypeId_example"; // String | The tax rate id.
 TaxLocationRequest body = new TaxLocationRequest(); // TaxLocationRequest | TaxAddressRequest Class Object having tax request.
 try {
-    TaxResponses result = apiInstance.getBatchTaxByLocation(taxRateTypeId, body);
+    TaxLocationResponses result = apiInstance.getBatchTaxByLocation(taxRateTypeId, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoTaxServiceApi#getBatchTaxByLocation");
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TaxResponses**](TaxResponses.md)
+[**TaxLocationResponses**](TaxLocationResponses.md)
 
 ### Authorization
 
@@ -130,7 +130,7 @@ Name | Type | Description  | Notes
 
 <a name="getBatchTaxRateByAddress"></a>
 # **getBatchTaxRateByAddress**
-> TaxResponses getBatchTaxRateByAddress(taxRateTypeId, body)
+> TaxRateResponses getBatchTaxRateByAddress(taxRateTypeId, body)
 
 Post Taxrate By Address
 
@@ -156,7 +156,7 @@ LIAPIGeoTaxServiceApi apiInstance = new LIAPIGeoTaxServiceApi();
 String taxRateTypeId = "taxRateTypeId_example"; // String | The tax rate id.
 TaxRateAddressRequest body = new TaxRateAddressRequest(); // TaxRateAddressRequest | TaxRateAddressRequest Class Object having tax rate request.
 try {
-    TaxResponses result = apiInstance.getBatchTaxRateByAddress(taxRateTypeId, body);
+    TaxRateResponses result = apiInstance.getBatchTaxRateByAddress(taxRateTypeId, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoTaxServiceApi#getBatchTaxRateByAddress");
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TaxResponses**](TaxResponses.md)
+[**TaxRateResponses**](TaxRateResponses.md)
 
 ### Authorization
 
@@ -186,7 +186,7 @@ Name | Type | Description  | Notes
 
 <a name="getBatchTaxRateByLocation"></a>
 # **getBatchTaxRateByLocation**
-> TaxResponses getBatchTaxRateByLocation(taxRateTypeId, body)
+> TaxRateLocationResponses getBatchTaxRateByLocation(taxRateTypeId, body)
 
 Post Taxrate By Location
 
@@ -212,7 +212,7 @@ LIAPIGeoTaxServiceApi apiInstance = new LIAPIGeoTaxServiceApi();
 String taxRateTypeId = "taxRateTypeId_example"; // String | The tax rate id.
 TaxRateLocationRequest body = new TaxRateLocationRequest(); // TaxRateLocationRequest | TaxRateLocationRequest Class Object having tax rate request.
 try {
-    TaxResponses result = apiInstance.getBatchTaxRateByLocation(taxRateTypeId, body);
+    TaxRateLocationResponses result = apiInstance.getBatchTaxRateByLocation(taxRateTypeId, body);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoTaxServiceApi#getBatchTaxRateByLocation");
@@ -229,7 +229,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TaxResponses**](TaxResponses.md)
+[**TaxRateLocationResponses**](TaxRateLocationResponses.md)
 
 ### Authorization
 
@@ -242,7 +242,7 @@ Name | Type | Description  | Notes
 
 <a name="getIPDTaxByAddress"></a>
 # **getIPDTaxByAddress**
-> TaxDistrictResponse getIPDTaxByAddress(address)
+> TaxDistrictResponse getIPDTaxByAddress(address, returnLatLongFields, latLongFormat)
 
 Get IPD Tax by Address
 
@@ -266,8 +266,10 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 
 LIAPIGeoTaxServiceApi apiInstance = new LIAPIGeoTaxServiceApi();
 String address = "address_example"; // String | The address to be searched.
+String returnLatLongFields = "returnLatLongFields_example"; // String | Y or N (default is N) - Returns Latitude Longitude Fields
+String latLongFormat = "latLongFormat_example"; // String | (default is Decimal) - Returns Desired Latitude Longitude Format
 try {
-    TaxDistrictResponse result = apiInstance.getIPDTaxByAddress(address);
+    TaxDistrictResponse result = apiInstance.getIPDTaxByAddress(address, returnLatLongFields, latLongFormat);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoTaxServiceApi#getIPDTaxByAddress");
@@ -280,6 +282,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **address** | **String**| The address to be searched. |
+ **returnLatLongFields** | **String**| Y or N (default is N) - Returns Latitude Longitude Fields | [optional] [enum: Y, N]
+ **latLongFormat** | **String**| (default is Decimal) - Returns Desired Latitude Longitude Format | [optional] [enum: PreZero, PreZeroDecimal, Decimal, DecimalAssumed]
 
 ### Return type
 
@@ -468,7 +472,7 @@ Name | Type | Description  | Notes
 
 <a name="getSpecificTaxRateByAddress"></a>
 # **getSpecificTaxRateByAddress**
-> TaxResponse getSpecificTaxRateByAddress(taxRateTypeId, address)
+> TaxRateResponse getSpecificTaxRateByAddress(taxRateTypeId, address)
 
 Get Taxrate By Address
 
@@ -494,7 +498,7 @@ LIAPIGeoTaxServiceApi apiInstance = new LIAPIGeoTaxServiceApi();
 String taxRateTypeId = "taxRateTypeId_example"; // String | The tax rate id.
 String address = "address_example"; // String | The address to be searched.
 try {
-    TaxResponse result = apiInstance.getSpecificTaxRateByAddress(taxRateTypeId, address);
+    TaxRateResponse result = apiInstance.getSpecificTaxRateByAddress(taxRateTypeId, address);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoTaxServiceApi#getSpecificTaxRateByAddress");
@@ -511,7 +515,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TaxResponse**](TaxResponse.md)
+[**TaxRateResponse**](TaxRateResponse.md)
 
 ### Authorization
 
@@ -524,7 +528,7 @@ Name | Type | Description  | Notes
 
 <a name="getSpecificTaxRateByLocation"></a>
 # **getSpecificTaxRateByLocation**
-> TaxResponse getSpecificTaxRateByLocation(taxRateTypeId, latitude, longitude)
+> TaxRateResponse getSpecificTaxRateByLocation(taxRateTypeId, latitude, longitude)
 
 Get Taxrate By Location
 
@@ -551,7 +555,7 @@ String taxRateTypeId = "taxRateTypeId_example"; // String | The tax rate id.
 String latitude = "latitude_example"; // String | Latitude of the location.
 String longitude = "longitude_example"; // String | Longitude of the location.
 try {
-    TaxResponse result = apiInstance.getSpecificTaxRateByLocation(taxRateTypeId, latitude, longitude);
+    TaxRateResponse result = apiInstance.getSpecificTaxRateByLocation(taxRateTypeId, latitude, longitude);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoTaxServiceApi#getSpecificTaxRateByLocation");
@@ -569,7 +573,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TaxResponse**](TaxResponse.md)
+[**TaxRateResponse**](TaxRateResponse.md)
 
 ### Authorization
 

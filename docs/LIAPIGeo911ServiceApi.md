@@ -89,8 +89,8 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
  defaultClient.setoAuthSecret("<YOUR SECRET>");
 
 LIAPIGeo911ServiceApi apiInstance = new LIAPIGeo911ServiceApi();
-String longitude = "longitude_example"; // String | Latitude of the location.
-String latitude = "latitude_example"; // String | Longitude of the location.
+String longitude = "longitude_example"; // String | Longitude of the location.
+String latitude = "latitude_example"; // String | Latitude of the location.
 try {
     AHJPlusPSAPResponse result = apiInstance.getAHJPlusPSAPByLocation(longitude, latitude);
     System.out.println(result);
@@ -104,8 +104,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **longitude** | **String**| Latitude of the location. |
- **latitude** | **String**| Longitude of the location. |
+ **longitude** | **String**| Longitude of the location. |
+ **latitude** | **String**| Latitude of the location. |
 
 ### Return type
 

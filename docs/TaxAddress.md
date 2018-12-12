@@ -6,23 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **objectId** | **String** |  |  [optional]
 **mainAddressLine** | **String** |  |  [optional]
-**addressLastLine** | **String** |  |  [optional]
 **placeName** | **String** |  |  [optional]
 **areaName1** | **String** |  |  [optional]
-**areaName2** | **String** |  |  [optional]
 **areaName3** | **String** |  |  [optional]
-**areaName4** | **String** |  |  [optional]
 **postCode1** | **String** |  |  [optional]
-**postCode2** | **String** |  |  [optional]
 **country** | **String** |  |  [optional]
-**addressNumber** | **String** |  |  [optional]
-**streetName** | **String** |  |  [optional]
-**unitType** | **String** |  |  [optional]
-**unitValue** | **String** |  |  [optional]
-**customFields** | **Map&lt;String, Object&gt;** |  |  [optional]
-**distanceUnits** | **String** |  |  [optional]
-**bufferWidth** | **String** |  |  [optional]
-**userBufferWidth** | **String** |  |  [optional]
 **purchaseAmount** | **String** |  |  [optional]
 
 

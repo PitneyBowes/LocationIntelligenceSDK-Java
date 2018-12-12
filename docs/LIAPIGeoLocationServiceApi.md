@@ -4,14 +4,71 @@ All URIs are relative to *https://api.pitneybowes.com/location-intelligence*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getDeviceStatus**](LIAPIGeoLocationServiceApi.md#getDeviceStatus) | **GET** /geolocation/v1/devicestatus | Location By Device Status.
 [**getLocationByFixedLine**](LIAPIGeoLocationServiceApi.md#getLocationByFixedLine) | **GET** /geolocation/v1/location/byfixedline | Location By Fixed Line Network.
 [**getLocationByIPAddress**](LIAPIGeoLocationServiceApi.md#getLocationByIPAddress) | **GET** /geolocation/v1/location/byipaddress | Location By IP Address.
 [**getLocationByWiFiAccessPoint**](LIAPIGeoLocationServiceApi.md#getLocationByWiFiAccessPoint) | **GET** /geolocation/v1/location/byaccesspoint | Location by WiFi Access Point.
 
 
+<a name="getDeviceStatus"></a>
+# **getDeviceStatus**
+> GeoLocationDeviceSatus getDeviceStatus(deviceId, includeNetworkInfo_)
+
+Location By Device Status.
+
+This service accepts a phone number as input and returns details distinguishing landline and wireless numbers and also checks if a wireless number can be located.
+
+### Example
+```java
+// Import classes:
+//import pb.ApiClient;
+//import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
+//import pb.locationintelligence.LIAPIGeoLocationServiceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
+
+LIAPIGeoLocationServiceApi apiInstance = new LIAPIGeoLocationServiceApi();
+String deviceId = "deviceId_example"; // String | Unique identifier for the intended device. Supported identifiers are fixed line and mobile number.
+String includeNetworkInfo_ = "includeNetworkInfo__example"; // String | Y or N (default is Y) – if it is N, then network/carrier details will not be added in the response.
+try {
+    GeoLocationDeviceSatus result = apiInstance.getDeviceStatus(deviceId, includeNetworkInfo_);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling LIAPIGeoLocationServiceApi#getDeviceStatus");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **deviceId** | **String**| Unique identifier for the intended device. Supported identifiers are fixed line and mobile number. |
+ **includeNetworkInfo_** | **String**| Y or N (default is Y) – if it is N, then network/carrier details will not be added in the response. | [optional]
+
+### Return type
+
+[**GeoLocationDeviceSatus**](GeoLocationDeviceSatus.md)
+
+### Authorization
+
+[oAuth2Password](../README.md#oAuth2Password)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/xml, application/json
+
 <a name="getLocationByFixedLine"></a>
 # **getLocationByFixedLine**
-> GeoLocation getLocationByFixedLine(deviceId)
+> GeoLocationFixedLine getLocationByFixedLine(deviceId)
 
 Location By Fixed Line Network.
 
@@ -36,7 +93,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 LIAPIGeoLocationServiceApi apiInstance = new LIAPIGeoLocationServiceApi();
 String deviceId = "deviceId_example"; // String | This is the fixed line phone number (US only). This is a mandatory parameter.
 try {
-    GeoLocation result = apiInstance.getLocationByFixedLine(deviceId);
+    GeoLocationFixedLine result = apiInstance.getLocationByFixedLine(deviceId);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoLocationServiceApi#getLocationByFixedLine");
@@ -52,7 +109,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GeoLocation**](GeoLocation.md)
+[**GeoLocationFixedLine**](GeoLocationFixedLine.md)
 
 ### Authorization
 
@@ -65,7 +122,7 @@ Name | Type | Description  | Notes
 
 <a name="getLocationByIPAddress"></a>
 # **getLocationByIPAddress**
-> GeoLocation getLocationByIPAddress(ipAddress)
+> GeoLocationIpAddr getLocationByIPAddress(ipAddress)
 
 Location By IP Address.
 
@@ -90,7 +147,7 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
 LIAPIGeoLocationServiceApi apiInstance = new LIAPIGeoLocationServiceApi();
 String ipAddress = "ipAddress_example"; // String | This is the ip address of network connected device. It must be a standard IPv4 octet and a valid external address.
 try {
-    GeoLocation result = apiInstance.getLocationByIPAddress(ipAddress);
+    GeoLocationIpAddr result = apiInstance.getLocationByIPAddress(ipAddress);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoLocationServiceApi#getLocationByIPAddress");
@@ -106,7 +163,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GeoLocation**](GeoLocation.md)
+[**GeoLocationIpAddr**](GeoLocationIpAddr.md)
 
 ### Authorization
 
@@ -119,7 +176,7 @@ Name | Type | Description  | Notes
 
 <a name="getLocationByWiFiAccessPoint"></a>
 # **getLocationByWiFiAccessPoint**
-> GeoLocation getLocationByWiFiAccessPoint(mac, ssid, rsid, speed, accessPoint)
+> GeoLocationAccessPoint getLocationByWiFiAccessPoint(mac, ssid, rsid, speed, accessPoint)
 
 Location by WiFi Access Point.
 
@@ -148,7 +205,7 @@ String rsid = "rsid_example"; // String | This is the received signal strength i
 String speed = "speed_example"; // String | This is the connection speed for wi-fi. It should be a number from 0 to 6930 and the unit should be Mbps.
 String accessPoint = "accessPoint_example"; // String | This is the JSON based list of wifi access points in the vicinity of device to be located. This parameter is helpful in case, multiple wifi points are visible and we want to make sure that the location of device is best calculated considering all the access points location.
 try {
-    GeoLocation result = apiInstance.getLocationByWiFiAccessPoint(mac, ssid, rsid, speed, accessPoint);
+    GeoLocationAccessPoint result = apiInstance.getLocationByWiFiAccessPoint(mac, ssid, rsid, speed, accessPoint);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoLocationServiceApi#getLocationByWiFiAccessPoint");
@@ -168,7 +225,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GeoLocation**](GeoLocation.md)
+[**GeoLocationAccessPoint**](GeoLocationAccessPoint.md)
 
 ### Authorization
 

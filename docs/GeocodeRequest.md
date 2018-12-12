@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | Type | 
-**preferences** | [**Preferences**](Preferences.md) |  |  [optional]
-**addresses** | [**List&lt;GeocodeAddress&gt;**](GeocodeAddress.md) |  | 
+**preferences** | [**GeocodePreferences**](GeocodePreferences.md) |  |  [optional]
+**addresses** | [**List&lt;GeocodeRequestAddress&gt;**](GeocodeRequestAddress.md) |  | 
 
 
 

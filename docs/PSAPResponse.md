@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **coverage** | [**Coverage**](Coverage.md) |  |  [optional]
 **contactPerson** | [**ContactPerson**](ContactPerson.md) |  |  [optional]
 **siteDetails** | [**SiteDetails**](SiteDetails.md) |  |  [optional]
-**mailingAddress** | [**Address**](Address.md) |  |  [optional]
+**mailingAddress** | [**MatchedAddress**](MatchedAddress.md) |  |  [optional]
 
 
 
