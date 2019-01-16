@@ -163,9 +163,11 @@ Class | Method | HTTP request | Description
 *LIAPIGeo911ServiceApi* | [**getPSAPByLocation**](docs/LIAPIGeo911ServiceApi.md#getPSAPByLocation) | **GET** /geo911/v1/psap/bylocation | PSAP By Location.
 *LIAPIGeoCommServiceApi* | [**getRateCenterByAddress**](docs/LIAPIGeoCommServiceApi.md#getRateCenterByAddress) | **GET** /geocomm/v1/ratecenter/byaddress | Rate Center By Address.
 *LIAPIGeoCommServiceApi* | [**getRateCenterByLocation**](docs/LIAPIGeoCommServiceApi.md#getRateCenterByLocation) | **GET** /geocomm/v1/ratecenter/bylocation | Rate Center By Location.
-*LIAPIGeoEnrichServiceApi* | [**getAddress**](docs/LIAPIGeoEnrichServiceApi.md#getAddress) | **GET** /geoenrich/v1/address/bylocation | Address By Location.
-*LIAPIGeoEnrichServiceApi* | [**getEntityByLocation**](docs/LIAPIGeoEnrichServiceApi.md#getEntityByLocation) | **GET** /geoenrich/v1/poi/bylocation | Points Of Interest By Location.
+*LIAPIGeoEnrichServiceApi* | [**getCategoryCodeMetadata**](docs/LIAPIGeoEnrichServiceApi.md#getCategoryCodeMetadata) | **GET** /geoenrich/v1/metadata/category | Returns Category Codes with their sub-categories (if exist), descriptions and SIC Codes mapping
+*LIAPIGeoEnrichServiceApi* | [**getPOIsByAddress**](docs/LIAPIGeoEnrichServiceApi.md#getPOIsByAddress) | **GET** /geoenrich/v1/poi/byaddress | Point of Interests By Address.
+*LIAPIGeoEnrichServiceApi* | [**getPOIsByLocation**](docs/LIAPIGeoEnrichServiceApi.md#getPOIsByLocation) | **GET** /geoenrich/v1/poi/bylocation | Point of Interests By Location.
 *LIAPIGeoEnrichServiceApi* | [**getPlaceByLocation**](docs/LIAPIGeoEnrichServiceApi.md#getPlaceByLocation) | **GET** /geoenrich/v1/place/bylocation | Place By Location.
+*LIAPIGeoEnrichServiceApi* | [**getSICMetadata**](docs/LIAPIGeoEnrichServiceApi.md#getSICMetadata) | **GET** /geoenrich/v1/metadata/sic | Returns SIC Codes with their Industry Titles and Category Codes mapping
 *LIAPIGeoIdentityServiceApi* | [**getIdentityByAddress**](docs/LIAPIGeoIdentityServiceApi.md#getIdentityByAddress) | **GET** /geoidentity/v1/identity/byaddress | Gets GeoIdentityResponse
 *LIAPIGeoIdentityServiceApi* | [**getIdentityByEmail**](docs/LIAPIGeoIdentityServiceApi.md#getIdentityByEmail) | **GET** /geoidentity/v1/identity/byemail | Gets Identity
 *LIAPIGeoIdentityServiceApi* | [**getIdentityByPBKey**](docs/LIAPIGeoIdentityServiceApi.md#getIdentityByPBKey) | **GET** /geoidentity/v1/identity/bypbkey | Gets GeoIdentityResponse
@@ -179,10 +181,6 @@ Class | Method | HTTP request | Description
 *LIAPIGeoLocationServiceApi* | [**getLocationByFixedLine**](docs/LIAPIGeoLocationServiceApi.md#getLocationByFixedLine) | **GET** /geolocation/v1/location/byfixedline | Location By Fixed Line Network.
 *LIAPIGeoLocationServiceApi* | [**getLocationByIPAddress**](docs/LIAPIGeoLocationServiceApi.md#getLocationByIPAddress) | **GET** /geolocation/v1/location/byipaddress | Location By IP Address.
 *LIAPIGeoLocationServiceApi* | [**getLocationByWiFiAccessPoint**](docs/LIAPIGeoLocationServiceApi.md#getLocationByWiFiAccessPoint) | **GET** /geolocation/v1/location/byaccesspoint | Location by WiFi Access Point.
-*LIAPIGeoPlacesServiceApi* | [**getCategoryCodeMetadata**](docs/LIAPIGeoPlacesServiceApi.md#getCategoryCodeMetadata) | **GET** /geoplaces/v1/metadata/category | Returns Category Codes with their sub-categories (if exist), descriptions and SIC Codes mapping
-*LIAPIGeoPlacesServiceApi* | [**getPOIsByAddress**](docs/LIAPIGeoPlacesServiceApi.md#getPOIsByAddress) | **GET** /geoplaces/v1/poi/byaddress | Point of Interests By Address.
-*LIAPIGeoPlacesServiceApi* | [**getPOIsByLocation**](docs/LIAPIGeoPlacesServiceApi.md#getPOIsByLocation) | **GET** /geoplaces/v1/poi/bylocation | Point of Interests By Location.
-*LIAPIGeoPlacesServiceApi* | [**getSICMetadata**](docs/LIAPIGeoPlacesServiceApi.md#getSICMetadata) | **GET** /geoplaces/v1/metadata/sic | Returns SIC Codes with their Industry Titles and Category Codes mapping
 *LIAPIGeoPostServiceApi* | [**getCarrierRoutesByAddress**](docs/LIAPIGeoPostServiceApi.md#getCarrierRoutesByAddress) | **GET** /geopost/v1/carrierroute/byaddress | Carrier Route By Address.
 *LIAPIGeoPostServiceApi* | [**getCarrierRoutesByAddressBatch**](docs/LIAPIGeoPostServiceApi.md#getCarrierRoutesByAddressBatch) | **POST** /geopost/v1/carrierroute/byaddress | Gets GeoPost Carrier Routes for Multiple Addresses
 *LIAPIGeoPropertyServiceApi* | [**getGeoPropertyByAddress**](docs/LIAPIGeoPropertyServiceApi.md#getGeoPropertyByAddress) | **GET** /geoproperty/v1/all/attributes/byaddress | Gets GeoPropertyResponse
@@ -252,7 +250,6 @@ Class | Method | HTTP request | Description
  - [AHJmailingAddress](docs/AHJmailingAddress.md)
  - [Accuracy](docs/Accuracy.md)
  - [Address](docs/Address.md)
- - [AddressBylocation](docs/AddressBylocation.md)
  - [Age](docs/Age.md)
  - [AgeTheme](docs/AgeTheme.md)
  - [Area](docs/Area.md)
@@ -289,7 +286,6 @@ Class | Method | HTTP request | Description
  - [Community](docs/Community.md)
  - [CommuterPatternsTheme](docs/CommuterPatternsTheme.md)
  - [ConfiguredDictionaryResponse](docs/ConfiguredDictionaryResponse.md)
- - [ContactDetails](docs/ContactDetails.md)
  - [ContactPerson](docs/ContactPerson.md)
  - [Cost](docs/Cost.md)
  - [Costs](docs/Costs.md)
@@ -310,7 +306,6 @@ Class | Method | HTTP request | Description
  - [CustomObjectMember](docs/CustomObjectMember.md)
  - [CustomPreferences](docs/CustomPreferences.md)
  - [DateTimeEarthQuake](docs/DateTimeEarthQuake.md)
- - [Demographics](docs/Demographics.md)
  - [DemographicsThemes](docs/DemographicsThemes.md)
  - [DemographicsThemesV2](docs/DemographicsThemesV2.md)
  - [DemographicsV2](docs/DemographicsV2.md)
@@ -379,6 +374,8 @@ Class | Method | HTTP request | Description
  - [FloodRiskResponseList](docs/FloodRiskResponseList.md)
  - [FloodZone](docs/FloodZone.md)
  - [GenderTheme](docs/GenderTheme.md)
+ - [GeoEnrichMetadataResponse](docs/GeoEnrichMetadataResponse.md)
+ - [GeoEnrichResponse](docs/GeoEnrichResponse.md)
  - [GeoIdentityName](docs/GeoIdentityName.md)
  - [GeoIdentityPlace](docs/GeoIdentityPlace.md)
  - [GeoIdentityResponse](docs/GeoIdentityResponse.md)
@@ -390,7 +387,6 @@ Class | Method | HTTP request | Description
  - [GeoLocationIpAddr](docs/GeoLocationIpAddr.md)
  - [GeoLocationPlace](docs/GeoLocationPlace.md)
  - [GeoLocationState](docs/GeoLocationState.md)
- - [GeoPlaceMetadataResponse](docs/GeoPlaceMetadataResponse.md)
  - [GeoPos](docs/GeoPos.md)
  - [GeoPostGeometry](docs/GeoPostGeometry.md)
  - [GeoPropertyAddressRequest](docs/GeoPropertyAddressRequest.md)
@@ -415,7 +411,6 @@ Class | Method | HTTP request | Description
  - [GeocodeServiceResponse](docs/GeocodeServiceResponse.md)
  - [GeocodeServiceResponseList](docs/GeocodeServiceResponseList.md)
  - [Geometry](docs/Geometry.md)
- - [GeoplacesResponse](docs/GeoplacesResponse.md)
  - [GeosearchLocation](docs/GeosearchLocation.md)
  - [GeosearchLocations](docs/GeosearchLocations.md)
  - [GlobalUltimateBusiness](docs/GlobalUltimateBusiness.md)
@@ -442,14 +437,12 @@ Class | Method | HTTP request | Description
  - [LifeStyleTheme](docs/LifeStyleTheme.md)
  - [Lifestyle](docs/Lifestyle.md)
  - [Location](docs/Location.md)
- - [Locations](docs/Locations.md)
  - [Magnitude](docs/Magnitude.md)
  - [MaritalStatusTheme](docs/MaritalStatusTheme.md)
  - [Match](docs/Match.md)
  - [MatchedAddress](docs/MatchedAddress.md)
  - [Matrix](docs/Matrix.md)
  - [Mcd](docs/Mcd.md)
- - [Name](docs/Name.md)
  - [Neighborhood](docs/Neighborhood.md)
  - [Network](docs/Network.md)
  - [Operation](docs/Operation.md)
@@ -463,16 +456,12 @@ Class | Method | HTTP request | Description
  - [ParentBusiness](docs/ParentBusiness.md)
  - [PbKey](docs/PbKey.md)
  - [Photo](docs/Photo.md)
- - [Place](docs/Place.md)
  - [PlaceByLocations](docs/PlaceByLocations.md)
  - [PlaceByLocationsLocation](docs/PlaceByLocationsLocation.md)
  - [PlaceLocation](docs/PlaceLocation.md)
  - [PlaceLocationName](docs/PlaceLocationName.md)
- - [Poi](docs/Poi.md)
- - [PoiByLocation](docs/PoiByLocation.md)
  - [PoiClassification](docs/PoiClassification.md)
  - [PoiContactDetails](docs/PoiContactDetails.md)
- - [PoiLocation](docs/PoiLocation.md)
  - [Points](docs/Points.md)
  - [PolygonGeometry](docs/PolygonGeometry.md)
  - [PopulationTheme](docs/PopulationTheme.md)

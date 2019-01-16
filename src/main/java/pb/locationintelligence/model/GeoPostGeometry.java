@@ -36,7 +36,7 @@ import java.util.List;
 /**
  * GeoPostGeometry
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-11T15:23:20.199+05:30")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-15T12:57:00.076+05:30")
 public class GeoPostGeometry   {
   @SerializedName("type")
   private String type = null;

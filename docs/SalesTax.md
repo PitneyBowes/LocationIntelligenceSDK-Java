@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **totalTaxAmount** | **Double** |  |  [optional]
 **stateTax** | **Double** |  |  [optional]
 **stateTaxRate** | **Double** |  |  [optional]
+**stateTaxAmount** | **Double** |  |  [optional]
 **countyTax** | **Double** |  |  [optional]
 **countyTaxRate** | **Double** |  |  [optional]
 **countyTaxAmount** | **Double** |  |  [optional]

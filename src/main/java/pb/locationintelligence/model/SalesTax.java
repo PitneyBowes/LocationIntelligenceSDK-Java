@@ -37,7 +37,7 @@ import pb.locationintelligence.model.SpecialPurposeDistrictTaxRate;
 /**
  * SalesTax
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-11T15:23:20.199+05:30")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-15T12:57:00.076+05:30")
 public class SalesTax   {
   @SerializedName("totalTax")
   private Double totalTax = null;
@@ -53,6 +53,9 @@ public class SalesTax   {
 
   @SerializedName("stateTaxRate")
   private Double stateTaxRate = null;
+
+  @SerializedName("stateTaxAmount")
+  private Double stateTaxAmount = null;
 
   @SerializedName("countyTax")
   private Double countyTax = null;
@@ -169,6 +172,24 @@ public class SalesTax   {
 
   public void setStateTaxRate(Double stateTaxRate) {
     this.stateTaxRate = stateTaxRate;
+  }
+
+  public SalesTax stateTaxAmount(Double stateTaxAmount) {
+    this.stateTaxAmount = stateTaxAmount;
+    return this;
+  }
+
+   /**
+   * Get stateTaxAmount
+   * @return stateTaxAmount
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public Double getStateTaxAmount() {
+    return stateTaxAmount;
+  }
+
+  public void setStateTaxAmount(Double stateTaxAmount) {
+    this.stateTaxAmount = stateTaxAmount;
   }
 
   public SalesTax countyTax(Double countyTax) {
@@ -348,6 +369,7 @@ public class SalesTax   {
         Objects.equals(this.totalTaxAmount, salesTax.totalTaxAmount) &&
         Objects.equals(this.stateTax, salesTax.stateTax) &&
         Objects.equals(this.stateTaxRate, salesTax.stateTaxRate) &&
+        Objects.equals(this.stateTaxAmount, salesTax.stateTaxAmount) &&
         Objects.equals(this.countyTax, salesTax.countyTax) &&
         Objects.equals(this.countyTaxRate, salesTax.countyTaxRate) &&
         Objects.equals(this.countyTaxAmount, salesTax.countyTaxAmount) &&
@@ -361,7 +383,7 @@ public class SalesTax   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(totalTax, totalTaxRate, totalTaxAmount, stateTax, stateTaxRate, countyTax, countyTaxRate, countyTaxAmount, municipalTax, municipalTaxRate, municipalTaxAmount, spdsTax, specialTaxRulesApplied, specialTaxRulesDescriptor);
+    return Objects.hash(totalTax, totalTaxRate, totalTaxAmount, stateTax, stateTaxRate, stateTaxAmount, countyTax, countyTaxRate, countyTaxAmount, municipalTax, municipalTaxRate, municipalTaxAmount, spdsTax, specialTaxRulesApplied, specialTaxRulesDescriptor);
   }
 
   @Override
@@ -374,6 +396,7 @@ public class SalesTax   {
     sb.append("    totalTaxAmount: ").append(toIndentedString(totalTaxAmount)).append("\n");
     sb.append("    stateTax: ").append(toIndentedString(stateTax)).append("\n");
     sb.append("    stateTaxRate: ").append(toIndentedString(stateTaxRate)).append("\n");
+    sb.append("    stateTaxAmount: ").append(toIndentedString(stateTaxAmount)).append("\n");
     sb.append("    countyTax: ").append(toIndentedString(countyTax)).append("\n");
     sb.append("    countyTaxRate: ").append(toIndentedString(countyTaxRate)).append("\n");
     sb.append("    countyTaxAmount: ").append(toIndentedString(countyTaxAmount)).append("\n");

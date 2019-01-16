@@ -38,8 +38,8 @@ import com.google.gson.reflect.TypeToken;
 
 import java.io.IOException;
 
-import pb.locationintelligence.model.Locations;
-import pb.locationintelligence.model.PoiByLocation;
+import pb.locationintelligence.model.GeoEnrichMetadataResponse;
+import pb.locationintelligence.model.GeoEnrichResponse;
 import pb.locationintelligence.model.PlaceByLocations;
 
 import java.lang.reflect.Type;
@@ -67,40 +67,24 @@ public class LIAPIGeoEnrichServiceApi {
         this.apiClient = apiClient;
     }
 
-    /* Build call for getAddress */
-    private com.squareup.okhttp.Call getAddressCall(String latitude, String longitude, String searchRadius, String searchRadiusUnit, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /* Build call for getCategoryCodeMetadata */
+    private com.squareup.okhttp.Call getCategoryCodeMetadataCall(String categoryCode, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
-        
-        // verify the required parameter 'latitude' is set
-        if (latitude == null) {
-            throw new ApiException("Missing the required parameter 'latitude' when calling getAddress(Async)");
-        }
-        
-        // verify the required parameter 'longitude' is set
-        if (longitude == null) {
-            throw new ApiException("Missing the required parameter 'longitude' when calling getAddress(Async)");
-        }
         
 
         // create path and map variables
-        String localVarPath = "/geoenrich/v1/address/bylocation".replaceAll("\\{format\\}","json");
+        String localVarPath = "/geoenrich/v1/metadata/category".replaceAll("\\{format\\}","json");
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        if (latitude != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "latitude", latitude));
-        if (longitude != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "longitude", longitude));
-        if (searchRadius != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "searchRadius", searchRadius));
-        if (searchRadiusUnit != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "searchRadiusUnit", searchRadiusUnit));
+        if (categoryCode != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "categoryCode", categoryCode));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/xml", "application/json"
+            "application/json", "application/xml", "text/csv"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -128,48 +112,39 @@ public class LIAPIGeoEnrichServiceApi {
     }
 
     /**
-     * Address By Location.
-     * This service accepts longitude and latitude as input and returns an address for that location.
-     * @param latitude Latitude of the location. (required)
-     * @param longitude Longitude of the location. (required)
-     * @param searchRadius Radius range within which search is performed. (optional)
-     * @param searchRadiusUnit Radius unit such as feet, kilometers, miles or meters. (optional)
-     * @return Locations
+     * Returns Category Codes with their sub-categories (if exist), descriptions and SIC Codes mapping
+     * Accepts first partial digits or full category codes to filter the response
+     * @param categoryCode Specify starting digits or full category code to filter the response (optional)
+     * @return GeoEnrichMetadataResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public Locations getAddress(String latitude, String longitude, String searchRadius, String searchRadiusUnit) throws ApiException {
-        ApiResponse<Locations> resp = getAddressWithHttpInfo(latitude, longitude, searchRadius, searchRadiusUnit);
+    public GeoEnrichMetadataResponse getCategoryCodeMetadata(String categoryCode) throws ApiException {
+        ApiResponse<GeoEnrichMetadataResponse> resp = getCategoryCodeMetadataWithHttpInfo(categoryCode);
         return resp.getData();
     }
 
     /**
-     * Address By Location.
-     * This service accepts longitude and latitude as input and returns an address for that location.
-     * @param latitude Latitude of the location. (required)
-     * @param longitude Longitude of the location. (required)
-     * @param searchRadius Radius range within which search is performed. (optional)
-     * @param searchRadiusUnit Radius unit such as feet, kilometers, miles or meters. (optional)
-     * @return ApiResponse&lt;Locations&gt;
+     * Returns Category Codes with their sub-categories (if exist), descriptions and SIC Codes mapping
+     * Accepts first partial digits or full category codes to filter the response
+     * @param categoryCode Specify starting digits or full category code to filter the response (optional)
+     * @return ApiResponse&lt;GeoEnrichMetadataResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<Locations> getAddressWithHttpInfo(String latitude, String longitude, String searchRadius, String searchRadiusUnit) throws ApiException {
-        com.squareup.okhttp.Call call = getAddressCall(latitude, longitude, searchRadius, searchRadiusUnit, null, null);
-        Type localVarReturnType = new TypeToken<Locations>(){}.getType();
+    public ApiResponse<GeoEnrichMetadataResponse> getCategoryCodeMetadataWithHttpInfo(String categoryCode) throws ApiException {
+        com.squareup.okhttp.Call call = getCategoryCodeMetadataCall(categoryCode, null, null);
+        Type localVarReturnType = new TypeToken<GeoEnrichMetadataResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Address By Location. (asynchronously)
-     * This service accepts longitude and latitude as input and returns an address for that location.
-     * @param latitude Latitude of the location. (required)
-     * @param longitude Longitude of the location. (required)
-     * @param searchRadius Radius range within which search is performed. (optional)
-     * @param searchRadiusUnit Radius unit such as feet, kilometers, miles or meters. (optional)
+     * Returns Category Codes with their sub-categories (if exist), descriptions and SIC Codes mapping (asynchronously)
+     * Accepts first partial digits or full category codes to filter the response
+     * @param categoryCode Specify starting digits or full category code to filter the response (optional)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getAddressAsync(String latitude, String longitude, String searchRadius, String searchRadiusUnit, final ApiCallback<Locations> callback) throws ApiException {
+    public com.squareup.okhttp.Call getCategoryCodeMetadataAsync(String categoryCode, final ApiCallback<GeoEnrichMetadataResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -190,23 +165,201 @@ public class LIAPIGeoEnrichServiceApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getAddressCall(latitude, longitude, searchRadius, searchRadiusUnit, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<Locations>(){}.getType();
+        com.squareup.okhttp.Call call = getCategoryCodeMetadataCall(categoryCode, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<GeoEnrichMetadataResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
-    /* Build call for getEntityByLocation */
-    private com.squareup.okhttp.Call getEntityByLocationCall(String longitude, String latitude, String brandName, String category, String maxCandidates, String searchRadius, String searchRadiusUnit, String searchDataset, String searchPriority, String travelTime, String travelTimeUnit, String travelDistance, String travelDistanceUnit, String mode, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+    /* Build call for getPOIsByAddress */
+    private com.squareup.okhttp.Call getPOIsByAddressCall(String address, String country, String name, String type, String categoryCode, String sicCode, String maxCandidates, String searchRadius, String searchRadiusUnit, String travelTime, String travelTimeUnit, String travelDistance, String travelDistanceUnit, String travelMode, String sortBy, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+        // verify the required parameter 'address' is set
+        if (address == null) {
+            throw new ApiException("Missing the required parameter 'address' when calling getPOIsByAddress(Async)");
+        }
+        
+
+        // create path and map variables
+        String localVarPath = "/geoenrich/v1/poi/byaddress".replaceAll("\\{format\\}","json");
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (address != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "address", address));
+        if (country != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "country", country));
+        if (name != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "name", name));
+        if (type != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "type", type));
+        if (categoryCode != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "categoryCode", categoryCode));
+        if (sicCode != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "sicCode", sicCode));
+        if (maxCandidates != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "maxCandidates", maxCandidates));
+        if (searchRadius != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "searchRadius", searchRadius));
+        if (searchRadiusUnit != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "searchRadiusUnit", searchRadiusUnit));
+        if (travelTime != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "travelTime", travelTime));
+        if (travelTimeUnit != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "travelTimeUnit", travelTimeUnit));
+        if (travelDistance != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "travelDistance", travelDistance));
+        if (travelDistanceUnit != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "travelDistanceUnit", travelDistanceUnit));
+        if (travelMode != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "travelMode", travelMode));
+        if (sortBy != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "sortBy", sortBy));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json", "application/xml", "text/csv"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json", "application/xml"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oAuth2Password" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    /**
+     * Point of Interests By Address.
+     * Accepts address as an input to retrieve nearby point of interests.
+     * @param address Address (required)
+     * @param country Country (optional)
+     * @param name Matched against Name, BrandName and Trade Name. Partial terms are also matched with fuzziness (max edit distance is 1) (optional)
+     * @param type Matched against the content which defines the type of the poi.  (optional)
+     * @param categoryCode Specific Category/Categories Codes for the desired POIs. Accepts a mix of 4 digit (Top Category), 6 digit (Second-Level Category) and 11 digit (Low-Level Category) Category Codes. https://developer2.pitneybowes.com/docs/location-intelligence/v1/en/poicategory/LiApiPOICategoryCodes.xlsx  (optional)
+     * @param sicCode Specific SIC Codes/Codes for the desired POIs. Accepts a mix of 4 digit (Top Category) and 8 digit (Low-Level Category) SIC Codes. (optional)
+     * @param maxCandidates Maximum number of POIs that can be retrieved. (optional)
+     * @param searchRadius Radius range within which search is performed. (optional)
+     * @param searchRadiusUnit Radius unit such as Feet, Kilometers, Miles or Meters. (optional)
+     * @param travelTime Specifies the travel time within which method searches for results (POIs which can be reached within travel time)the search boundary in terms of time mentioned in &#39;travelTimeUnit&#39;. The results are retrieved from the polygon formed based on the travel time specified. This means search can be done in the mentioned time results be from the mentioned time. (optional)
+     * @param travelTimeUnit Specifies acceptable time units.Allowed values Minutes,Hours,Seconds and Milliseconds (optional)
+     * @param travelDistance Specifies the search boundary in terms of distance mentioned in &#39;travelDistanceUnit&#39;. The results are retrieved from the polygon formed based on the travel distance specified. (optional)
+     * @param travelDistanceUnit Specifies acceptable time units.Allowed values Feet,Kilometers,Miles and Meters (optional)
+     * @param travelMode Specifies the available mode of commute. This is required when u r trying to do search by travel distance or travel time. Allowed values driving and walking (optional)
+     * @param sortBy Specifies the order in which POIs are retrieved. (optional, default to distance)
+     * @return GeoEnrichResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public GeoEnrichResponse getPOIsByAddress(String address, String country, String name, String type, String categoryCode, String sicCode, String maxCandidates, String searchRadius, String searchRadiusUnit, String travelTime, String travelTimeUnit, String travelDistance, String travelDistanceUnit, String travelMode, String sortBy) throws ApiException {
+        ApiResponse<GeoEnrichResponse> resp = getPOIsByAddressWithHttpInfo(address, country, name, type, categoryCode, sicCode, maxCandidates, searchRadius, searchRadiusUnit, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, travelMode, sortBy);
+        return resp.getData();
+    }
+
+    /**
+     * Point of Interests By Address.
+     * Accepts address as an input to retrieve nearby point of interests.
+     * @param address Address (required)
+     * @param country Country (optional)
+     * @param name Matched against Name, BrandName and Trade Name. Partial terms are also matched with fuzziness (max edit distance is 1) (optional)
+     * @param type Matched against the content which defines the type of the poi.  (optional)
+     * @param categoryCode Specific Category/Categories Codes for the desired POIs. Accepts a mix of 4 digit (Top Category), 6 digit (Second-Level Category) and 11 digit (Low-Level Category) Category Codes. https://developer2.pitneybowes.com/docs/location-intelligence/v1/en/poicategory/LiApiPOICategoryCodes.xlsx  (optional)
+     * @param sicCode Specific SIC Codes/Codes for the desired POIs. Accepts a mix of 4 digit (Top Category) and 8 digit (Low-Level Category) SIC Codes. (optional)
+     * @param maxCandidates Maximum number of POIs that can be retrieved. (optional)
+     * @param searchRadius Radius range within which search is performed. (optional)
+     * @param searchRadiusUnit Radius unit such as Feet, Kilometers, Miles or Meters. (optional)
+     * @param travelTime Specifies the travel time within which method searches for results (POIs which can be reached within travel time)the search boundary in terms of time mentioned in &#39;travelTimeUnit&#39;. The results are retrieved from the polygon formed based on the travel time specified. This means search can be done in the mentioned time results be from the mentioned time. (optional)
+     * @param travelTimeUnit Specifies acceptable time units.Allowed values Minutes,Hours,Seconds and Milliseconds (optional)
+     * @param travelDistance Specifies the search boundary in terms of distance mentioned in &#39;travelDistanceUnit&#39;. The results are retrieved from the polygon formed based on the travel distance specified. (optional)
+     * @param travelDistanceUnit Specifies acceptable time units.Allowed values Feet,Kilometers,Miles and Meters (optional)
+     * @param travelMode Specifies the available mode of commute. This is required when u r trying to do search by travel distance or travel time. Allowed values driving and walking (optional)
+     * @param sortBy Specifies the order in which POIs are retrieved. (optional, default to distance)
+     * @return ApiResponse&lt;GeoEnrichResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<GeoEnrichResponse> getPOIsByAddressWithHttpInfo(String address, String country, String name, String type, String categoryCode, String sicCode, String maxCandidates, String searchRadius, String searchRadiusUnit, String travelTime, String travelTimeUnit, String travelDistance, String travelDistanceUnit, String travelMode, String sortBy) throws ApiException {
+        com.squareup.okhttp.Call call = getPOIsByAddressCall(address, country, name, type, categoryCode, sicCode, maxCandidates, searchRadius, searchRadiusUnit, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, travelMode, sortBy, null, null);
+        Type localVarReturnType = new TypeToken<GeoEnrichResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Point of Interests By Address. (asynchronously)
+     * Accepts address as an input to retrieve nearby point of interests.
+     * @param address Address (required)
+     * @param country Country (optional)
+     * @param name Matched against Name, BrandName and Trade Name. Partial terms are also matched with fuzziness (max edit distance is 1) (optional)
+     * @param type Matched against the content which defines the type of the poi.  (optional)
+     * @param categoryCode Specific Category/Categories Codes for the desired POIs. Accepts a mix of 4 digit (Top Category), 6 digit (Second-Level Category) and 11 digit (Low-Level Category) Category Codes. https://developer2.pitneybowes.com/docs/location-intelligence/v1/en/poicategory/LiApiPOICategoryCodes.xlsx  (optional)
+     * @param sicCode Specific SIC Codes/Codes for the desired POIs. Accepts a mix of 4 digit (Top Category) and 8 digit (Low-Level Category) SIC Codes. (optional)
+     * @param maxCandidates Maximum number of POIs that can be retrieved. (optional)
+     * @param searchRadius Radius range within which search is performed. (optional)
+     * @param searchRadiusUnit Radius unit such as Feet, Kilometers, Miles or Meters. (optional)
+     * @param travelTime Specifies the travel time within which method searches for results (POIs which can be reached within travel time)the search boundary in terms of time mentioned in &#39;travelTimeUnit&#39;. The results are retrieved from the polygon formed based on the travel time specified. This means search can be done in the mentioned time results be from the mentioned time. (optional)
+     * @param travelTimeUnit Specifies acceptable time units.Allowed values Minutes,Hours,Seconds and Milliseconds (optional)
+     * @param travelDistance Specifies the search boundary in terms of distance mentioned in &#39;travelDistanceUnit&#39;. The results are retrieved from the polygon formed based on the travel distance specified. (optional)
+     * @param travelDistanceUnit Specifies acceptable time units.Allowed values Feet,Kilometers,Miles and Meters (optional)
+     * @param travelMode Specifies the available mode of commute. This is required when u r trying to do search by travel distance or travel time. Allowed values driving and walking (optional)
+     * @param sortBy Specifies the order in which POIs are retrieved. (optional, default to distance)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getPOIsByAddressAsync(String address, String country, String name, String type, String categoryCode, String sicCode, String maxCandidates, String searchRadius, String searchRadiusUnit, String travelTime, String travelTimeUnit, String travelDistance, String travelDistanceUnit, String travelMode, String sortBy, final ApiCallback<GeoEnrichResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getPOIsByAddressCall(address, country, name, type, categoryCode, sicCode, maxCandidates, searchRadius, searchRadiusUnit, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, travelMode, sortBy, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<GeoEnrichResponse>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /* Build call for getPOIsByLocation */
+    private com.squareup.okhttp.Call getPOIsByLocationCall(String longitude, String latitude, String name, String type, String categoryCode, String sicCode, String maxCandidates, String searchRadius, String searchRadiusUnit, String travelTime, String travelTimeUnit, String travelDistance, String travelDistanceUnit, String travelMode, String sortBy, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
         Object localVarPostBody = null;
         
         // verify the required parameter 'longitude' is set
         if (longitude == null) {
-            throw new ApiException("Missing the required parameter 'longitude' when calling getEntityByLocation(Async)");
+            throw new ApiException("Missing the required parameter 'longitude' when calling getPOIsByLocation(Async)");
         }
         
         // verify the required parameter 'latitude' is set
         if (latitude == null) {
-            throw new ApiException("Missing the required parameter 'latitude' when calling getEntityByLocation(Async)");
+            throw new ApiException("Missing the required parameter 'latitude' when calling getPOIsByLocation(Async)");
         }
         
 
@@ -218,20 +371,20 @@ public class LIAPIGeoEnrichServiceApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "longitude", longitude));
         if (latitude != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "latitude", latitude));
-        if (brandName != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "brandName", brandName));
-        if (category != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "category", category));
+        if (name != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "name", name));
+        if (type != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "type", type));
+        if (categoryCode != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "categoryCode", categoryCode));
+        if (sicCode != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "sicCode", sicCode));
         if (maxCandidates != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "maxCandidates", maxCandidates));
         if (searchRadius != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "searchRadius", searchRadius));
         if (searchRadiusUnit != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "searchRadiusUnit", searchRadiusUnit));
-        if (searchDataset != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "searchDataset", searchDataset));
-        if (searchPriority != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "searchPriority", searchPriority));
         if (travelTime != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "travelTime", travelTime));
         if (travelTimeUnit != null)
@@ -240,15 +393,17 @@ public class LIAPIGeoEnrichServiceApi {
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "travelDistance", travelDistance));
         if (travelDistanceUnit != null)
         localVarQueryParams.addAll(apiClient.parameterToPairs("", "travelDistanceUnit", travelDistanceUnit));
-        if (mode != null)
-        localVarQueryParams.addAll(apiClient.parameterToPairs("", "mode", mode));
+        if (travelMode != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "travelMode", travelMode));
+        if (sortBy != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "sortBy", sortBy));
 
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
 
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
         final String[] localVarAccepts = {
-            "application/xml", "application/json"
+            "application/json", "application/xml", "text/csv"
         };
         final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
         if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
@@ -276,78 +431,81 @@ public class LIAPIGeoEnrichServiceApi {
     }
 
     /**
-     * Points Of Interest By Location.
-     * Identifies and retrieves Points of Interest that exist around a specific location (ordered by distance from the location).
+     * Point of Interests By Location.
+     * Accepts longitude and latitude as an input to retrieve nearby point of interests.
      * @param longitude Longitude of the location. (required)
      * @param latitude Latitude of the location. (required)
-     * @param brandName Specifies the name of the brand to be searched. Also performs search on partially specified brand names. (optional)
-     * @param category Specific Category/Categories for which the POI search is performed. (Categories 10020102,10020103 are for Chinese and Italian Restaurants .https://developer2.pitneybowes.com/docs/location-intelligence/v1/en/poicategory/EightDigitPOICategoryCodes.xlsx  (optional)
+     * @param name Matched against Name, BrandName and Trade Name. Partial terms are also matched with fuzziness (max edit distance is 1) (optional)
+     * @param type Matched against the content which defines the type of the poi.  (optional)
+     * @param categoryCode Specific Category/Categories Codes for the desired POIs. Accepts a mix of 4 digit (Top Category), 6 digit (Second-Level Category) and 11 digit (Low-Level Category) Category Codes. https://locate.pitneybowes.com/docs/location-intelligence/v1/en/poicategory/LiApiPOICategoryCodes.xlsx  (optional)
+     * @param sicCode Specific SIC Codes/Codes for the desired POIs. Accepts a mix of 4 digit (Top Category) and 8 digit (Low-Level Category) SIC Codes. (optional)
      * @param maxCandidates Maximum number of POIs that can be retrieved. (optional)
      * @param searchRadius Radius range within which search is performed. (optional)
      * @param searchRadiusUnit Radius unit such as Feet, Kilometers, Miles or Meters. (optional)
-     * @param searchDataset The datasets upon which the POI search can be performed. (optional)
-     * @param searchPriority Search order of POI datasets mentioned in searchDataset. (optional)
      * @param travelTime Specifies the travel time within which method searches for results (POIs which can be reached within travel time)the search boundary in terms of time mentioned in &#39;travelTimeUnit&#39;. The results are retrieved from the polygon formed based on the travel time specified. This means search can be done in the mentioned time results be from the mentioned time. (optional)
      * @param travelTimeUnit Specifies acceptable time units.Allowed values Minutes,Hours,Seconds and Milliseconds (optional)
      * @param travelDistance Specifies the search boundary in terms of distance mentioned in &#39;travelDistanceUnit&#39;. The results are retrieved from the polygon formed based on the travel distance specified. (optional)
      * @param travelDistanceUnit Specifies acceptable time units.Allowed values Feet,Kilometers,Miles and Meters (optional)
-     * @param mode Specifies the available mode of commute. This is required when u r trying to do search by travel distance or travel time.Allowed values driving and walking (optional)
-     * @return PoiByLocation
+     * @param travelMode Specifies the available mode of commute. This is required when u r trying to do search by travel distance or travel time. Allowed values driving and walking (optional)
+     * @param sortBy Specifies the order in which POIs are retrieved. (optional, default to distance)
+     * @return GeoEnrichResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public PoiByLocation getEntityByLocation(String longitude, String latitude, String brandName, String category, String maxCandidates, String searchRadius, String searchRadiusUnit, String searchDataset, String searchPriority, String travelTime, String travelTimeUnit, String travelDistance, String travelDistanceUnit, String mode) throws ApiException {
-        ApiResponse<PoiByLocation> resp = getEntityByLocationWithHttpInfo(longitude, latitude, brandName, category, maxCandidates, searchRadius, searchRadiusUnit, searchDataset, searchPriority, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, mode);
+    public GeoEnrichResponse getPOIsByLocation(String longitude, String latitude, String name, String type, String categoryCode, String sicCode, String maxCandidates, String searchRadius, String searchRadiusUnit, String travelTime, String travelTimeUnit, String travelDistance, String travelDistanceUnit, String travelMode, String sortBy) throws ApiException {
+        ApiResponse<GeoEnrichResponse> resp = getPOIsByLocationWithHttpInfo(longitude, latitude, name, type, categoryCode, sicCode, maxCandidates, searchRadius, searchRadiusUnit, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, travelMode, sortBy);
         return resp.getData();
     }
 
     /**
-     * Points Of Interest By Location.
-     * Identifies and retrieves Points of Interest that exist around a specific location (ordered by distance from the location).
+     * Point of Interests By Location.
+     * Accepts longitude and latitude as an input to retrieve nearby point of interests.
      * @param longitude Longitude of the location. (required)
      * @param latitude Latitude of the location. (required)
-     * @param brandName Specifies the name of the brand to be searched. Also performs search on partially specified brand names. (optional)
-     * @param category Specific Category/Categories for which the POI search is performed. (Categories 10020102,10020103 are for Chinese and Italian Restaurants .https://developer2.pitneybowes.com/docs/location-intelligence/v1/en/poicategory/EightDigitPOICategoryCodes.xlsx  (optional)
+     * @param name Matched against Name, BrandName and Trade Name. Partial terms are also matched with fuzziness (max edit distance is 1) (optional)
+     * @param type Matched against the content which defines the type of the poi.  (optional)
+     * @param categoryCode Specific Category/Categories Codes for the desired POIs. Accepts a mix of 4 digit (Top Category), 6 digit (Second-Level Category) and 11 digit (Low-Level Category) Category Codes. https://locate.pitneybowes.com/docs/location-intelligence/v1/en/poicategory/LiApiPOICategoryCodes.xlsx  (optional)
+     * @param sicCode Specific SIC Codes/Codes for the desired POIs. Accepts a mix of 4 digit (Top Category) and 8 digit (Low-Level Category) SIC Codes. (optional)
      * @param maxCandidates Maximum number of POIs that can be retrieved. (optional)
      * @param searchRadius Radius range within which search is performed. (optional)
      * @param searchRadiusUnit Radius unit such as Feet, Kilometers, Miles or Meters. (optional)
-     * @param searchDataset The datasets upon which the POI search can be performed. (optional)
-     * @param searchPriority Search order of POI datasets mentioned in searchDataset. (optional)
      * @param travelTime Specifies the travel time within which method searches for results (POIs which can be reached within travel time)the search boundary in terms of time mentioned in &#39;travelTimeUnit&#39;. The results are retrieved from the polygon formed based on the travel time specified. This means search can be done in the mentioned time results be from the mentioned time. (optional)
      * @param travelTimeUnit Specifies acceptable time units.Allowed values Minutes,Hours,Seconds and Milliseconds (optional)
      * @param travelDistance Specifies the search boundary in terms of distance mentioned in &#39;travelDistanceUnit&#39;. The results are retrieved from the polygon formed based on the travel distance specified. (optional)
      * @param travelDistanceUnit Specifies acceptable time units.Allowed values Feet,Kilometers,Miles and Meters (optional)
-     * @param mode Specifies the available mode of commute. This is required when u r trying to do search by travel distance or travel time.Allowed values driving and walking (optional)
-     * @return ApiResponse&lt;PoiByLocation&gt;
+     * @param travelMode Specifies the available mode of commute. This is required when u r trying to do search by travel distance or travel time. Allowed values driving and walking (optional)
+     * @param sortBy Specifies the order in which POIs are retrieved. (optional, default to distance)
+     * @return ApiResponse&lt;GeoEnrichResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      */
-    public ApiResponse<PoiByLocation> getEntityByLocationWithHttpInfo(String longitude, String latitude, String brandName, String category, String maxCandidates, String searchRadius, String searchRadiusUnit, String searchDataset, String searchPriority, String travelTime, String travelTimeUnit, String travelDistance, String travelDistanceUnit, String mode) throws ApiException {
-        com.squareup.okhttp.Call call = getEntityByLocationCall(longitude, latitude, brandName, category, maxCandidates, searchRadius, searchRadiusUnit, searchDataset, searchPriority, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, mode, null, null);
-        Type localVarReturnType = new TypeToken<PoiByLocation>(){}.getType();
+    public ApiResponse<GeoEnrichResponse> getPOIsByLocationWithHttpInfo(String longitude, String latitude, String name, String type, String categoryCode, String sicCode, String maxCandidates, String searchRadius, String searchRadiusUnit, String travelTime, String travelTimeUnit, String travelDistance, String travelDistanceUnit, String travelMode, String sortBy) throws ApiException {
+        com.squareup.okhttp.Call call = getPOIsByLocationCall(longitude, latitude, name, type, categoryCode, sicCode, maxCandidates, searchRadius, searchRadiusUnit, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, travelMode, sortBy, null, null);
+        Type localVarReturnType = new TypeToken<GeoEnrichResponse>(){}.getType();
         return apiClient.execute(call, localVarReturnType);
     }
 
     /**
-     * Points Of Interest By Location. (asynchronously)
-     * Identifies and retrieves Points of Interest that exist around a specific location (ordered by distance from the location).
+     * Point of Interests By Location. (asynchronously)
+     * Accepts longitude and latitude as an input to retrieve nearby point of interests.
      * @param longitude Longitude of the location. (required)
      * @param latitude Latitude of the location. (required)
-     * @param brandName Specifies the name of the brand to be searched. Also performs search on partially specified brand names. (optional)
-     * @param category Specific Category/Categories for which the POI search is performed. (Categories 10020102,10020103 are for Chinese and Italian Restaurants .https://developer2.pitneybowes.com/docs/location-intelligence/v1/en/poicategory/EightDigitPOICategoryCodes.xlsx  (optional)
+     * @param name Matched against Name, BrandName and Trade Name. Partial terms are also matched with fuzziness (max edit distance is 1) (optional)
+     * @param type Matched against the content which defines the type of the poi.  (optional)
+     * @param categoryCode Specific Category/Categories Codes for the desired POIs. Accepts a mix of 4 digit (Top Category), 6 digit (Second-Level Category) and 11 digit (Low-Level Category) Category Codes. https://locate.pitneybowes.com/docs/location-intelligence/v1/en/poicategory/LiApiPOICategoryCodes.xlsx  (optional)
+     * @param sicCode Specific SIC Codes/Codes for the desired POIs. Accepts a mix of 4 digit (Top Category) and 8 digit (Low-Level Category) SIC Codes. (optional)
      * @param maxCandidates Maximum number of POIs that can be retrieved. (optional)
      * @param searchRadius Radius range within which search is performed. (optional)
      * @param searchRadiusUnit Radius unit such as Feet, Kilometers, Miles or Meters. (optional)
-     * @param searchDataset The datasets upon which the POI search can be performed. (optional)
-     * @param searchPriority Search order of POI datasets mentioned in searchDataset. (optional)
      * @param travelTime Specifies the travel time within which method searches for results (POIs which can be reached within travel time)the search boundary in terms of time mentioned in &#39;travelTimeUnit&#39;. The results are retrieved from the polygon formed based on the travel time specified. This means search can be done in the mentioned time results be from the mentioned time. (optional)
      * @param travelTimeUnit Specifies acceptable time units.Allowed values Minutes,Hours,Seconds and Milliseconds (optional)
      * @param travelDistance Specifies the search boundary in terms of distance mentioned in &#39;travelDistanceUnit&#39;. The results are retrieved from the polygon formed based on the travel distance specified. (optional)
      * @param travelDistanceUnit Specifies acceptable time units.Allowed values Feet,Kilometers,Miles and Meters (optional)
-     * @param mode Specifies the available mode of commute. This is required when u r trying to do search by travel distance or travel time.Allowed values driving and walking (optional)
+     * @param travelMode Specifies the available mode of commute. This is required when u r trying to do search by travel distance or travel time. Allowed values driving and walking (optional)
+     * @param sortBy Specifies the order in which POIs are retrieved. (optional, default to distance)
      * @param callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      */
-    public com.squareup.okhttp.Call getEntityByLocationAsync(String longitude, String latitude, String brandName, String category, String maxCandidates, String searchRadius, String searchRadiusUnit, String searchDataset, String searchPriority, String travelTime, String travelTimeUnit, String travelDistance, String travelDistanceUnit, String mode, final ApiCallback<PoiByLocation> callback) throws ApiException {
+    public com.squareup.okhttp.Call getPOIsByLocationAsync(String longitude, String latitude, String name, String type, String categoryCode, String sicCode, String maxCandidates, String searchRadius, String searchRadiusUnit, String travelTime, String travelTimeUnit, String travelDistance, String travelDistanceUnit, String travelMode, String sortBy, final ApiCallback<GeoEnrichResponse> callback) throws ApiException {
 
         ProgressResponseBody.ProgressListener progressListener = null;
         ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
@@ -368,8 +526,8 @@ public class LIAPIGeoEnrichServiceApi {
             };
         }
 
-        com.squareup.okhttp.Call call = getEntityByLocationCall(longitude, latitude, brandName, category, maxCandidates, searchRadius, searchRadiusUnit, searchDataset, searchPriority, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, mode, progressListener, progressRequestListener);
-        Type localVarReturnType = new TypeToken<PoiByLocation>(){}.getType();
+        com.squareup.okhttp.Call call = getPOIsByLocationCall(longitude, latitude, name, type, categoryCode, sicCode, maxCandidates, searchRadius, searchRadiusUnit, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, travelMode, sortBy, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<GeoEnrichResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
@@ -493,6 +651,109 @@ public class LIAPIGeoEnrichServiceApi {
 
         com.squareup.okhttp.Call call = getPlaceByLocationCall(longitude, latitude, levelHint, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<PlaceByLocations>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /* Build call for getSICMetadata */
+    private com.squareup.okhttp.Call getSICMetadataCall(String sicCode, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = null;
+        
+
+        // create path and map variables
+        String localVarPath = "/geoenrich/v1/metadata/sic".replaceAll("\\{format\\}","json");
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        if (sicCode != null)
+        localVarQueryParams.addAll(apiClient.parameterToPairs("", "sicCode", sicCode));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json", "application/xml", "text/csv"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            "application/json", "application/xml"
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oAuth2Password" };
+        return apiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    /**
+     * Returns SIC Codes with their Industry Titles and Category Codes mapping
+     * Accepts first few partial digits or full SIC codes to filter the response
+     * @param sicCode Specify starting digits or full sic code to filter the response (optional)
+     * @return GeoEnrichMetadataResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public GeoEnrichMetadataResponse getSICMetadata(String sicCode) throws ApiException {
+        ApiResponse<GeoEnrichMetadataResponse> resp = getSICMetadataWithHttpInfo(sicCode);
+        return resp.getData();
+    }
+
+    /**
+     * Returns SIC Codes with their Industry Titles and Category Codes mapping
+     * Accepts first few partial digits or full SIC codes to filter the response
+     * @param sicCode Specify starting digits or full sic code to filter the response (optional)
+     * @return ApiResponse&lt;GeoEnrichMetadataResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<GeoEnrichMetadataResponse> getSICMetadataWithHttpInfo(String sicCode) throws ApiException {
+        com.squareup.okhttp.Call call = getSICMetadataCall(sicCode, null, null);
+        Type localVarReturnType = new TypeToken<GeoEnrichMetadataResponse>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Returns SIC Codes with their Industry Titles and Category Codes mapping (asynchronously)
+     * Accepts first few partial digits or full SIC codes to filter the response
+     * @param sicCode Specify starting digits or full sic code to filter the response (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call getSICMetadataAsync(String sicCode, final ApiCallback<GeoEnrichMetadataResponse> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = getSICMetadataCall(sicCode, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<GeoEnrichMetadataResponse>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
     }
