@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**getIdentityByAddress**](LIAPIGeoIdentityServiceApi.md#getIdentityByAddress) | **GET** /geoidentity/v1/identity/byaddress | Gets GeoIdentityResponse
 [**getIdentityByEmail**](LIAPIGeoIdentityServiceApi.md#getIdentityByEmail) | **GET** /geoidentity/v1/identity/byemail | Gets Identity
 [**getIdentityByPBKey**](LIAPIGeoIdentityServiceApi.md#getIdentityByPBKey) | **GET** /geoidentity/v1/identity/bypbkey | Gets GeoIdentityResponse
+[**getIdentityByTwitter**](LIAPIGeoIdentityServiceApi.md#getIdentityByTwitter) | **GET** /geoidentity/v1/identity/bytwitter | Gets Identity
 
 
 <a name="getIdentityByAddress"></a>
@@ -192,4 +193,60 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/xml
  - **Accept**: application/xml, application/json
+
+<a name="getIdentityByTwitter"></a>
+# **getIdentityByTwitter**
+> Identity getIdentityByTwitter(twitter, confidence)
+
+Gets Identity
+
+Gets Identity
+
+### Example
+```java
+// Import classes:
+//import pb.ApiClient;
+//import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
+//import pb.locationintelligence.LIAPIGeoIdentityServiceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
+
+LIAPIGeoIdentityServiceApi apiInstance = new LIAPIGeoIdentityServiceApi();
+String twitter = "twitter_example"; // String | Twitter handle of the identity.
+String confidence = "confidence_example"; // String | To adjust quality threshold of data returned. Default is HIGH
+try {
+    Identity result = apiInstance.getIdentityByTwitter(twitter, confidence);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling LIAPIGeoIdentityServiceApi#getIdentityByTwitter");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **twitter** | **String**| Twitter handle of the identity. |
+ **confidence** | **String**| To adjust quality threshold of data returned. Default is HIGH | [optional] [enum: LOW, MED, HIGH, MAX]
+
+### Return type
+
+[**Identity**](Identity.md)
+
+### Authorization
+
+[oAuth2Password](../README.md#oAuth2Password)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
 

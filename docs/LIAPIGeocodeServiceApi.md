@@ -10,6 +10,8 @@ Method | HTTP request | Description
 [**getDictionaries**](LIAPIGeocodeServiceApi.md#getDictionaries) | **GET** /geocode-service/v1/transient/{datapackBundle}/dictionaries | Gets installed Dictionaries
 [**getPBKey**](LIAPIGeocodeServiceApi.md#getPBKey) | **GET** /geocode-service/v1/key/byaddress | Gets PBKey
 [**getPBKeys**](LIAPIGeocodeServiceApi.md#getPBKeys) | **POST** /geocode-service/v1/key/byaddress | Gets PBKeys
+[**keyLookup**](LIAPIGeocodeServiceApi.md#keyLookup) | **GET** /geocode-service/v1/keylookup | Get Address
+[**keyLookupBatch**](LIAPIGeocodeServiceApi.md#keyLookupBatch) | **POST** /geocode-service/v1/keylookup | Get List of Address
 [**reverseGeocodBatch**](LIAPIGeocodeServiceApi.md#reverseGeocodBatch) | **POST** /geocode-service/v1/transient/{datapackBundle}/reverseGeocode | reverse Geocode
 [**reverseGeocode**](LIAPIGeocodeServiceApi.md#reverseGeocode) | **GET** /geocode-service/v1/transient/{datapackBundle}/reverseGeocode | reverse Geocode
 
@@ -379,6 +381,118 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: application/json, application/xml
  - **Accept**: application/xml, application/json
+
+<a name="keyLookup"></a>
+# **keyLookup**
+> GeocodeServiceResponse keyLookup(key, type, country)
+
+Get Address
+
+Gets Address for an input free form PBKey text
+
+### Example
+```java
+// Import classes:
+//import pb.ApiClient;
+//import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
+//import pb.locationintelligence.LIAPIGeocodeServiceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
+
+LIAPIGeocodeServiceApi apiInstance = new LIAPIGeocodeServiceApi();
+String key = "key_example"; // String | free form text
+String type = "type_example"; // String | 
+String country = "country_example"; // String | 
+try {
+    GeocodeServiceResponse result = apiInstance.keyLookup(key, type, country);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling LIAPIGeocodeServiceApi#keyLookup");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **key** | **String**| free form text |
+ **type** | **String**|  | [optional]
+ **country** | **String**|  | [optional]
+
+### Return type
+
+[**GeocodeServiceResponse**](GeocodeServiceResponse.md)
+
+### Authorization
+
+[oAuth2Password](../README.md#oAuth2Password)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+<a name="keyLookupBatch"></a>
+# **keyLookupBatch**
+> GeocodeServiceResponseList keyLookupBatch(body)
+
+Get List of Address
+
+Gets Address for an input free form PBKey text
+
+### Example
+```java
+// Import classes:
+//import pb.ApiClient;
+//import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
+//import pb.locationintelligence.LIAPIGeocodeServiceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
+
+LIAPIGeocodeServiceApi apiInstance = new LIAPIGeocodeServiceApi();
+KeyLookupRequest body = new KeyLookupRequest(); // KeyLookupRequest | 
+try {
+    GeocodeServiceResponseList result = apiInstance.keyLookupBatch(body);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling LIAPIGeocodeServiceApi#keyLookupBatch");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**KeyLookupRequest**](KeyLookupRequest.md)|  | [optional]
+
+### Return type
+
+[**GeocodeServiceResponseList**](GeocodeServiceResponseList.md)
+
+### Authorization
+
+[oAuth2Password](../README.md#oAuth2Password)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
 
 <a name="reverseGeocodBatch"></a>
 # **reverseGeocodBatch**
