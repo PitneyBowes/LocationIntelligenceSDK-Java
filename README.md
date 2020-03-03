@@ -76,7 +76,7 @@ Add this dependency to your project's POM:
 <dependency>
     <groupId>io.swagger</groupId>
     <artifactId>LocationIntelligenceJavaSDK</artifactId>
-    <version>8.0.0</version>
+    <version>8.5.0</version>
     <scope>compile</scope>
 </dependency>
 ```
@@ -86,7 +86,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "io.swagger:LocationIntelligenceJavaSDK:8.0.0"
+compile "io.swagger:LocationIntelligenceJavaSDK:8.5.0"
 ```
 
 ### Others
@@ -97,7 +97,7 @@ At first generate the JAR by executing:
 
 Then manually install the following JARs:
 
-* target/LocationIntelligenceJavaSDK-8.0.0.jar
+* target/LocationIntelligenceJavaSDK-8.5.0.jar
 * target/lib/*.jar
 
 ## Getting Started
