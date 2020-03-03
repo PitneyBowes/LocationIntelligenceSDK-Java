@@ -215,6 +215,7 @@ Class | Method | HTTP request | Description
 *LIAPIGeoSearchServiceApi* | [**geoSearch**](docs/LIAPIGeoSearchServiceApi.md#geoSearch) | **GET** /geosearch/v2/locations | Gets LocationList
 *LIAPIGeoStreetsServiceApi* | [**getIntersectionByAddress**](docs/LIAPIGeoStreetsServiceApi.md#getIntersectionByAddress) | **GET** /geostreets/v1/intersection/byaddress | Gets NearestIntersection of major roads
 *LIAPIGeoStreetsServiceApi* | [**getIntersectionByLocation**](docs/LIAPIGeoStreetsServiceApi.md#getIntersectionByLocation) | **GET** /geostreets/v1/intersection/bylocation | Gets NearestIntersection of major roads
+*LIAPIGeoStreetsServiceApi* | [**getNearestSpeedLimit**](docs/LIAPIGeoStreetsServiceApi.md#getNearestSpeedLimit) | **GET** /geostreets/v1/speedlimit | Gets NearestSpeedLimit
 *LIAPIGeoTaxServiceApi* | [**getBatchTaxByAddress**](docs/LIAPIGeoTaxServiceApi.md#getBatchTaxByAddress) | **POST** /geotax/v1/tax/{taxRateTypeId}/byaddress | Post Tax By Address
 *LIAPIGeoTaxServiceApi* | [**getBatchTaxByLocation**](docs/LIAPIGeoTaxServiceApi.md#getBatchTaxByLocation) | **POST** /geotax/v1/tax/{taxRateTypeId}/bylocation | Post Tax By Location
 *LIAPIGeoTaxServiceApi* | [**getBatchTaxRateByAddress**](docs/LIAPIGeoTaxServiceApi.md#getBatchTaxRateByAddress) | **POST** /geotax/v1/taxrate/{taxRateTypeId}/byaddress | Post Taxrate By Address
@@ -232,8 +233,11 @@ Class | Method | HTTP request | Description
 *LIAPIGeoZoneServiceApi* | [**getBasicBoundaryByAddress**](docs/LIAPIGeoZoneServiceApi.md#getBasicBoundaryByAddress) | **GET** /geozone/v1/basicboundary/byaddress | Gets Basic Boundary by Address
 *LIAPIGeoZoneServiceApi* | [**getBasicBoundaryByLocation**](docs/LIAPIGeoZoneServiceApi.md#getBasicBoundaryByLocation) | **GET** /geozone/v1/basicboundary/bylocation | Gets Basic Boundary by Location
 *LIAPIGeoZoneServiceApi* | [**getPOIBoundaryByAddress**](docs/LIAPIGeoZoneServiceApi.md#getPOIBoundaryByAddress) | **GET** /geozone/v1/poiboundary/byaddress | Get Point of Interests Boundary by Address
+*LIAPIGeoZoneServiceApi* | [**getPOIBoundaryByAddressBatch**](docs/LIAPIGeoZoneServiceApi.md#getPOIBoundaryByAddressBatch) | **POST** /geozone/v1/poiboundary/byaddress | Batch method for getting Point of Interests Boundary by Address
 *LIAPIGeoZoneServiceApi* | [**getPOIBoundaryByLocation**](docs/LIAPIGeoZoneServiceApi.md#getPOIBoundaryByLocation) | **GET** /geozone/v1/poiboundary/bylocation | Get Point of Interests Boundary by Location
+*LIAPIGeoZoneServiceApi* | [**getPOIBoundaryByLocationBatch**](docs/LIAPIGeoZoneServiceApi.md#getPOIBoundaryByLocationBatch) | **POST** /geozone/v1/poiboundary/bylocation | Batch method for getting Point of Interests Boundary by Location
 *LIAPIGeoZoneServiceApi* | [**getPOIBoundaryByPBKey**](docs/LIAPIGeoZoneServiceApi.md#getPOIBoundaryByPBKey) | **GET** /geozone/v1/poiboundary/bypbkey | Gets Point of Interests Boundary by PBKey
+*LIAPIGeoZoneServiceApi* | [**getPOIBoundaryByPBKeyBatch**](docs/LIAPIGeoZoneServiceApi.md#getPOIBoundaryByPBKeyBatch) | **POST** /geozone/v1/poiboundary/bypbkey | Batch method for getting Point of Interests Boundary by PBKey
 *LIAPIGeoZoneServiceApi* | [**getTravelBoundaryByDistance**](docs/LIAPIGeoZoneServiceApi.md#getTravelBoundaryByDistance) | **GET** /geozone/v1/travelboundary/bydistance | Gets travel Boundary by Distance
 *LIAPIGeoZoneServiceApi* | [**getTravelBoundaryByTime**](docs/LIAPIGeoZoneServiceApi.md#getTravelBoundaryByTime) | **GET** /geozone/v1/travelboundary/bytime | Gets travel Boundary by Time
 *LIAPIGeocodeServiceApi* | [**geocode**](docs/LIAPIGeocodeServiceApi.md#geocode) | **GET** /geocode-service/v1/transient/{datapackBundle}/geocode | Gets Geocode
@@ -470,6 +474,12 @@ Class | Method | HTTP request | Description
  - [PBKeyAddressRequest](docs/PBKeyAddressRequest.md)
  - [PBKeyResponse](docs/PBKeyResponse.md)
  - [PBKeyResponseList](docs/PBKeyResponseList.md)
+ - [POIBoundaryAddressRequest](docs/POIBoundaryAddressRequest.md)
+ - [POIBoundaryLocationRequest](docs/POIBoundaryLocationRequest.md)
+ - [POIBoundaryLocations](docs/POIBoundaryLocations.md)
+ - [POIBoundaryPBKey](docs/POIBoundaryPBKey.md)
+ - [POIBoundaryPBKeyRequest](docs/POIBoundaryPBKeyRequest.md)
+ - [POIBoundaryResponse](docs/POIBoundaryResponse.md)
  - [POIByGeometryRequest](docs/POIByGeometryRequest.md)
  - [POIPlaces](docs/POIPlaces.md)
  - [PSAPResponse](docs/PSAPResponse.md)
@@ -484,6 +494,7 @@ Class | Method | HTTP request | Description
  - [PlaceLocationName](docs/PlaceLocationName.md)
  - [Poi](docs/Poi.md)
  - [PoiBoundary](docs/PoiBoundary.md)
+ - [PoiBoundaryPreferences](docs/PoiBoundaryPreferences.md)
  - [PoiClassification](docs/PoiClassification.md)
  - [PoiContactDetails](docs/PoiContactDetails.md)
  - [PoiCount](docs/PoiCount.md)
@@ -533,6 +544,8 @@ Class | Method | HTTP request | Description
  - [SpecialPurposeDistrict](docs/SpecialPurposeDistrict.md)
  - [SpecialPurposeDistrictTax](docs/SpecialPurposeDistrictTax.md)
  - [SpecialPurposeDistrictTaxRate](docs/SpecialPurposeDistrictTaxRate.md)
+ - [SpeedLimit](docs/SpeedLimit.md)
+ - [SpeedRoad](docs/SpeedRoad.md)
  - [Start](docs/Start.md)
  - [StartEndPoint](docs/StartEndPoint.md)
  - [Status](docs/Status.md)

@@ -4,7 +4,7 @@
   <groupId>io.swagger</groupId>
   <artifactId>LocationIntelligenceJavaSDK</artifactId>
   <name>LocationIntelligenceJavaSDK</name>
-  <version>8.0.0</version>
+  <version>8.5.0</version>
   <prerequisites>
     <maven>2.2.0</maven>
   </prerequisites>
@@ -98,7 +98,7 @@
               <goal>shade</goal>
             </goals>
             <configuration>
-              <finalName>LocationIntelligenceJavaSDK-8.0.0</finalName>
+              <finalName>LocationIntelligenceJavaSDK-8.5.0</finalName>
             </configuration>
           </execution>
         </executions>
