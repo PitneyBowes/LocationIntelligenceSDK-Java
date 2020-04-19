@@ -6,6 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **ahjType** | **String** |  |  [optional]
 **ahjId** | **String** |  |  [optional]
+**type** | **String** |  |  [optional]
+**fccId** | **String** |  |  [optional]
 **agency** | **String** |  |  [optional]
 **phone** | **String** |  |  [optional]
 **comments** | **String** |  |  [optional]

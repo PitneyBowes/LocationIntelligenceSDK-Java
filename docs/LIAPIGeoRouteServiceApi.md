@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="getRouteByAddress"></a>
 # **getRouteByAddress**
-> GeoRouteResponse getRouteByAddress(startAddress, endAddress, db, country, intermediateAddresses, oip, destinationSrs, optimizeBy, returnDistance, distanceUnit, returnTime, timeUnit, language, directionsStyle, segmentGeometryStyle, primaryNameOnly, majorRoads, historicTrafficTimeBucket, returnDirectionGeometry)
+> GeoRouteResponse getRouteByAddress(startAddress, endAddress, db, country, intermediateAddresses, oip, destinationSrs, optimizeBy, returnDistance, distanceUnit, returnTime, timeUnit, language, directionsStyle, segmentGeometryStyle, primaryNameOnly, majorRoads, historicTrafficTimeBucket, returnDirectionGeometry, useCvr, looseningBarrierRestrictions, vehicleType, weight, weightUnit, height, heightUnit, length, lengthUnit, width, widthUnit)
 
 Gets Route by Address
 
@@ -54,8 +54,19 @@ String primaryNameOnly = "false"; // String | If true then only the primary stre
 String majorRoads = "false"; // String | Whether to include all roads in route calculation or just major roads.
 String historicTrafficTimeBucket = "None"; // String | Specifies whether routing calculation uses the historic traffic speeds.
 String returnDirectionGeometry = "false"; // String | Whether to include geometry associated with each route instruction in response.
+String useCvr = "N"; // String | This parameter will enable/disable CVR (Commercial Vehicle Restrictions) capability in our APIs
+String looseningBarrierRestrictions = "Y"; // String | Specifies that barriers will be removed when determining the route
+String vehicleType = "ALL"; // String | vehicle type
+String weight = "weight_example"; // String | Specifies the maximum weight of a vehicle. Any vehicles over this value will be restricted when determining the route.
+String weightUnit = "kg"; // String | The unit of weight eg. kg(kilogram), lb(pound), mt(metric ton), t(ton)
+String height = "height_example"; // String | Specifies the maximum height of a vehicle. Any vehicles over this value will be restricted when determining the route.
+String heightUnit = "ft"; // String | The unit of height e.g m(meter), km(kilometer), yd(yard), ft(foot), mi(mile)
+String length = "length_example"; // String | Specifies the maximum length of a vehicle. Any vehicles over this value will be restricted when determining the route.
+String lengthUnit = "ft"; // String | The unit of length eg. m(meter), km(kilometer), yd(yard), ft(foot), mi(mile)
+String width = "width_example"; // String | Specifies the maximum width of a vehicle. Any vehicles over this value will be restricted when determining the route.
+String widthUnit = "ft"; // String | The unit of width eg. m(meter), km(kilometer), yd(yard), ft(foot), mi(mile)
 try {
-    GeoRouteResponse result = apiInstance.getRouteByAddress(startAddress, endAddress, db, country, intermediateAddresses, oip, destinationSrs, optimizeBy, returnDistance, distanceUnit, returnTime, timeUnit, language, directionsStyle, segmentGeometryStyle, primaryNameOnly, majorRoads, historicTrafficTimeBucket, returnDirectionGeometry);
+    GeoRouteResponse result = apiInstance.getRouteByAddress(startAddress, endAddress, db, country, intermediateAddresses, oip, destinationSrs, optimizeBy, returnDistance, distanceUnit, returnTime, timeUnit, language, directionsStyle, segmentGeometryStyle, primaryNameOnly, majorRoads, historicTrafficTimeBucket, returnDirectionGeometry, useCvr, looseningBarrierRestrictions, vehicleType, weight, weightUnit, height, heightUnit, length, lengthUnit, width, widthUnit);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoRouteServiceApi#getRouteByAddress");
@@ -86,6 +97,17 @@ Name | Type | Description  | Notes
  **majorRoads** | **String**| Whether to include all roads in route calculation or just major roads. | [optional] [default to false] [enum: true, false]
  **historicTrafficTimeBucket** | **String**| Specifies whether routing calculation uses the historic traffic speeds. | [optional] [default to None] [enum: None, AMPeak, PMPeak, OffPeak, Night]
  **returnDirectionGeometry** | **String**| Whether to include geometry associated with each route instruction in response. | [optional] [default to false] [enum: true, false]
+ **useCvr** | **String**| This parameter will enable/disable CVR (Commercial Vehicle Restrictions) capability in our APIs | [optional] [default to N] [enum: Y, N]
+ **looseningBarrierRestrictions** | **String**| Specifies that barriers will be removed when determining the route | [optional] [default to Y] [enum: Y, N]
+ **vehicleType** | **String**| vehicle type | [optional] [default to ALL] [enum: STRAIGHT, SEMI_TRAILOR, STANDARD_DOUBLE, INTERMEDIATE_DOUBLE, LONG_DOUBLE, TRIPLE, OTHER_LONG_COMBINATION_VEHICLE]
+ **weight** | **String**| Specifies the maximum weight of a vehicle. Any vehicles over this value will be restricted when determining the route. | [optional] [enum: positive integer value]
+ **weightUnit** | **String**| The unit of weight eg. kg(kilogram), lb(pound), mt(metric ton), t(ton) | [optional] [default to kg] [enum: kg, lb, mt, t]
+ **height** | **String**| Specifies the maximum height of a vehicle. Any vehicles over this value will be restricted when determining the route. | [optional] [enum: positive integer value]
+ **heightUnit** | **String**| The unit of height e.g m(meter), km(kilometer), yd(yard), ft(foot), mi(mile) | [optional] [default to ft] [enum: m, km, yd, ft, mi]
+ **length** | **String**| Specifies the maximum length of a vehicle. Any vehicles over this value will be restricted when determining the route. | [optional] [enum: positive integer value]
+ **lengthUnit** | **String**| The unit of length eg. m(meter), km(kilometer), yd(yard), ft(foot), mi(mile) | [optional] [default to ft] [enum: m, km, yd, ft, mi]
+ **width** | **String**| Specifies the maximum width of a vehicle. Any vehicles over this value will be restricted when determining the route. | [optional] [enum: positive integer value]
+ **widthUnit** | **String**| The unit of width eg. m(meter), km(kilometer), yd(yard), ft(foot), mi(mile) | [optional] [default to ft] [enum: m, km, yd, ft, mi]
 
 ### Return type
 
@@ -102,7 +124,7 @@ Name | Type | Description  | Notes
 
 <a name="getRouteByLocation"></a>
 # **getRouteByLocation**
-> GeoRouteResponse getRouteByLocation(startPoint, endPoint, db, intermediatePoints, oip, destinationSrs, optimizeBy, returnDistance, distanceUnit, returnTime, timeUnit, language, directionsStyle, segmentGeometryStyle, primaryNameOnly, majorRoads, historicTrafficTimeBucket, returnDirectionGeometry)
+> GeoRouteResponse getRouteByLocation(startPoint, endPoint, db, intermediatePoints, oip, destinationSrs, optimizeBy, returnDistance, distanceUnit, returnTime, timeUnit, language, directionsStyle, segmentGeometryStyle, primaryNameOnly, majorRoads, historicTrafficTimeBucket, returnDirectionGeometry, useCvr, looseningBarrierRestrictions, vehicleType, weight, weightUnit, height, heightUnit, length, lengthUnit, width, widthUnit)
 
 Gets Route by Location
 
@@ -143,8 +165,19 @@ String primaryNameOnly = "false"; // String | If true then only the primary stre
 String majorRoads = "false"; // String | Whether to include all roads in route calculation or just major roads.
 String historicTrafficTimeBucket = "None"; // String | Specifies whether routing calculation uses the historic traffic speeds.
 String returnDirectionGeometry = "false"; // String | Whether to include geometry associated with each route instruction in response.
+String useCvr = "N"; // String | This parameter will enable/disable CVR (Commercial Vehicle Restrictions) capability in our APIs
+String looseningBarrierRestrictions = "Y"; // String | Specifies that barriers will be removed when determining the route
+String vehicleType = "ALL"; // String | vehicle type
+String weight = "weight_example"; // String | Specifies the maximum weight of a vehicle. Any vehicles over this value will be restricted when determining the route.
+String weightUnit = "kg"; // String | The unit of weight eg. kg(kilogram), lb(pound), mt(metric ton), t(ton)
+String height = "height_example"; // String | Specifies the maximum height of a vehicle. Any vehicles over this value will be restricted when determining the route.
+String heightUnit = "ft"; // String | The unit of height e.g m(meter), km(kilometer), yd(yard), ft(foot), mi(mile)
+String length = "length_example"; // String | Specifies the maximum length of a vehicle. Any vehicles over this value will be restricted when determining the route.
+String lengthUnit = "ft"; // String | The unit of length eg. m(meter), km(kilometer), yd(yard), ft(foot), mi(mile)
+String width = "width_example"; // String | Specifies the maximum width of a vehicle. Any vehicles over this value will be restricted when determining the route.
+String widthUnit = "ft"; // String | The unit of width eg. m(meter), km(kilometer), yd(yard), ft(foot), mi(mile)
 try {
-    GeoRouteResponse result = apiInstance.getRouteByLocation(startPoint, endPoint, db, intermediatePoints, oip, destinationSrs, optimizeBy, returnDistance, distanceUnit, returnTime, timeUnit, language, directionsStyle, segmentGeometryStyle, primaryNameOnly, majorRoads, historicTrafficTimeBucket, returnDirectionGeometry);
+    GeoRouteResponse result = apiInstance.getRouteByLocation(startPoint, endPoint, db, intermediatePoints, oip, destinationSrs, optimizeBy, returnDistance, distanceUnit, returnTime, timeUnit, language, directionsStyle, segmentGeometryStyle, primaryNameOnly, majorRoads, historicTrafficTimeBucket, returnDirectionGeometry, useCvr, looseningBarrierRestrictions, vehicleType, weight, weightUnit, height, heightUnit, length, lengthUnit, width, widthUnit);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoRouteServiceApi#getRouteByLocation");
@@ -174,6 +207,17 @@ Name | Type | Description  | Notes
  **majorRoads** | **String**| Whether to include all roads in route calculation or just major roads. | [optional] [default to false] [enum: true, false]
  **historicTrafficTimeBucket** | **String**| Specifies whether routing calculation uses the historic traffic speeds. | [optional] [default to None] [enum: None, AMPeak, PMPeak, OffPeak, Night]
  **returnDirectionGeometry** | **String**| Whether to include geometry associated with each route instruction in response. | [optional] [default to false] [enum: true, false]
+ **useCvr** | **String**| This parameter will enable/disable CVR (Commercial Vehicle Restrictions) capability in our APIs | [optional] [default to N] [enum: Y, N]
+ **looseningBarrierRestrictions** | **String**| Specifies that barriers will be removed when determining the route | [optional] [default to Y] [enum: Y, N]
+ **vehicleType** | **String**| vehicle type | [optional] [default to ALL] [enum: STRAIGHT, SEMI_TRAILOR, STANDARD_DOUBLE, INTERMEDIATE_DOUBLE, LONG_DOUBLE, TRIPLE, OTHER_LONG_COMBINATION_VEHICLE]
+ **weight** | **String**| Specifies the maximum weight of a vehicle. Any vehicles over this value will be restricted when determining the route. | [optional] [enum: positive integer value]
+ **weightUnit** | **String**| The unit of weight eg. kg(kilogram), lb(pound), mt(metric ton), t(ton) | [optional] [default to kg] [enum: kg, lb, mt, t]
+ **height** | **String**| Specifies the maximum height of a vehicle. Any vehicles over this value will be restricted when determining the route. | [optional] [enum: positive integer value]
+ **heightUnit** | **String**| The unit of height e.g m(meter), km(kilometer), yd(yard), ft(foot), mi(mile) | [optional] [default to ft] [enum: m, km, yd, ft, mi]
+ **length** | **String**| Specifies the maximum length of a vehicle. Any vehicles over this value will be restricted when determining the route. | [optional] [enum: positive integer value]
+ **lengthUnit** | **String**| The unit of length eg. m(meter), km(kilometer), yd(yard), ft(foot), mi(mile) | [optional] [default to ft] [enum: m, km, yd, ft, mi]
+ **width** | **String**| Specifies the maximum width of a vehicle. Any vehicles over this value will be restricted when determining the route. | [optional] [enum: positive integer value]
+ **widthUnit** | **String**| The unit of width eg. m(meter), km(kilometer), yd(yard), ft(foot), mi(mile) | [optional] [default to ft] [enum: m, km, yd, ft, mi]
 
 ### Return type
 
@@ -190,7 +234,7 @@ Name | Type | Description  | Notes
 
 <a name="getTravelCostMatrixByAddress"></a>
 # **getTravelCostMatrixByAddress**
-> TravelCostMatrixResponse getTravelCostMatrixByAddress(startAddresses, endAddresses, db, country, optimizeBy, returnDistance, destinationSrs, distanceUnit, returnTime, timeUnit, majorRoads, returnOptimalRoutesOnly, historicTrafficTimeBucket)
+> TravelCostMatrixResponse getTravelCostMatrixByAddress(startAddresses, endAddresses, db, country, optimizeBy, returnDistance, destinationSrs, distanceUnit, returnTime, timeUnit, majorRoads, returnOptimalRoutesOnly, historicTrafficTimeBucket, useCvr, looseningBarrierRestrictions, vehicleType, weight, weightUnit, height, heightUnit, length, lengthUnit, width, widthUnit)
 
 Gets Cost Matrix by Address
 
@@ -226,8 +270,19 @@ String timeUnit = "min"; // String | Return time unit such as min(Minute), h(Hou
 String majorRoads = "false"; // String | Whether to include all roads in routes calculation or just major roads.
 String returnOptimalRoutesOnly = "true"; // String | Specifies whether to return only the optimized route for each start and end point combination.
 String historicTrafficTimeBucket = "None"; // String | Specifies whether routing calculation uses the historic traffic speeds.
+String useCvr = "N"; // String | This parameter will enable/disable CVR (Commercial Vehicle Restrictions) capability in our APIs
+String looseningBarrierRestrictions = "Y"; // String | Specifies that barriers will be removed when determining the route
+String vehicleType = "ALL"; // String | vehicle type
+String weight = "weight_example"; // String | Specifies the maximum weight of a vehicle. Any vehicles over this value will be restricted when determining the route.
+String weightUnit = "kg"; // String | The unit of weight eg. kg(kilogram), lb(pound), mt(metric ton), t(ton)
+String height = "height_example"; // String | Specifies the maximum height of a vehicle. Any vehicles over this value will be restricted when determining the route.
+String heightUnit = "ft"; // String | The unit of height e.g m(meter), km(kilometer), yd(yard), ft(foot), mi(mile)
+String length = "length_example"; // String | Specifies the maximum length of a vehicle. Any vehicles over this value will be restricted when determining the route.
+String lengthUnit = "ft"; // String | The unit of length eg. m(meter), km(kilometer), yd(yard), ft(foot), mi(mile)
+String width = "width_example"; // String | Specifies the maximum width of a vehicle. Any vehicles over this value will be restricted when determining the route.
+String widthUnit = "ft"; // String | The unit of width eg. m(meter), km(kilometer), yd(yard), ft(foot), mi(mile)
 try {
-    TravelCostMatrixResponse result = apiInstance.getTravelCostMatrixByAddress(startAddresses, endAddresses, db, country, optimizeBy, returnDistance, destinationSrs, distanceUnit, returnTime, timeUnit, majorRoads, returnOptimalRoutesOnly, historicTrafficTimeBucket);
+    TravelCostMatrixResponse result = apiInstance.getTravelCostMatrixByAddress(startAddresses, endAddresses, db, country, optimizeBy, returnDistance, destinationSrs, distanceUnit, returnTime, timeUnit, majorRoads, returnOptimalRoutesOnly, historicTrafficTimeBucket, useCvr, looseningBarrierRestrictions, vehicleType, weight, weightUnit, height, heightUnit, length, lengthUnit, width, widthUnit);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoRouteServiceApi#getTravelCostMatrixByAddress");
@@ -252,6 +307,17 @@ Name | Type | Description  | Notes
  **majorRoads** | **String**| Whether to include all roads in routes calculation or just major roads. | [optional] [default to false] [enum: true, false]
  **returnOptimalRoutesOnly** | **String**| Specifies whether to return only the optimized route for each start and end point combination. | [optional] [default to true] [enum: true, false]
  **historicTrafficTimeBucket** | **String**| Specifies whether routing calculation uses the historic traffic speeds. | [optional] [default to None] [enum: None, AMPeak, PMPeak, OffPeak, Night]
+ **useCvr** | **String**| This parameter will enable/disable CVR (Commercial Vehicle Restrictions) capability in our APIs | [optional] [default to N] [enum: Y, N]
+ **looseningBarrierRestrictions** | **String**| Specifies that barriers will be removed when determining the route | [optional] [default to Y] [enum: Y, N]
+ **vehicleType** | **String**| vehicle type | [optional] [default to ALL] [enum: STRAIGHT, SEMI_TRAILOR, STANDARD_DOUBLE, INTERMEDIATE_DOUBLE, LONG_DOUBLE, TRIPLE, OTHER_LONG_COMBINATION_VEHICLE]
+ **weight** | **String**| Specifies the maximum weight of a vehicle. Any vehicles over this value will be restricted when determining the route. | [optional] [enum: positive integer value]
+ **weightUnit** | **String**| The unit of weight eg. kg(kilogram), lb(pound), mt(metric ton), t(ton) | [optional] [default to kg] [enum: kg, lb, mt, t]
+ **height** | **String**| Specifies the maximum height of a vehicle. Any vehicles over this value will be restricted when determining the route. | [optional] [enum: positive integer value]
+ **heightUnit** | **String**| The unit of height e.g m(meter), km(kilometer), yd(yard), ft(foot), mi(mile) | [optional] [default to ft] [enum: m, km, yd, ft, mi]
+ **length** | **String**| Specifies the maximum length of a vehicle. Any vehicles over this value will be restricted when determining the route. | [optional] [enum: positive integer value]
+ **lengthUnit** | **String**| The unit of length eg. m(meter), km(kilometer), yd(yard), ft(foot), mi(mile) | [optional] [default to ft] [enum: m, km, yd, ft, mi]
+ **width** | **String**| Specifies the maximum width of a vehicle. Any vehicles over this value will be restricted when determining the route. | [optional] [enum: positive integer value]
+ **widthUnit** | **String**| The unit of width eg. m(meter), km(kilometer), yd(yard), ft(foot), mi(mile) | [optional] [default to ft] [enum: m, km, yd, ft, mi]
 
 ### Return type
 
@@ -268,7 +334,7 @@ Name | Type | Description  | Notes
 
 <a name="getTravelCostMatrixByLocation"></a>
 # **getTravelCostMatrixByLocation**
-> TravelCostMatrixResponse getTravelCostMatrixByLocation(startPoints, endPoints, db, optimizeBy, returnDistance, destinationSrs, distanceUnit, returnTime, timeUnit, majorRoads, returnOptimalRoutesOnly, historicTrafficTimeBucket)
+> TravelCostMatrixResponse getTravelCostMatrixByLocation(startPoints, endPoints, db, optimizeBy, returnDistance, destinationSrs, distanceUnit, returnTime, timeUnit, majorRoads, returnOptimalRoutesOnly, historicTrafficTimeBucket, useCvr, looseningBarrierRestrictions, vehicleType, weight, weightUnit, height, heightUnit, length, lengthUnit, width, widthUnit)
 
 Gets Cost Matrix by Location
 
@@ -303,8 +369,19 @@ String timeUnit = "min"; // String | Return time unit such as min(Minute), h(Hou
 String majorRoads = "false"; // String | Whether to include all roads in routes calculation or just major roads.
 String returnOptimalRoutesOnly = "true"; // String | Specifies whether to return only the optimized route for each start and end point combination.
 String historicTrafficTimeBucket = "None"; // String | Specifies whether routing calculation uses the historic traffic speeds.
+String useCvr = "N"; // String | This parameter will enable/disable CVR (Commercial Vehicle Restrictions) capability in our APIs
+String looseningBarrierRestrictions = "Y"; // String | Specifies that barriers will be removed when determining the route
+String vehicleType = "ALL"; // String | vehicle type
+String weight = "weight_example"; // String | Specifies the maximum weight of a vehicle. Any vehicles over this value will be restricted when determining the route.
+String weightUnit = "kg"; // String | The unit of weight eg. kg(kilogram), lb(pound), mt(metric ton), t(ton)
+String height = "height_example"; // String | Specifies the maximum height of a vehicle. Any vehicles over this value will be restricted when determining the route.
+String heightUnit = "ft"; // String | The unit of height e.g m(meter), km(kilometer), yd(yard), ft(foot), mi(mile)
+String length = "length_example"; // String | Specifies the maximum length of a vehicle. Any vehicles over this value will be restricted when determining the route.
+String lengthUnit = "ft"; // String | The unit of length eg. m(meter), km(kilometer), yd(yard), ft(foot), mi(mile)
+String width = "width_example"; // String | Specifies the maximum width of a vehicle. Any vehicles over this value will be restricted when determining the route.
+String widthUnit = "ft"; // String | The unit of width eg. m(meter), km(kilometer), yd(yard), ft(foot), mi(mile)
 try {
-    TravelCostMatrixResponse result = apiInstance.getTravelCostMatrixByLocation(startPoints, endPoints, db, optimizeBy, returnDistance, destinationSrs, distanceUnit, returnTime, timeUnit, majorRoads, returnOptimalRoutesOnly, historicTrafficTimeBucket);
+    TravelCostMatrixResponse result = apiInstance.getTravelCostMatrixByLocation(startPoints, endPoints, db, optimizeBy, returnDistance, destinationSrs, distanceUnit, returnTime, timeUnit, majorRoads, returnOptimalRoutesOnly, historicTrafficTimeBucket, useCvr, looseningBarrierRestrictions, vehicleType, weight, weightUnit, height, heightUnit, length, lengthUnit, width, widthUnit);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LIAPIGeoRouteServiceApi#getTravelCostMatrixByLocation");
@@ -328,6 +405,17 @@ Name | Type | Description  | Notes
  **majorRoads** | **String**| Whether to include all roads in routes calculation or just major roads. | [optional] [default to false] [enum: true, false]
  **returnOptimalRoutesOnly** | **String**| Specifies whether to return only the optimized route for each start and end point combination. | [optional] [default to true] [enum: true, false]
  **historicTrafficTimeBucket** | **String**| Specifies whether routing calculation uses the historic traffic speeds. | [optional] [default to None] [enum: None, AMPeak, PMPeak, OffPeak, Night]
+ **useCvr** | **String**| This parameter will enable/disable CVR (Commercial Vehicle Restrictions) capability in our APIs | [optional] [default to N] [enum: Y, N]
+ **looseningBarrierRestrictions** | **String**| Specifies that barriers will be removed when determining the route | [optional] [default to Y] [enum: Y, N]
+ **vehicleType** | **String**| vehicle type | [optional] [default to ALL] [enum: STRAIGHT, SEMI_TRAILOR, STANDARD_DOUBLE, INTERMEDIATE_DOUBLE, LONG_DOUBLE, TRIPLE, OTHER_LONG_COMBINATION_VEHICLE]
+ **weight** | **String**| Specifies the maximum weight of a vehicle. Any vehicles over this value will be restricted when determining the route. | [optional] [enum: positive integer value]
+ **weightUnit** | **String**| The unit of weight eg. kg(kilogram), lb(pound), mt(metric ton), t(ton) | [optional] [default to kg] [enum: kg, lb, mt, t]
+ **height** | **String**| Specifies the maximum height of a vehicle. Any vehicles over this value will be restricted when determining the route. | [optional] [enum: positive integer value]
+ **heightUnit** | **String**| The unit of height e.g m(meter), km(kilometer), yd(yard), ft(foot), mi(mile) | [optional] [default to ft] [enum: m, km, yd, ft, mi]
+ **length** | **String**| Specifies the maximum length of a vehicle. Any vehicles over this value will be restricted when determining the route. | [optional] [enum: positive integer value]
+ **lengthUnit** | **String**| The unit of length eg. m(meter), km(kilometer), yd(yard), ft(foot), mi(mile) | [optional] [default to ft] [enum: m, km, yd, ft, mi]
+ **width** | **String**| Specifies the maximum width of a vehicle. Any vehicles over this value will be restricted when determining the route. | [optional] [enum: positive integer value]
+ **widthUnit** | **String**| The unit of width eg. m(meter), km(kilometer), yd(yard), ft(foot), mi(mile) | [optional] [default to ft] [enum: m, km, yd, ft, mi]
 
 ### Return type
 

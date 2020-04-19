@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **salesTax** | [**SalesTaxRate**](SalesTaxRate.md) |  |  [optional]
 **useTax** | [**UseTaxRate**](UseTaxRate.md) |  |  [optional]
 **census** | [**Census**](Census.md) |  |  [optional]
+**latLongFields** | [**LatLongFields**](LatLongFields.md) |  |  [optional]
 
 
 

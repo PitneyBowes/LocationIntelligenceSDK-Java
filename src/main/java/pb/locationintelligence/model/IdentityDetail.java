@@ -49,7 +49,7 @@ import pb.locationintelligence.model.Url;
 /**
  * IdentityDetail
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2020-03-03T15:28:20.703+05:30")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2020-04-16T15:55:12.092+05:30")
 public class IdentityDetail   {
   @SerializedName("interests")
   private List<Interest> interests = new ArrayList<Interest>();

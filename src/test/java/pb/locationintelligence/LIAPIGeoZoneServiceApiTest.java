@@ -32,7 +32,6 @@ import pb.locationintelligence.model.PoiBoundary;
 import pb.locationintelligence.model.POIBoundaryResponse;
 import pb.locationintelligence.model.POIBoundaryAddressRequest;
 import pb.locationintelligence.model.POIBoundaryLocationRequest;
-import pb.locationintelligence.model.POIBoundaryPBKeyRequest;
 import pb.locationintelligence.model.TravelBoundaries;
 import org.junit.Test;
 
@@ -159,41 +158,6 @@ public class LIAPIGeoZoneServiceApiTest {
     public void getPOIBoundaryByLocationBatchTest() throws ApiException {
         POIBoundaryLocationRequest body = null;
         // POIBoundaryResponse response = api.getPOIBoundaryByLocationBatch(body);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Gets Point of Interests Boundary by PBKey
-     *
-     * Gets Point of Interests Boundary by PBKey
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getPOIBoundaryByPBKeyTest() throws ApiException {
-        String pbKey = null;
-        String categoryCode = null;
-        String sicCode = null;
-        String naicsCode = null;
-        // PoiBoundary response = api.getPOIBoundaryByPBKey(pbKey, categoryCode, sicCode, naicsCode);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Batch method for getting Point of Interests Boundary by PBKey
-     *
-     * Batch method for getting Point of Interests Boundary by PBKey
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getPOIBoundaryByPBKeyBatchTest() throws ApiException {
-        POIBoundaryPBKeyRequest body = null;
-        // POIBoundaryResponse response = api.getPOIBoundaryByPBKeyBatch(body);
 
         // TODO: test validations
     }

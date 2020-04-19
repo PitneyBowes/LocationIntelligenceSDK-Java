@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **score** | **String** |  |  [optional]
 **category** | **String** |  |  [optional]
 **percentile** | **String** |  |  [optional]
+**stateScore** | **String** |  |  [optional]
 
 
 

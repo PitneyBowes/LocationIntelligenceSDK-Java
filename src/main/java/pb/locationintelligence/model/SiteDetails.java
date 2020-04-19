@@ -35,13 +35,19 @@ import pb.locationintelligence.model.MatchedAddress;
 /**
  * SiteDetails
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2020-03-03T15:28:20.703+05:30")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2020-04-16T15:55:12.092+05:30")
 public class SiteDetails   {
   @SerializedName("phone")
   private String phone = null;
 
   @SerializedName("fax")
   private String fax = null;
+
+  @SerializedName("contactName")
+  private String contactName = null;
+
+  @SerializedName("email")
+  private String email = null;
 
   @SerializedName("address")
   private MatchedAddress address = null;
@@ -82,6 +88,42 @@ public class SiteDetails   {
     this.fax = fax;
   }
 
+  public SiteDetails contactName(String contactName) {
+    this.contactName = contactName;
+    return this;
+  }
+
+   /**
+   * Get contactName
+   * @return contactName
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public String getContactName() {
+    return contactName;
+  }
+
+  public void setContactName(String contactName) {
+    this.contactName = contactName;
+  }
+
+  public SiteDetails email(String email) {
+    this.email = email;
+    return this;
+  }
+
+   /**
+   * Get email
+   * @return email
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
   public SiteDetails address(MatchedAddress address) {
     this.address = address;
     return this;
@@ -112,12 +154,14 @@ public class SiteDetails   {
     SiteDetails siteDetails = (SiteDetails) o;
     return Objects.equals(this.phone, siteDetails.phone) &&
         Objects.equals(this.fax, siteDetails.fax) &&
+        Objects.equals(this.contactName, siteDetails.contactName) &&
+        Objects.equals(this.email, siteDetails.email) &&
         Objects.equals(this.address, siteDetails.address);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(phone, fax, address);
+    return Objects.hash(phone, fax, contactName, email, address);
   }
 
   @Override
@@ -127,6 +171,8 @@ public class SiteDetails   {
     
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    fax: ").append(toIndentedString(fax)).append("\n");
+    sb.append("    contactName: ").append(toIndentedString(contactName)).append("\n");
+    sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    address: ").append(toIndentedString(address)).append("\n");
     sb.append("}");
     return sb.toString();

@@ -29,9 +29,6 @@ import pb.ApiException;
 import pb.locationintelligence.model.GeoPropertyResponse;
 import pb.locationintelligence.model.GeoPropertyAddressRequest;
 import pb.locationintelligence.model.GeoPropertyResponses;
-import pb.locationintelligence.model.GeoPropertyPBKeyResponse;
-import pb.locationintelligence.model.GeoPropertyPBKeyRequest;
-import pb.locationintelligence.model.GeoPropertyPBKeyResponses;
 import pb.locationintelligence.model.ParcelBoundary;
 import pb.locationintelligence.model.SchoolsNearByResponse;
 import org.junit.Test;
@@ -82,38 +79,6 @@ public class LIAPIGeoPropertyServiceApiTest {
     }
     
     /**
-     * Gets GeoPropertyResponse
-     *
-     * Gets GeoPropertyResponse
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getGeoPropertyByPBKeyTest() throws ApiException {
-        String pbKey = null;
-        // GeoPropertyPBKeyResponse response = api.getGeoPropertyByPBKey(pbKey);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Gets GeoPropertyResponses
-     *
-     * Gets GeoPropertyResponses
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getGeoPropertyByPBKeyBatchTest() throws ApiException {
-        GeoPropertyPBKeyRequest body = null;
-        // GeoPropertyPBKeyResponses response = api.getGeoPropertyByPBKeyBatch(body);
-
-        // TODO: test validations
-    }
-    
-    /**
      * Gets ParcelBoundary
      *
      * Gets ParcelBoundary
@@ -149,23 +114,6 @@ public class LIAPIGeoPropertyServiceApiTest {
     }
     
     /**
-     * Gets ParcelBoundary
-     *
-     * Gets ParcelBoundary
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getParcelBoundaryByPBKeyTest() throws ApiException {
-        String pbKey = null;
-        String accept = null;
-        // ParcelBoundary response = api.getParcelBoundaryByPBKey(pbKey, accept);
-
-        // TODO: test validations
-    }
-    
-    /**
      * Search Nearby Schools by Address
      *
      * Search Nearby Schools by Address
@@ -191,36 +139,6 @@ public class LIAPIGeoPropertyServiceApiTest {
         String travelMode = null;
         String maxCandidates = null;
         // SchoolsNearByResponse response = api.getSchoolsByAddress(address, edLevel, schoolType, schoolSubType, gender, assignedSchoolsOnly, districtSchoolsOnly, searchRadius, searchRadiusUnit, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, travelMode, maxCandidates);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Search Nearby Schools by PBKey
-     *
-     * Search Nearby Schools by PBKey
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getSchoolsNearByUsingPBKeyTest() throws ApiException {
-        String pbKey = null;
-        String edLevel = null;
-        String schoolType = null;
-        String schoolSubType = null;
-        String gender = null;
-        String assignedSchoolsOnly = null;
-        String districtSchoolsOnly = null;
-        String searchRadius = null;
-        String searchRadiusUnit = null;
-        String travelTime = null;
-        String travelTimeUnit = null;
-        String travelDistance = null;
-        String travelDistanceUnit = null;
-        String travelMode = null;
-        String maxCandidates = null;
-        // SchoolsNearByResponse response = api.getSchoolsNearByUsingPBKey(pbKey, edLevel, schoolType, schoolSubType, gender, assignedSchoolsOnly, districtSchoolsOnly, searchRadius, searchRadiusUnit, travelTime, travelTimeUnit, travelDistance, travelDistanceUnit, travelMode, maxCandidates);
 
         // TODO: test validations
     }

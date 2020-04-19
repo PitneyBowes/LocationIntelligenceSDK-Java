@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **matchedAddress** | [**MatchedAddress**](MatchedAddress.md) |  |  [optional]
 **salesTax** | [**SalesTaxRate**](SalesTaxRate.md) |  |  [optional]
 **useTax** | [**UseTaxRate**](UseTaxRate.md) |  |  [optional]
+**latLongFields** | [**LatLongFields**](LatLongFields.md) |  |  [optional]
 
 
 

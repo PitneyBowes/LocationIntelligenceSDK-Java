@@ -34,10 +34,13 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * ContactPerson
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2020-03-03T15:28:20.703+05:30")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2020-04-16T15:55:12.092+05:30")
 public class ContactPerson   {
   @SerializedName("title")
   private String title = null;
+
+  @SerializedName("fullName")
+  private String fullName = null;
 
   @SerializedName("prefix")
   private String prefix = null;
@@ -79,6 +82,24 @@ public class ContactPerson   {
 
   public void setTitle(String title) {
     this.title = title;
+  }
+
+  public ContactPerson fullName(String fullName) {
+    this.fullName = fullName;
+    return this;
+  }
+
+   /**
+   * Get fullName
+   * @return fullName
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public String getFullName() {
+    return fullName;
+  }
+
+  public void setFullName(String fullName) {
+    this.fullName = fullName;
   }
 
   public ContactPerson prefix(String prefix) {
@@ -236,6 +257,7 @@ public class ContactPerson   {
     }
     ContactPerson contactPerson = (ContactPerson) o;
     return Objects.equals(this.title, contactPerson.title) &&
+        Objects.equals(this.fullName, contactPerson.fullName) &&
         Objects.equals(this.prefix, contactPerson.prefix) &&
         Objects.equals(this.firstName, contactPerson.firstName) &&
         Objects.equals(this.lastName, contactPerson.lastName) &&
@@ -248,7 +270,7 @@ public class ContactPerson   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(title, prefix, firstName, lastName, phone, fax, email, comments, additionalDetails);
+    return Objects.hash(title, fullName, prefix, firstName, lastName, phone, fax, email, comments, additionalDetails);
   }
 
   @Override
@@ -257,6 +279,7 @@ public class ContactPerson   {
     sb.append("class ContactPerson {\n");
     
     sb.append("    title: ").append(toIndentedString(title)).append("\n");
+    sb.append("    fullName: ").append(toIndentedString(fullName)).append("\n");
     sb.append("    prefix: ").append(toIndentedString(prefix)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");

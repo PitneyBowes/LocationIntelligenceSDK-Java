@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **geometry** | [**CommonGeometry**](CommonGeometry.md) |  |  [optional]
 **poiList** | [**List&lt;Poi&gt;**](Poi.md) |  |  [optional]
 **matchedAddress** | [**MatchedAddress**](MatchedAddress.md) |  |  [optional]
+**id** | **String** |  |  [optional]
 
 
 

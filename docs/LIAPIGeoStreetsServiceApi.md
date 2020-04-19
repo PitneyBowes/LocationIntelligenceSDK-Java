@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getIntersectionByAddress**](LIAPIGeoStreetsServiceApi.md#getIntersectionByAddress) | **GET** /geostreets/v1/intersection/byaddress | Gets NearestIntersection of major roads
 [**getIntersectionByLocation**](LIAPIGeoStreetsServiceApi.md#getIntersectionByLocation) | **GET** /geostreets/v1/intersection/bylocation | Gets NearestIntersection of major roads
+[**getNearestSpeedLimit**](LIAPIGeoStreetsServiceApi.md#getNearestSpeedLimit) | **GET** /geostreets/v1/speedlimit | Gets NearestSpeedLimit
 
 
 <a name="getIntersectionByAddress"></a>
@@ -136,6 +137,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**IntersectionResponse**](IntersectionResponse.md)
+
+### Authorization
+
+[oAuth2Password](../README.md#oAuth2Password)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
+<a name="getNearestSpeedLimit"></a>
+# **getNearestSpeedLimit**
+> SpeedLimit getNearestSpeedLimit(path)
+
+Gets NearestSpeedLimit
+
+GetNearestSpeedLimit Endpoint will take point coordinates of a path and will return the posted speed limit of the road segment on which this path will snap.
+
+### Example
+```java
+// Import classes:
+//import pb.ApiClient;
+//import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
+//import pb.locationintelligence.LIAPIGeoStreetsServiceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
+
+LIAPIGeoStreetsServiceApi apiInstance = new LIAPIGeoStreetsServiceApi();
+String path = "path_example"; // String | Accepts multiple points which will be snapped to the nearest road segment. Longitude and Latitude will be comma separated (longitude,latitude) and Point Coordinates will be separated by semi-colon(;)
+try {
+    SpeedLimit result = apiInstance.getNearestSpeedLimit(path);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling LIAPIGeoStreetsServiceApi#getNearestSpeedLimit");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **path** | **String**| Accepts multiple points which will be snapped to the nearest road segment. Longitude and Latitude will be comma separated (longitude,latitude) and Point Coordinates will be separated by semi-colon(;) |
+
+### Return type
+
+[**SpeedLimit**](SpeedLimit.md)
 
 ### Authorization
 

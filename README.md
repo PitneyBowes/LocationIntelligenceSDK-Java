@@ -9,7 +9,7 @@
 
 * [GeoEnrich](https://locate.pitneybowes.com/geoenrich ) : Returns addresses, place names, points-of-interest and timezones with the input of a location coordinate. Useful for enhancing & enriching your geo-tagged data.
 
-* [GeoLife](https://locate.pitneybowes.com/geolife) : Returns household demographics and lifestyle characteristics with the input of an address or location coordinate. Useful for data analysts and commercial and corporate developers building mobile apps and services.
+* [GeoLife](https://locate.pitneybowes.com/geolife) : Add local demographics and lifestyle segmentation to your people profiles. GeoLife returns household demographics and lifestyle characteristics with the input of Location Coordinates or Addresses. Know more about Who with Where!
 
 * [GeoSearch](https://locate.pitneybowes.com/geosearch): Returns an autocompleted list of addresses and places based on the input of a partial address. Useful for commercial developers and content providers, or anyone wanting to offer their own search.
 
@@ -23,17 +23,24 @@
 
 * [GeoMap](https://locate.pitneybowes.com/geomap): Adds data and more atop Maps. Choose from three map styles - Iron, Bronze, and Steel.
 
-* [GeoZone](https://locate.pitneybowes.com/geozone): Returns drive Distance and Drive Time Zones with the input of Location Coordinates or Addresses. Useful for anyone wanting to create smarter geofence zones for Local Engagement and Analysis.
+* [GeoZone](https://locate.pitneybowes.com/geozone): The GeoZone API returns geographic zones by Radius, Drive Distance, Drive Time, and highly localized geofence zones with the input of Location Coordinates or Addresses. Useful for anyone wanting to create smarter geofence zones for Local Engagement and Analysis.
 
 * [GeoRoute](https://locate.pitneybowes.com/georoute): Returns Point-to-Point and Multi-Point Travel Directions by Various Travel Modes. Critical for any Simple or Complex Routing Requirement.
 
 * [GeoRisk](https://locate.pitneybowes.com/georisk): Returns critical risk intelligence with the input of Location Coordinates or Addresses. Critical for any Risk Mitigation Analyses involving threats to lives or property.
 
-* [GeoProperty](https://locate.pitneybowes.com/geoproperty)::  Property Details. Capture property details for analysis and planning. The GeoProperty API returns extensive property attributes with the input of address or PB key. Critical for any property investment, insurance or risk analysis and mitigation.
+* [GeoProperty](https://locate.pitneybowes.com/geoproperty)::  Integrate extensive residential & commercial property and school information into your applications. The GeoProperty API returns property parcel boundaries and hundreds of property attributes for millions of US properties with the input of Location Coordinates or Addresses. It also includes methods for retrieving school data, including education levels, types, and more. Useful for Real Estate use cases or those involving risk assessments.
+
+* [GeoComm](https://locate.pitneybowes.com/geocomm): Identifies Local Exchange Carrier presence with a Rate Center area. The GeoComm API retrieves Incumbent Local Exchange Carrier (ILEC) doing-business-as names with the input of an address. Useful for local telecommunications competitive intelligence, partnerships, and provisioning subscribers.
 
 * [GeoTime](https://locate.pitneybowes.com/geotime): Local time. The GeoTime API returns timezones and UTC offsets with the input of a location coordinate or address. Useful for do-not-call, logistics, and customer engagement applications, business processes and workflows.
 
 * [GeoLocation](http://locate.pitneybowes.com/geolocation): Device Location. The GeoLocation API returns location coordinates based on the input of an IP Address, WiFi Access point MAC address, Fixed line phone number and/or Wireless phone number. Useful for a variety of applications, business processes and workflows in eCommerce, Fraud Detection, Physical-Digital interactions, Field Service and more.
+
+* [GeoPost](http://locate.pitneybowes.com/geopost): Accurate Postal Routing. The GeoPost API accepts an address or multiple addresses as inputs and returns US postal routing information including residential, commercial or PO Box delivery destinations. Critical for any direct mail marketing campaign.
+
+* [GeoIdentity](http://locate.pitneybowes.com/geoidentity): Powerful, local socio-economic & affinity insights about your customer. Enrich shipping addresses with rich, localized Identity profiles, demographics, lifestyle segmentations, neighborhood names, property ownership & values, and social affinity insights. The GeoIdentity API returns all these data with the input of a Physical Address, Email Address, or Twitter handle. Useful for enhancing & enriching a wide variety of applications, business processes, or workflows.
+
 * [GeoStreets](https://locate.pitneybowes.com/geostreets): Enrich your applications, business processes, and workflows with global street information including nearest intersections and more. GeoStreets accepts an address or location and returns nearest intersection information. Useful for enriching your data and/or analytics processes with footfall potential.
 
 
@@ -162,14 +169,11 @@ Class | Method | HTTP request | Description
 *LIAPIGeoEnrichServiceApi* | [**poisAutocomplete**](docs/LIAPIGeoEnrichServiceApi.md#poisAutocomplete) | **GET** /geoenrich/v1/poi/autocomplete | Points of Interest Autocomplete.
 *LIAPIGeoIdentityServiceApi* | [**getIdentityByAddress**](docs/LIAPIGeoIdentityServiceApi.md#getIdentityByAddress) | **GET** /geoidentity/v1/identity/byaddress | Gets GeoIdentityResponse
 *LIAPIGeoIdentityServiceApi* | [**getIdentityByEmail**](docs/LIAPIGeoIdentityServiceApi.md#getIdentityByEmail) | **GET** /geoidentity/v1/identity/byemail | Gets Identity
-*LIAPIGeoIdentityServiceApi* | [**getIdentityByPBKey**](docs/LIAPIGeoIdentityServiceApi.md#getIdentityByPBKey) | **GET** /geoidentity/v1/identity/bypbkey | Gets GeoIdentityResponse
 *LIAPIGeoIdentityServiceApi* | [**getIdentityByTwitter**](docs/LIAPIGeoIdentityServiceApi.md#getIdentityByTwitter) | **GET** /geoidentity/v1/identity/bytwitter | Gets Identity
 *LIAPIGeoLifeServiceApi* | [**getDemographicsByAddressV2**](docs/LIAPIGeoLifeServiceApi.md#getDemographicsByAddressV2) | **GET** /geolife/v2/demographics/byaddress | Demographics By Address.
 *LIAPIGeoLifeServiceApi* | [**getDemographicsByLocationV2**](docs/LIAPIGeoLifeServiceApi.md#getDemographicsByLocationV2) | **GET** /geolife/v2/demographics/bylocation | Demographics By Location.
-*LIAPIGeoLifeServiceApi* | [**getDemographicsByPBKey**](docs/LIAPIGeoLifeServiceApi.md#getDemographicsByPBKey) | **GET** /geolife/v2/demographics/bypbkey | Demographics By PBKey.
 *LIAPIGeoLifeServiceApi* | [**getSegmentationByAddress**](docs/LIAPIGeoLifeServiceApi.md#getSegmentationByAddress) | **GET** /geolife/v1/segmentation/byaddress | Segmentation By Address.
 *LIAPIGeoLifeServiceApi* | [**getSegmentationByLocation**](docs/LIAPIGeoLifeServiceApi.md#getSegmentationByLocation) | **GET** /geolife/v1/segmentation/bylocation | Segmentation By Location.
-*LIAPIGeoLifeServiceApi* | [**getSegmentationByPBKey**](docs/LIAPIGeoLifeServiceApi.md#getSegmentationByPBKey) | **GET** /geolife/v1/segmentation/bypbkey | Segmentation By PB Key.
 *LIAPIGeoLocationServiceApi* | [**getDeviceStatus**](docs/LIAPIGeoLocationServiceApi.md#getDeviceStatus) | **GET** /geolocation/v1/devicestatus | Location By Device Status.
 *LIAPIGeoLocationServiceApi* | [**getLocationByIPAddress**](docs/LIAPIGeoLocationServiceApi.md#getLocationByIPAddress) | **GET** /geolocation/v1/location/byipaddress | Location By IP Address.
 *LIAPIGeoLocationServiceApi* | [**getLocationByWiFiAccessPoint**](docs/LIAPIGeoLocationServiceApi.md#getLocationByWiFiAccessPoint) | **GET** /geolocation/v1/location/byaccesspoint | Location by WiFi Access Point.
@@ -177,13 +181,9 @@ Class | Method | HTTP request | Description
 *LIAPIGeoPostServiceApi* | [**getCarrierRoutesByAddressBatch**](docs/LIAPIGeoPostServiceApi.md#getCarrierRoutesByAddressBatch) | **POST** /geopost/v1/carrierroute/byaddress | Gets GeoPost Carrier Routes for Multiple Addresses
 *LIAPIGeoPropertyServiceApi* | [**getGeoPropertyByAddress**](docs/LIAPIGeoPropertyServiceApi.md#getGeoPropertyByAddress) | **GET** /geoproperty/v1/all/attributes/byaddress | Gets GeoPropertyResponse
 *LIAPIGeoPropertyServiceApi* | [**getGeoPropertyByAddressBatch**](docs/LIAPIGeoPropertyServiceApi.md#getGeoPropertyByAddressBatch) | **POST** /geoproperty/v1/all/attributes/byaddress | Gets GeoPropertyResponses
-*LIAPIGeoPropertyServiceApi* | [**getGeoPropertyByPBKey**](docs/LIAPIGeoPropertyServiceApi.md#getGeoPropertyByPBKey) | **GET** /geoproperty/v1/all/attributes/bypbkey | Gets GeoPropertyResponse
-*LIAPIGeoPropertyServiceApi* | [**getGeoPropertyByPBKeyBatch**](docs/LIAPIGeoPropertyServiceApi.md#getGeoPropertyByPBKeyBatch) | **POST** /geoproperty/v1/all/attributes/bypbkey | Gets GeoPropertyResponses
 *LIAPIGeoPropertyServiceApi* | [**getParcelBoundaryByAddress**](docs/LIAPIGeoPropertyServiceApi.md#getParcelBoundaryByAddress) | **GET** /geoproperty/v1/parcelboundary/byaddress | Gets ParcelBoundary
 *LIAPIGeoPropertyServiceApi* | [**getParcelBoundaryByLocation**](docs/LIAPIGeoPropertyServiceApi.md#getParcelBoundaryByLocation) | **GET** /geoproperty/v1/parcelboundary/bylocation | Gets ParcelBoundary
-*LIAPIGeoPropertyServiceApi* | [**getParcelBoundaryByPBKey**](docs/LIAPIGeoPropertyServiceApi.md#getParcelBoundaryByPBKey) | **GET** /geoproperty/v1/parcelboundary/bypbkey | Gets ParcelBoundary
 *LIAPIGeoPropertyServiceApi* | [**getSchoolsByAddress**](docs/LIAPIGeoPropertyServiceApi.md#getSchoolsByAddress) | **GET** /geoproperty/v1/school/byaddress | Search Nearby Schools by Address
-*LIAPIGeoPropertyServiceApi* | [**getSchoolsNearByUsingPBKey**](docs/LIAPIGeoPropertyServiceApi.md#getSchoolsNearByUsingPBKey) | **GET** /geoproperty/v1/school/bypbkey | Search Nearby Schools by PBKey
 *LIAPIGeoRiskServiceApi* | [**getCrimeRiskByAddress**](docs/LIAPIGeoRiskServiceApi.md#getCrimeRiskByAddress) | **GET** /georisk/v1/crime/byaddress | Gets CrimeRiskResponse
 *LIAPIGeoRiskServiceApi* | [**getCrimeRiskByAddressBatch**](docs/LIAPIGeoRiskServiceApi.md#getCrimeRiskByAddressBatch) | **POST** /georisk/v1/crime/byaddress | Batch method for getting crime risk by address
 *LIAPIGeoRiskServiceApi* | [**getCrimeRiskByLocation**](docs/LIAPIGeoRiskServiceApi.md#getCrimeRiskByLocation) | **GET** /georisk/v1/crime/bylocation | Gets CrimeRiskResponse
@@ -236,8 +236,6 @@ Class | Method | HTTP request | Description
 *LIAPIGeoZoneServiceApi* | [**getPOIBoundaryByAddressBatch**](docs/LIAPIGeoZoneServiceApi.md#getPOIBoundaryByAddressBatch) | **POST** /geozone/v1/poiboundary/byaddress | Batch method for getting Point of Interests Boundary by Address
 *LIAPIGeoZoneServiceApi* | [**getPOIBoundaryByLocation**](docs/LIAPIGeoZoneServiceApi.md#getPOIBoundaryByLocation) | **GET** /geozone/v1/poiboundary/bylocation | Get Point of Interests Boundary by Location
 *LIAPIGeoZoneServiceApi* | [**getPOIBoundaryByLocationBatch**](docs/LIAPIGeoZoneServiceApi.md#getPOIBoundaryByLocationBatch) | **POST** /geozone/v1/poiboundary/bylocation | Batch method for getting Point of Interests Boundary by Location
-*LIAPIGeoZoneServiceApi* | [**getPOIBoundaryByPBKey**](docs/LIAPIGeoZoneServiceApi.md#getPOIBoundaryByPBKey) | **GET** /geozone/v1/poiboundary/bypbkey | Gets Point of Interests Boundary by PBKey
-*LIAPIGeoZoneServiceApi* | [**getPOIBoundaryByPBKeyBatch**](docs/LIAPIGeoZoneServiceApi.md#getPOIBoundaryByPBKeyBatch) | **POST** /geozone/v1/poiboundary/bypbkey | Batch method for getting Point of Interests Boundary by PBKey
 *LIAPIGeoZoneServiceApi* | [**getTravelBoundaryByDistance**](docs/LIAPIGeoZoneServiceApi.md#getTravelBoundaryByDistance) | **GET** /geozone/v1/travelboundary/bydistance | Gets travel Boundary by Distance
 *LIAPIGeoZoneServiceApi* | [**getTravelBoundaryByTime**](docs/LIAPIGeoZoneServiceApi.md#getTravelBoundaryByTime) | **GET** /geozone/v1/travelboundary/bytime | Gets travel Boundary by Time
 *LIAPIGeocodeServiceApi* | [**geocode**](docs/LIAPIGeocodeServiceApi.md#geocode) | **GET** /geocode-service/v1/transient/{datapackBundle}/geocode | Gets Geocode
@@ -405,9 +403,6 @@ Class | Method | HTTP request | Description
  - [GeoPos](docs/GeoPos.md)
  - [GeoPostGeometry](docs/GeoPostGeometry.md)
  - [GeoPropertyAddressRequest](docs/GeoPropertyAddressRequest.md)
- - [GeoPropertyPBKeyRequest](docs/GeoPropertyPBKeyRequest.md)
- - [GeoPropertyPBKeyResponse](docs/GeoPropertyPBKeyResponse.md)
- - [GeoPropertyPBKeyResponses](docs/GeoPropertyPBKeyResponses.md)
  - [GeoPropertyResponse](docs/GeoPropertyResponse.md)
  - [GeoPropertyResponses](docs/GeoPropertyResponses.md)
  - [GeoRiskBoundaries](docs/GeoRiskBoundaries.md)
@@ -477,8 +472,6 @@ Class | Method | HTTP request | Description
  - [POIBoundaryAddressRequest](docs/POIBoundaryAddressRequest.md)
  - [POIBoundaryLocationRequest](docs/POIBoundaryLocationRequest.md)
  - [POIBoundaryLocations](docs/POIBoundaryLocations.md)
- - [POIBoundaryPBKey](docs/POIBoundaryPBKey.md)
- - [POIBoundaryPBKeyRequest](docs/POIBoundaryPBKeyRequest.md)
  - [POIBoundaryResponse](docs/POIBoundaryResponse.md)
  - [POIByGeometryRequest](docs/POIByGeometryRequest.md)
  - [POIPlaces](docs/POIPlaces.md)

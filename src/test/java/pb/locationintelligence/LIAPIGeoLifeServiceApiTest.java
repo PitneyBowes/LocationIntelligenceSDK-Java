@@ -86,26 +86,6 @@ public class LIAPIGeoLifeServiceApiTest {
     }
     
     /**
-     * Demographics By PBKey.
-     *
-     * Provides the demographic details for a specified PB Key. GeoLife &#39;bypbkey&#39; service accepts pbkey as an input to return a specific population segment&#39;s age group, ethnicity, income, purchasing behaviour, commuter patterns and more.
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getDemographicsByPBKeyTest() throws ApiException {
-        String pbKey = null;
-        String profile = null;
-        String filter = null;
-        String valueFormat = null;
-        String variableLevel = null;
-        // DemographicsV2 response = api.getDemographicsByPBKey(pbKey, profile, filter, valueFormat, variableLevel);
-
-        // TODO: test validations
-    }
-    
-    /**
      * Segmentation By Address.
      *
      * Provides the segmentation details around a specified address. GeoLife &#39;Segmentation by Address&#39; service accepts address as an input to return the lifestyle characteristics of households in terms of their family status, children characteristics, income behaviors, financial preferences and interests.
@@ -135,22 +115,6 @@ public class LIAPIGeoLifeServiceApiTest {
         String longitude = null;
         String latitude = null;
         // Segmentation response = api.getSegmentationByLocation(longitude, latitude);
-
-        // TODO: test validations
-    }
-    
-    /**
-     * Segmentation By PB Key.
-     *
-     * Provides the segmentation details for a PB Key. GeoLife &#39;segmentation bypbkey&#39; service accepts free form text PB Key as an input to return the lifestyle characteristics of households in terms of their family status, children characteristics, income behaviors, financial preferences and interests.
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getSegmentationByPBKeyTest() throws ApiException {
-        String pbKey = null;
-        // Segmentation response = api.getSegmentationByPBKey(pbKey);
 
         // TODO: test validations
     }

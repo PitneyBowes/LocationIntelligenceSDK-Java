@@ -37,13 +37,19 @@ import pb.locationintelligence.model.Coverage;
 /**
  * AHJ
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2020-03-03T15:28:20.703+05:30")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2020-04-16T15:55:12.092+05:30")
 public class AHJ   {
   @SerializedName("ahjType")
   private String ahjType = null;
 
   @SerializedName("ahjId")
   private String ahjId = null;
+
+  @SerializedName("type")
+  private String type = null;
+
+  @SerializedName("fccId")
+  private String fccId = null;
 
   @SerializedName("agency")
   private String agency = null;
@@ -97,6 +103,42 @@ public class AHJ   {
 
   public void setAhjId(String ahjId) {
     this.ahjId = ahjId;
+  }
+
+  public AHJ type(String type) {
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public String getType() {
+    return type;
+  }
+
+  public void setType(String type) {
+    this.type = type;
+  }
+
+  public AHJ fccId(String fccId) {
+    this.fccId = fccId;
+    return this;
+  }
+
+   /**
+   * Get fccId
+   * @return fccId
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public String getFccId() {
+    return fccId;
+  }
+
+  public void setFccId(String fccId) {
+    this.fccId = fccId;
   }
 
   public AHJ agency(String agency) {
@@ -219,6 +261,8 @@ public class AHJ   {
     AHJ AHJ = (AHJ) o;
     return Objects.equals(this.ahjType, AHJ.ahjType) &&
         Objects.equals(this.ahjId, AHJ.ahjId) &&
+        Objects.equals(this.type, AHJ.type) &&
+        Objects.equals(this.fccId, AHJ.fccId) &&
         Objects.equals(this.agency, AHJ.agency) &&
         Objects.equals(this.phone, AHJ.phone) &&
         Objects.equals(this.comments, AHJ.comments) &&
@@ -229,7 +273,7 @@ public class AHJ   {
 
   @Override
   public int hashCode() {
-    return Objects.hash(ahjType, ahjId, agency, phone, comments, coverage, contactPerson, mailingAddress);
+    return Objects.hash(ahjType, ahjId, type, fccId, agency, phone, comments, coverage, contactPerson, mailingAddress);
   }
 
   @Override
@@ -239,6 +283,8 @@ public class AHJ   {
     
     sb.append("    ahjType: ").append(toIndentedString(ahjType)).append("\n");
     sb.append("    ahjId: ").append(toIndentedString(ahjId)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    fccId: ").append(toIndentedString(fccId)).append("\n");
     sb.append("    agency: ").append(toIndentedString(agency)).append("\n");
     sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    comments: ").append(toIndentedString(comments)).append("\n");

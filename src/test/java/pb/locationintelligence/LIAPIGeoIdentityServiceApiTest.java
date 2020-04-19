@@ -85,28 +85,6 @@ public class LIAPIGeoIdentityServiceApiTest {
     }
     
     /**
-     * Gets GeoIdentityResponse
-     *
-     * Gets GeoIdentityResponse
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getIdentityByPBKeyTest() throws ApiException {
-        String pbKey = null;
-        String givenName = null;
-        String familyName = null;
-        String confidence = null;
-        String maxCandidates = null;
-        String theme = null;
-        String filter = null;
-        // GeoIdentityResponse response = api.getIdentityByPBKey(pbKey, givenName, familyName, confidence, maxCandidates, theme, filter);
-
-        // TODO: test validations
-    }
-    
-    /**
      * Gets Identity
      *
      * Gets Identity

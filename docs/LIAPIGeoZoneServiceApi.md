@@ -7,8 +7,9 @@ Method | HTTP request | Description
 [**getBasicBoundaryByAddress**](LIAPIGeoZoneServiceApi.md#getBasicBoundaryByAddress) | **GET** /geozone/v1/basicboundary/byaddress | Gets Basic Boundary by Address
 [**getBasicBoundaryByLocation**](LIAPIGeoZoneServiceApi.md#getBasicBoundaryByLocation) | **GET** /geozone/v1/basicboundary/bylocation | Gets Basic Boundary by Location
 [**getPOIBoundaryByAddress**](LIAPIGeoZoneServiceApi.md#getPOIBoundaryByAddress) | **GET** /geozone/v1/poiboundary/byaddress | Get Point of Interests Boundary by Address
+[**getPOIBoundaryByAddressBatch**](LIAPIGeoZoneServiceApi.md#getPOIBoundaryByAddressBatch) | **POST** /geozone/v1/poiboundary/byaddress | Batch method for getting Point of Interests Boundary by Address
 [**getPOIBoundaryByLocation**](LIAPIGeoZoneServiceApi.md#getPOIBoundaryByLocation) | **GET** /geozone/v1/poiboundary/bylocation | Get Point of Interests Boundary by Location
-[**getPOIBoundaryByPBKey**](LIAPIGeoZoneServiceApi.md#getPOIBoundaryByPBKey) | **GET** /geozone/v1/poiboundary/bypbkey | Gets Point of Interests Boundary by PBKey
+[**getPOIBoundaryByLocationBatch**](LIAPIGeoZoneServiceApi.md#getPOIBoundaryByLocationBatch) | **POST** /geozone/v1/poiboundary/bylocation | Batch method for getting Point of Interests Boundary by Location
 [**getTravelBoundaryByDistance**](LIAPIGeoZoneServiceApi.md#getTravelBoundaryByDistance) | **GET** /geozone/v1/travelboundary/bydistance | Gets travel Boundary by Distance
 [**getTravelBoundaryByTime**](LIAPIGeoZoneServiceApi.md#getTravelBoundaryByTime) | **GET** /geozone/v1/travelboundary/bytime | Gets travel Boundary by Time
 
@@ -203,6 +204,60 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json, application/xml
 
+<a name="getPOIBoundaryByAddressBatch"></a>
+# **getPOIBoundaryByAddressBatch**
+> POIBoundaryResponse getPOIBoundaryByAddressBatch(body)
+
+Batch method for getting Point of Interests Boundary by Address
+
+Batch method for getting Point of Interests Boundary by Address
+
+### Example
+```java
+// Import classes:
+//import pb.ApiClient;
+//import pb.ApiException;
+//import pb.Configuration;
+//import pb.auth.*;
+//import pb.locationintelligence.LIAPIGeoZoneServiceApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure API_KEY and SECRET for authorization: oAuth2Password
+ ApiClient defaultClient = Configuration.getDefaultApiClient();
+ defaultClient.setoAuthApiKey("<YOUR API KEY>");
+ defaultClient.setoAuthSecret("<YOUR SECRET>");
+
+LIAPIGeoZoneServiceApi apiInstance = new LIAPIGeoZoneServiceApi();
+POIBoundaryAddressRequest body = new POIBoundaryAddressRequest(); // POIBoundaryAddressRequest | 
+try {
+    POIBoundaryResponse result = apiInstance.getPOIBoundaryByAddressBatch(body);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling LIAPIGeoZoneServiceApi#getPOIBoundaryByAddressBatch");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**POIBoundaryAddressRequest**](POIBoundaryAddressRequest.md)|  | [optional]
+
+### Return type
+
+[**POIBoundaryResponse**](POIBoundaryResponse.md)
+
+### Authorization
+
+[oAuth2Password](../README.md#oAuth2Password)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, application/xml
+ - **Accept**: application/json, application/xml
+
 <a name="getPOIBoundaryByLocation"></a>
 # **getPOIBoundaryByLocation**
 > PoiBoundary getPOIBoundaryByLocation(latitude, longitude, categoryCode, sicCode, naicsCode)
@@ -265,13 +320,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json, application/xml
 
-<a name="getPOIBoundaryByPBKey"></a>
-# **getPOIBoundaryByPBKey**
-> PoiBoundary getPOIBoundaryByPBKey(pbKey, categoryCode, sicCode, naicsCode)
+<a name="getPOIBoundaryByLocationBatch"></a>
+# **getPOIBoundaryByLocationBatch**
+> POIBoundaryResponse getPOIBoundaryByLocationBatch(body)
 
-Gets Point of Interests Boundary by PBKey
+Batch method for getting Point of Interests Boundary by Location
 
-Gets Point of Interests Boundary by PBKey
+Batch method for getting Point of Interests Boundary by Location
 
 ### Example
 ```java
@@ -290,15 +345,12 @@ ApiClient defaultClient = Configuration.getDefaultApiClient();
  defaultClient.setoAuthSecret("<YOUR SECRET>");
 
 LIAPIGeoZoneServiceApi apiInstance = new LIAPIGeoZoneServiceApi();
-String pbKey = "pbKey_example"; // String | PBKey for which POI Boundary is requested
-String categoryCode = "categoryCode_example"; // String | Specific Category/Categories Codes for the desired POIs. Accepts a mix of 4 digit (Top Category), 6 digit (Second-Level Category) and 11 digit (Low-Level Category) Category Codes.
-String sicCode = "sicCode_example"; // String | Specify starting digits or full sic code to filter the response
-String naicsCode = "naicsCode_example"; // String | Will accept naicsCode to filter POIs in results. Max 10 allowed.
+POIBoundaryLocationRequest body = new POIBoundaryLocationRequest(); // POIBoundaryLocationRequest | 
 try {
-    PoiBoundary result = apiInstance.getPOIBoundaryByPBKey(pbKey, categoryCode, sicCode, naicsCode);
+    POIBoundaryResponse result = apiInstance.getPOIBoundaryByLocationBatch(body);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling LIAPIGeoZoneServiceApi#getPOIBoundaryByPBKey");
+    System.err.println("Exception when calling LIAPIGeoZoneServiceApi#getPOIBoundaryByLocationBatch");
     e.printStackTrace();
 }
 ```
@@ -307,14 +359,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **pbKey** | **String**| PBKey for which POI Boundary is requested |
- **categoryCode** | **String**| Specific Category/Categories Codes for the desired POIs. Accepts a mix of 4 digit (Top Category), 6 digit (Second-Level Category) and 11 digit (Low-Level Category) Category Codes. | [optional]
- **sicCode** | **String**| Specify starting digits or full sic code to filter the response | [optional]
- **naicsCode** | **String**| Will accept naicsCode to filter POIs in results. Max 10 allowed. | [optional]
+ **body** | [**POIBoundaryLocationRequest**](POIBoundaryLocationRequest.md)|  | [optional]
 
 ### Return type
 
-[**PoiBoundary**](PoiBoundary.md)
+[**POIBoundaryResponse**](POIBoundaryResponse.md)
 
 ### Authorization
 
@@ -322,7 +371,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
+ - **Content-Type**: application/json, application/xml
  - **Accept**: application/json, application/xml
 
 <a name="getTravelBoundaryByDistance"></a>

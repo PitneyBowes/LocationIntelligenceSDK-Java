@@ -34,7 +34,7 @@ import io.swagger.annotations.ApiModelProperty;
 /**
  * IndexVariable
  */
-@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2020-03-03T15:28:20.703+05:30")
+@javax.annotation.Generated(value = "class io.swagger.codegen.languages.JavaClientCodegen", date = "2020-04-16T15:55:12.092+05:30")
 public class IndexVariable   {
   @SerializedName("name")
   private String name = null;
@@ -47,6 +47,9 @@ public class IndexVariable   {
 
   @SerializedName("percentile")
   private String percentile = null;
+
+  @SerializedName("stateScore")
+  private String stateScore = null;
 
   public IndexVariable name(String name) {
     this.name = name;
@@ -120,6 +123,24 @@ public class IndexVariable   {
     this.percentile = percentile;
   }
 
+  public IndexVariable stateScore(String stateScore) {
+    this.stateScore = stateScore;
+    return this;
+  }
+
+   /**
+   * Get stateScore
+   * @return stateScore
+  **/
+  @ApiModelProperty(example = "null", value = "")
+  public String getStateScore() {
+    return stateScore;
+  }
+
+  public void setStateScore(String stateScore) {
+    this.stateScore = stateScore;
+  }
+
 
   @Override
   public boolean equals(java.lang.Object o) {
@@ -133,12 +154,13 @@ public class IndexVariable   {
     return Objects.equals(this.name, indexVariable.name) &&
         Objects.equals(this.score, indexVariable.score) &&
         Objects.equals(this.category, indexVariable.category) &&
-        Objects.equals(this.percentile, indexVariable.percentile);
+        Objects.equals(this.percentile, indexVariable.percentile) &&
+        Objects.equals(this.stateScore, indexVariable.stateScore);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, score, category, percentile);
+    return Objects.hash(name, score, category, percentile, stateScore);
   }
 
   @Override
@@ -150,6 +172,7 @@ public class IndexVariable   {
     sb.append("    score: ").append(toIndentedString(score)).append("\n");
     sb.append("    category: ").append(toIndentedString(category)).append("\n");
     sb.append("    percentile: ").append(toIndentedString(percentile)).append("\n");
+    sb.append("    stateScore: ").append(toIndentedString(stateScore)).append("\n");
     sb.append("}");
     return sb.toString();
   }
